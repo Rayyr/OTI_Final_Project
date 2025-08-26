@@ -37,6 +37,7 @@ endfunction
 task run_phase(uvm_phase phase);
 
 super.run_phase(phase);
+
 forever begin
 
 wait(qPackets.size()!=0);
@@ -44,16 +45,29 @@ actualPacket=qPackets.pop_front();
 
 //initialize the refPacket's inputs with the actual Packet ( from DUT ) 
 initializeRefPacket(actualPacket,refPacket);
-
-/*
-      if(packet.a===32'bx && packet.b===32'bx) begin
-       refPacket.b=32'b0;
-        refPacket.a=32'b0;
-    end*/
-
+ 
 
 //i implenment the ref model using task since in function() They cannot have output or inout arguments. Only input arguments are allowed.
    referenceModelBMU(refPacket);
+
+
+   output bit result;
+   if(if_equel(refPacket,actualPacket,result)==1'b1)begin  //matched :)
+      `uvm_info("pass", $sformatf("\033[32m ------ :: Match :: ------ \033[0m"), UVM_LOW);//low : the verbosty levl  
+      `uvm_info("pass", 
+          $sformatf("A=%0d    B=%0d    Result=%0d    error=%b | RefA=%0d    RefB=%0d    RefResult=%0d    error=%b", 
+                    actualPacket.a_in, actualPacket.b_in, actualPacket.result_ff,actualPacket.error, refPacket.a_in,
+                    refPacket.b_in, refPacket.result_ff, refPacket.error),UVM_LOW)
+   end
+   else begin //not matched :(
+    `uvm_info("fail", $sformatf("\033[31m ------ :: Mismatch :: ------ \033[0m"), UVM_LOW);//low : the verbosty levl 
+    `uvm_info("fail", 
+          $sformatf("A=%0d    B=%0d    Result=%0d    error=%b | RefA=%0d    RefB=%0d    RefResult=%0d    error=%b", 
+                    actualPacket.a_in, actualPacket.b_in, actualPacket.result_ff,actualPacket.error, refPacket.a_in,
+                    refPacket.b_in, refPacket.result_ff, refPacket.error),UVM_LOW)
+
+   end
+
 end
 
 
@@ -61,12 +75,29 @@ endtask
 
 
 
+task if_equel(bmu_sequence_item actualP,refP,bit output result);
+
+result=1'b0;//they are not the same 
+
+//here only i check the output ports since oreviouslly once i poped the received transaction obj from the DUT ( atualP ) i initilize my refP with its input pots 
+//then the variation between these 2 packets will be based to their output ports !!
+if((actualP.result_ff=== refP.result_ff) && (actualP.error === refP.error))
+  result=1'b1;//they are the same 
+
+
+endtask
+
+
+
+
+
+
+//the reference model of my BMU
 task referenceModelBMU(bmu_sequence_item refPacket);
 
-bit error_flag=0;
+ 
 
 if(refPacket.rst_l==0) begin 
-
 //here we will reinitialize all the inputs to 0 ( or simply set them to 0 ) to avoid (x) values 
 //inputs , thats why initially we need to make reset case before the actual one in order to make reinitilization as follow 
 refPacket.a_in=32'b0;
@@ -80,29 +111,34 @@ refPacket.csr_rddata_in=32'b0;
 
 //outputs
 refPacket.result_ff=32'b0;
-//no error since no operation 
+//no error since no operation !
 refPacket.error=1'b0;
-
 end
+
 //here we will implement the actual BMU logic !
 else begin : all_operations
 
+//the default , only they will be considered in case of invalid combination ( not defined op ), others it will be overridden
+refPacket.result_ff=32'b0;
+refPacket.error=1'b1;
+
 //logical operations
 //OR op
-if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b0) begin:OR_op
+if(refPacket.ap.lor==1'b1) begin:OR_op
 
 //invalid OR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lor:1, zbb:0, default:0})) != 0) begin 
+ if ((refPacket.ap & ~'({lor:1, default:0})) != 0) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
- error_flag=1'b1;
+refPacket.error=1'b0;
  end
 
 //inavlid OR!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     error_flag=1'b1;
+     //conflict !
+      refPacket.error=1'b1;
  end
 
 //valid OR !
@@ -122,13 +158,13 @@ if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin: Inverted_OR_op
  if ((refPacket.ap & ~'({lor:1, zbb:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid Inverted_OR!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+      refPacket.error=1'b1;
  end
 
 //valid Inverted_OR !
@@ -142,20 +178,20 @@ end//Inverted_OR_op
 
 
 //XOR op
-if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b0) begin: XOR_op
+if(refPacket.ap.lxor==1'b1) begin: XOR_op
 
 //invalid XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lxor:1, zbb:0, default:0})) != 0) begin 
+ if ((refPacket.ap & ~'({lxor:1, default:0})) != 0) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid XOR!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+      refPacket.error=1'b1;
  end
 
 //valid XOR !
@@ -177,13 +213,13 @@ if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin: Inverted_XOR_op
  if ((refPacket.ap & ~'({lxor:1, zbb:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid Inverted_XOR!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+      refPacket.error=1'b1;
  end
 
 //valid Inverted_XOR !
@@ -205,13 +241,13 @@ if(refPacket.ap.srl==1'b1) begin: SRL_op
  if ((refPacket.ap & ~'({srl:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+refPacket.error=1'b0;
  end
 
 //inavlid SRL !
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid SRL !
@@ -233,13 +269,13 @@ if(refPacket.ap.sra==1'b1) begin: SRA_op
  if ((refPacket.ap & ~'({sra:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+ refPacket.error=1'b0;
  end
 
 //inavlid SRA !
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+      refPacket.error=1'b1;
  end
 
 //valid SRA !
@@ -262,13 +298,13 @@ if(refPacket.ap.ror==1'b1) begin: ROR_op
  if ((refPacket.ap & ~'({ror:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid ROR !
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid ROR !
@@ -300,13 +336,13 @@ if(refPacket.ap.binv==1'b1) begin: BINV_op
  if ((refPacket.ap & ~'({binv:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+refPacket.error=1'b0;
  end
 
 //inavlid BINV!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid BINV !
@@ -330,13 +366,13 @@ if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin: SH2ADD_op
  if ((refPacket.ap & ~'({sh2add:1,zba=1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid SH2ADD!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid SH2ADD !
@@ -360,20 +396,20 @@ end
 
 //arithmatic operations 
 //SUB op (a-b)
-if(refPacket.ap.sub==1'b1 && refPacket.ap.zba==1'b0) begin: SUB_op
+if(refPacket.ap.sub==1'b1) begin: SUB_op
 
 //invalid SUB!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({sub:1,zba=0, default:0})) != 0) begin
+ if ((refPacket.ap & ~'({sub:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid SUB!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+      refPacket.error=1'b1;
  end
 
 //valid SUB !
@@ -398,20 +434,20 @@ end
 
 //Bit Manipulation
 //SLT ( default is signed SLT)
-if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b0) begin: SLT_op_SIGNED
+if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin: SLT_op_SIGNED
 
 //invalid SLT signed!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({slt:1,sub=1,unsign=0, default:0})) != 0) begin
+ if ((refPacket.ap & ~'({slt:1,sub=1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid SLT signed!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+      refPacket.error=1'b1;
  end
 
 //valid SLT signed!
@@ -434,13 +470,13 @@ if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1
  if ((refPacket.ap & ~'({slt:1,sub=1,unsign=1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+refPacket.error=1'b0;
  end
 
 //inavlid SLT unsigned!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid SLT unsigned!
@@ -474,13 +510,13 @@ if(refPacket.ap.ctz==1'b1) begin: CTZ_op
  if ((refPacket.ap & ~'({ctz:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+refPacket.error=1'b0;
  end
 
 //inavlid CTZ!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid CTZ!
@@ -494,7 +530,7 @@ end//CTZ_op
 
 
 
-
+//check it if we need to test it or not since it is not found in the specs !!!!!!!!!!!!
 //CLZ
 if(refPacket.ap.clz==1'b1) begin: CLZ_op
 
@@ -503,13 +539,13 @@ if(refPacket.ap.clz==1'b1) begin: CLZ_op
  if ((refPacket.ap & ~'({clz:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+refPacket.error=1'b0;
  end
 
 //inavlid CLZ!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid CLZ!
@@ -520,9 +556,8 @@ end
   
 end//CLZ_op
 
-////here
-
-
+ 
+ 
 
 
 //CPOP
@@ -533,13 +568,13 @@ if(refPacket.ap.cpop==1'b1) begin: CPOP_op
  if ((refPacket.ap & ~'({cpop:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+   refPacket.error=1'b0;
  end
 
 //inavlid CPOP!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+       refPacket.error=1'b1;
  end
 
 //valid CPOP!
@@ -562,13 +597,13 @@ if(refPacket.ap.siext_b==1'b1) begin: siext_b_op
  if ((refPacket.ap & ~'({siext_b:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+ refPacket.error=1'b0;
  end
 
 //inavlid siext_b!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid siext_b!
@@ -594,13 +629,13 @@ if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.zbb=1'b1) be
  if ((refPacket.ap & ~'({max:1,sub=1,zbb=1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid MAX!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid MAX!
@@ -623,13 +658,13 @@ if(refPacket.ap.pack==1'b1 ) begin: Pack_op
  if ((refPacket.ap & ~'({pack:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid Pack!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid Pack!
@@ -652,13 +687,13 @@ if(refPacket.ap.grev==1'b1 ) begin: grev_op
  if ((refPacket.ap & ~'({grev:1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  error_flag=1'b1;
+  refPacket.error=1'b0;
  end
 
 //inavlid grev!
  else if (refPacket.csr_ren_in!=1'b0) begin
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      error_flag=1'b1;
+     refPacket.error=1'b1;
  end
 
 //valid grev!
@@ -673,10 +708,8 @@ end
   
 end//grev_op
 
+ 
 
-
-
-//cover if no op was selected 
 end//all_operations
 
 
