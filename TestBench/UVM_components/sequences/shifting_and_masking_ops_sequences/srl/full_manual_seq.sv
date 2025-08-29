@@ -1,17 +1,17 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
 
-//this seq will perform test case with any value of a_in but b_in ( shift_amount ) will be the max =31 times 
+//this seq will perform test case with any value of a_in but b_in ( shift_amount ) will be the max =32 times 
 //SRL with least 5-bits of b_in=5’b11111(max shift amount) 
-class max_shift_amount_seq extends uvm_sequence #(bmu_sequence_item);
+class full_manual_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(max_shift_amount_seq)
+  `uvm_object_utils(full_manual_seq)
  
 
 
   //overriden new()
-  function new(string name ="max_shift_amount_seq");
+  function new(string name ="full_manual_seq");
     super.new(name);
   endfunction
   
@@ -30,15 +30,17 @@ class max_shift_amount_seq extends uvm_sequence #(bmu_sequence_item);
     initialize_ap(seq.ap);
     seq.ap.srl=1'b1;
 
-//a=random_input , b=31decimal  result=0  
-    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b11111};
+//a= 32'hFE5A4D10 , b= 32'hCC623F2F , result=32'h0001FC49
+    seq.randomize() with {csr_ren_in==1'b1;b_in==32'hCC623F2F; a_in==32'hFE5A4D10};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Max shift amount case"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
 
-    
+    //0010 1111
   endtask
   
+
+
 
 
 
