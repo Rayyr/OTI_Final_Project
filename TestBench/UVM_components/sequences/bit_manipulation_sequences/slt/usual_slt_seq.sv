@@ -70,6 +70,13 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
 
+    //signed slt with same inputs = 150 result=0
+   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000096;b_in==32'h00000096;}; 
+   start_item(seq); 
+   `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
+   finish_item(seq);
+
+
 
     //unsigned slt with random inputs
    seq.ap.unsign=1'b1;
@@ -102,6 +109,14 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
     //unsigned slt with a=-100 , b=90  ( different signs )  result=0
    seq.ap.unsign=1'b1; 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'h0000005A;}; 
+   start_item(seq); 
+   `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
+   finish_item(seq);
+
+
+    //unsigned slt with same inputs = -100 result=0
+   seq.ap.unsign=1'b1; 
+   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFF9C;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
    finish_item(seq);
