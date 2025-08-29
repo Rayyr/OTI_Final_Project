@@ -30,6 +30,7 @@ class max_shift_amount_sra_seq extends uvm_sequence #(bmu_sequence_item);
     initialize_ap(seq.ap);
     seq.ap.sra=1'b1;
 
+//a=neg value --version1
 //a=32'b1xxx... , b=31decimal  result=-1
     seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b11111; a_in[31]=1'b1};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
