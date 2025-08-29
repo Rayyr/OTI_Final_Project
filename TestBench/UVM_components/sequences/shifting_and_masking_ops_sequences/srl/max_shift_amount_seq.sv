@@ -1,14 +1,16 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
-class usual_srl_seq extends uvm_sequence #(bmu_sequence_item);
+
+//this seq will perform test case with any value of a_in but b_in ( shift_amount ) will be the max =32 times 
+class max_shift_amount_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(usual_srl_seq)
+  `uvm_object_utils(max_shift_amount_seq)
  
 
 
   //overriden new()
-  function new(string name ="usual_srl_seq");
+  function new(string name ="max_shift_amount_seq");
     super.new(name);
   endfunction
   
@@ -18,29 +20,25 @@ class usual_srl_seq extends uvm_sequence #(bmu_sequence_item);
       
     //declare&initialize sequence_item ( packet , transaction .. )
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
-
-
- //disable the Reset signal for the test of test cases 
+    
+    //disable the reset input
     seq.rst_l.constraint_mode(0);
     seq.rst_l=1'b1;
- 
 
-//1st case : standard inverted XOR with random inputs a , b
-   seq.ap.costraint_mode(0);//disable the randomization for the op feilds once we randomize the seq , this globally will be turned off
-   initialize_ap(seq.ap);
-   seq.ap.srl=1'b1;
-   
-   //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
-   seq.randomize() with { csr_ren_in==1'b0;};
-   start_item(seq);
-   `uvm_info(get_type_name(), ("Standard SRL"), UVM_NONE) 
-   finish_item(seq);
- 
- 
+    seq.ap.constraint_mode(0);
+    initialize_ap(seq.ap);
+    seq.ap.srl=1'b1;
+
+//a=random_input , b=32decimal  result=0  
+    seq.randomize() with {csr_ren_in==1'b1;b_in==32'h000001f};
+    start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
+    `uvm_info(get_type_name(), ("Max shift amount case"), UVM_NONE) 
+    finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
+
     
   endtask
   
-  
+
 
 
 
@@ -93,5 +91,7 @@ op.csr_imm=0;
 
 endtask
 
-endclass
 
+
+
+ endclass
