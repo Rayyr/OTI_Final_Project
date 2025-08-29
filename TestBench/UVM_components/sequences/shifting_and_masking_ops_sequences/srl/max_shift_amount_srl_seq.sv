@@ -3,15 +3,15 @@
 
 //this seq will perform test case with any value of a_in but b_in ( shift_amount ) will be the max =31 times 
 //SRL with least 5-bits of b_in=5’b11111(max shift amount) 
-class max_shift_amount_seq extends uvm_sequence #(bmu_sequence_item);
+class max_shift_amount_srl_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(max_shift_amount_seq)
+  `uvm_object_utils(max_shift_amount_srl_seq)
  
 
 
   //overriden new()
-  function new(string name ="max_shift_amount_seq");
+  function new(string name ="max_shift_amount_srl_seq");
     super.new(name);
   endfunction
   
