@@ -31,7 +31,8 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
    //signed slt with random inputs
    seq.ap.slt=1'b1;
-   seq.ap.unsign=1'b0;
+   //there is no need since it is initilized in the previous function
+   //seq.ap.unsign=1'b0;
    seq.ap.sub=1'b1;
  
    seq.randomize() with { csr_ren_in==1'b0;}; 
@@ -44,10 +45,6 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //signed slt with a=-120 , b=-10  ( neg values ) result=1
-   seq.ap.slt=1'b1;
-   seq.ap.unsign=1'b0;
-   seq.ap.sub=1'b1;
- 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF88; b_in==32'hFFFFFFF6;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Signed SLT both neg inputs"), UVM_NONE) 
@@ -57,10 +54,6 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //signed slt with a=33 , b=52  ( pos values )  result=0
-   seq.ap.slt=1'b1;
-   seq.ap.unsign=1'b0;
-   seq.ap.sub=1'b1;
- 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000021; b_in==32'h00000034;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Signed SLT both pos inputs"), UVM_NONE) 
@@ -70,10 +63,6 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //signed slt with a=150 , b=-200  (different signs )  result=0
-   seq.ap.slt=1'b1;
-   seq.ap.unsign=1'b0;
-   seq.ap.sub=1'b1;
- 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000096; b_in==32'hFFFFFF38;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Signed SLT different signs inputs"), UVM_NONE) 
@@ -83,10 +72,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //unsigned slt with random inputs
-   seq.ap.slt=1'b1;
    seq.ap.unsign=1'b1;
-   seq.ap.sub=1'b1;
- 
    seq.randomize() with { csr_ren_in==1'b0;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT random inputs"), UVM_NONE) 
@@ -95,10 +81,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
    //unsigned slt with a=210 , b=96  ( pos values)  result=0
-   seq.ap.slt=1'b1;
    seq.ap.unsign=1'b1;
-   seq.ap.sub=1'b1;
- 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'h000000D2;b_in==32'h00000060;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
@@ -108,10 +91,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
  
    //unsigned slt with a=-100 , b=-90  ( neg values)  result=0
-   seq.ap.slt=1'b1;
    seq.ap.unsign=1'b1;
-   seq.ap.sub=1'b1;
- 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFFA6;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
@@ -120,10 +100,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //unsigned slt with a=-100 , b=90  ( different signs )  result=0
-   seq.ap.slt=1'b1;
-   seq.ap.unsign=1'b1;
-   seq.ap.sub=1'b1;
- 
+   seq.ap.unsign=1'b1; 
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'h0000005A;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
