@@ -1,17 +1,17 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
 
-//this seq will perform test case with any value of a_in but b_in ( shift_amount ) will be the max =31 times 
-//SRA with least 5-bits of b_in=5’b11111(max shift amount) 
-class max_shift_amount_sra_seq extends uvm_sequence #(bmu_sequence_item);
+//this seq will perform test case with any value of a_in but b_in ( shift_amount ) will be the max =0 times 
+//SRA with least 5-bits of b_in=5’b00000(min shift amount) 
+class min_shift_amount_sra_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(max_shift_amount_sra_seq)
+  `uvm_object_utils(min_shift_amount_sra_seq)
  
 
 
   //overriden new()
-  function new(string name ="max_shift_amount_sra_seq");
+  function new(string name ="min_shift_amount_sra_seq");
     super.new(name);
   endfunction
   
@@ -30,10 +30,10 @@ class max_shift_amount_sra_seq extends uvm_sequence #(bmu_sequence_item);
     initialize_ap(seq.ap);
     seq.ap.sra=1'b1;
 
-//a=32'b1xxx... , b=31decimal  result=-1
-    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b11111; a_in[31]=1'b1};
+//a=32'b1xxx... , b=0decimal  result=a
+    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b00000; a_in[31]=1'b1};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-    `uvm_info(get_type_name(), ("Max shift amount case"), UVM_NONE) 
+    `uvm_info(get_type_name(), ("Min shift amount case"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
 
     
