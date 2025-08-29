@@ -32,9 +32,8 @@ class usual_xor_seq extends uvm_sequence #(bmu_sequence_item);
    //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
    seq.randomize() with { csr_ren_in==1'b0;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
    start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-   `uvm_info(get_type_name(), ("1st case : Standard XOring"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard XOring"), UVM_NONE) 
    finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
- 
 
  
  
