@@ -1,14 +1,14 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
-class usual_xor_seq extends uvm_sequence #(bmu_sequence_item);
+class usual_inverted_xor_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(usual_xor_seq)
+  `uvm_object_utils(usual_inverted_xor_seq)
  
 
 
   //overriden new()
-  function new(string name ="usual_xor_seq");
+  function new(string name ="usual_inverted_xor_seq");
     super.new(name);
   endfunction
   
@@ -25,17 +25,16 @@ class usual_xor_seq extends uvm_sequence #(bmu_sequence_item);
     seq.rst_l=1'b1;
  
 
-//1st case : standard valid XOR with random inputs a , b
+//1st case : standard inverted XOR with random inputs a , b
    seq.ap.costraint_mode(0);//disable the randomization for the op feilds once we randomize the seq , this globally will be turned off
    initialize_ap(seq.ap);
    seq.ap.lxor=1'b1;
+   seq.ap.zbb=1'b1;
    //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
    seq.randomize() with { csr_ren_in==1'b0;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
    start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-   `uvm_info(get_type_name(), ("1st case : Standard XOring"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("1st case : Standard inverted XOring"), UVM_NONE) 
    finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
- 
-
  
  
     
