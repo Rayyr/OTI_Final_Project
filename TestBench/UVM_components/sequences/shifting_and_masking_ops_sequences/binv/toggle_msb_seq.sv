@@ -27,14 +27,14 @@ class toggle_msb_seq extends uvm_sequence #(bmu_sequence_item);
     initialize_ap(seq.ap);
     seq.ap.binv=1'b1;
 
-//msb=1 , result=32'b0...... (neg to pos value)
+//a_in[msb]=1 , result=32'b0...... (neg to pos value)
     seq.randomize() with {csr_ren_in==1'b0;a_in[31]==1'b1; b_in[4:0]==5'b11111;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Toggle MSB case with MSB=1"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
 
 
-//msb=0 , result=32'b1..... (pos to neg value)
+//a_in[msb]=0 , result=32'b1..... (pos to neg value)
 seq.randomize() with {csr_ren_in==1'b0; a_in[31]==1'b0 ; b_in[4:0]==5'b11111};
 start_item(seq);
 `uvm_info(get_type_name(),("Toggle MSB case eith MSB=0"),UVM_NONE)
