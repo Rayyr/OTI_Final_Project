@@ -51,6 +51,12 @@ class usual_ctz_seq extends uvm_sequence #(bmu_sequence_item);
    `uvm_info(get_type_name(), ("Standard CTZ with 1's input"), UVM_NONE) 
    finish_item(seq);
  
+
+  //a_in=101010(alternative input)  result=32/2
+   seq.randomize() with { csr_ren_in==1'b0;a_in==32'b10101010101010101010101010101010}; 
+   start_item(seq); 
+   `uvm_info(get_type_name(), ("Standard CTZ with alternative-input(1010...)"), UVM_NONE) 
+   finish_item(seq);
     
   endtask
   
