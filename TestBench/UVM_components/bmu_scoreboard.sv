@@ -10,7 +10,7 @@ uvm_analysis_imp #(bmu_sequence_item,bmu_scoreboard) exp;
 
 
 //register it into uvm factory
-`uvm_component_utils(bmu_scoreboard);
+`uvm_component_utils(bmu_scoreboard)
 
 
 //override new()
@@ -35,7 +35,6 @@ endfunction
 
 //override run_phase()
 task run_phase(uvm_phase phase);
-
 super.run_phase(phase);
 
 forever begin
@@ -51,8 +50,8 @@ initializeRefPacket(actualPacket,refPacket);
    referenceModelBMU(refPacket);
 
 
-   output bit result;
-   if(if_equel(refPacket,actualPacket,result)==1'b1)begin  //matched :)
+    
+   if(if_equel(refPacket,actualPacket)==1'b1)begin  //matched :)
       `uvm_info("pass", $sformatf("\033[32m ------ :: Match :: ------ \033[0m"), UVM_LOW);//low : the verbosty levl  
       `uvm_info("pass", 
           $sformatf("A=%0d    B=%0d    Result=%0d    error=%b | RefA=%0d    RefB=%0d    RefResult=%0d    error=%b", 
@@ -75,28 +74,40 @@ endtask
 
 
 
-task if_equel(bmu_sequence_item actualP,refP,bit output result);
-
-result=1'b0;//they are not the same 
+function bit if_equel(bmu_sequence_item actualP,bmu_sequence_item refP);
 
 //here only i check the output ports since oreviouslly once i poped the received transaction obj from the DUT ( atualP ) i initilize my refP with its input pots 
 //then the variation between these 2 packets will be based to their output ports !!
 if((actualP.result_ff=== refP.result_ff) && (actualP.error === refP.error))
-  result=1'b1;//they are the same 
+// result=1'b1;//they are the same 
+return 1'b1;
+return 1'b0;
 
 
-endtask
+endfunction
 
 
 
 
+
+function bit check_dont_care_inputs(bmu_sequence_item pck);
+if((pck.rst_l===1'bx)||(pck.a_in===1'bx)||(refPacket.b_in===1'bx))
+return 1'b1;
+return 1'b0;
+endfunction
 
 
 //the reference model of my BMU
 task referenceModelBMU(bmu_sequence_item refPacket);
 
+refPacket.error=1'b0;
+refPacket.result_ff=32'b0;
+
+if(check_dont_care_inputs(refPacket)==1'b0)begin
  
 
+ 
+//active low reset
 if(refPacket.rst_l==0) begin 
 //here we will reinitialize all the inputs to 0 ( or simply set them to 0 ) to avoid (x) values 
 //inputs , thats why initially we need to make reset case before the actual one in order to make reinitilization as follow 
@@ -115,8 +126,25 @@ refPacket.result_ff=32'b0;
 refPacket.error=1'b0;
 end
 
+
+
+//read from CSR register
+else if (refPacket.csr_ren_in==1'b1) begin
+
+//invalid 
+ if (refPacket.ap  != 0) begin 
+ //other feilds are being activated once !
+ `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are being activated once !")
+refPacket.error=1'b0;
+ end
+
+else 
+ refPacket.result_ff=refPacket.csr_rddata_in;
+
+end
+
 //here we will implement the actual BMU logic !
-else begin : all_operations
+else begin  
 
 //the default , only they will be considered in case of invalid combination ( not defined op ), others it will be overridden
 refPacket.result_ff=32'b0;
@@ -124,7 +152,7 @@ refPacket.error=1'b1;
 
 //logical operations
 //OR op
-if(refPacket.ap.lor==1'b1) begin:OR_op
+if(refPacket.ap.lor==1'b1) begin
 
 //invalid OR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -151,7 +179,7 @@ end//OR_op
 
 
 //Inverted OR op
-if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin: Inverted_OR_op
+if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin
 
 //invalid Inverted_OR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -178,11 +206,11 @@ end//Inverted_OR_op
 
 
 //XOR op
-if(refPacket.ap.lxor==1'b1) begin: XOR_op
+if(refPacket.ap.lxor==1'b1) begin 
 
 //invalid XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lxor:1, default:0})) != 0) begin 
+ if ((refPacket.ap & ~'({lxor:1, default:0}))!= 0) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -206,7 +234,7 @@ end//XOR_op
 
 
 //Inverted_XOR op
-if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin: Inverted_XOR_op
+if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin 
 
 //invalid Inverted_XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -234,7 +262,7 @@ end//Inverted_XOR_op
 
 //shifting and masking operations
 //SRL op
-if(refPacket.ap.srl==1'b1) begin: SRL_op
+if(refPacket.ap.srl==1'b1) begin 
 
 //invalid SRL !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -262,7 +290,7 @@ end//SRL_op
 
 
 //SRA op
-if(refPacket.ap.sra==1'b1) begin: SRA_op
+if(refPacket.ap.sra==1'b1) begin 
 
 //invalid SRA!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -291,7 +319,7 @@ end//SRA_op
 
 
 //ROR op
-if(refPacket.ap.ror==1'b1) begin: ROR_op
+if(refPacket.ap.ror==1'b1) begin 
 
 //invalid ROR!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -311,7 +339,7 @@ if(refPacket.ap.ror==1'b1) begin: ROR_op
  else begin
   for(int i=0;i<refPacket.b_in[4:0];i++) begin
         
-        bit temp=refPacket.a_in[0];//LSB 
+        logic temp=refPacket.a_in[0];//LSB 
         refPacket.a_in=refPacket.a_in >> 1;//shift a to the right by 1 bit 
         refPacket.a_in[31]=temp;
 
@@ -329,7 +357,7 @@ end//ROR_op
 
 
 //BINV op
-if(refPacket.ap.binv==1'b1) begin: BINV_op
+if(refPacket.ap.binv==1'b1) begin 
 
 //invalid BINV!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -359,7 +387,7 @@ end//BINV_op
 
 
 //SH2ADD op
-if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin: SH2ADD_op
+if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin 
 
 //invalid SH2ADD!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -396,9 +424,16 @@ end
 
 //arithmatic operations 
 //SUB op (a-b)
-if(refPacket.ap.sub==1'b1) begin: SUB_op
+if(refPacket.ap.sub==1'b1) begin 
 
 //invalid SUB!
+ if (refPacket.ap.zba != 0) begin
+ //other feilds are being activated once !
+ `uvm_error("bmu_scoreboard","illegal op feild ZBA value !")
+  refPacket.error=1'b1;
+ end
+
+//invalid
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
  if ((refPacket.ap & ~'({sub:1, default:0})) != 0) begin
  //other feilds are being activated once !
@@ -434,7 +469,7 @@ end
 
 //Bit Manipulation
 //SLT ( default is signed SLT)
-if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin: SLT_op_SIGNED
+if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin 
 
 //invalid SLT signed!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -463,7 +498,7 @@ end
 
 
 //SLT unsigned
-if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1) begin: SLT_op_UNSIGNED
+if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1) begin 
 
 //invalid SLT unsigned!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -482,7 +517,7 @@ refPacket.error=1'b0;
 //valid SLT unsigned!
 else begin 
     refPacket.error=1'b0;
-
+/*
     if(refPacket.a_in[31]==refPacket.b_in[31]) begin //same MSP == same sign bit !
        refPacket.result_ff=refPacket.a_in < refPacket.b_in?32'h00000001:32'h00000000 ;
     end
@@ -492,7 +527,9 @@ else begin
       else 
        refPacket.result_ff=32'h00000000;
 
-    end
+    end*/
+
+    refPacket= $unsigned(refPacket.a_in) < $unsigned(refPacket.b_in) ? 32'h00000001:32'h00000000;
 
 end
   
@@ -503,7 +540,7 @@ end//SLT_op unsigned
 
 
 //CTZ
-if(refPacket.ap.ctz==1'b1) begin: CTZ_op
+if(refPacket.ap.ctz==1'b1) begin 
 
 //invalid CTZ!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -529,10 +566,10 @@ end//CTZ_op
 
 
 
-
+/*
 //check it if we need to test it or not since it is not found in the specs !!!!!!!!!!!!
 //CLZ
-if(refPacket.ap.clz==1'b1) begin: CLZ_op
+if(refPacket.ap.clz==1'b1) begin 
 
 //invalid CLZ!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -557,11 +594,11 @@ end
 end//CLZ_op
 
  
- 
+ */
 
 
 //CPOP
-if(refPacket.ap.cpop==1'b1) begin: CPOP_op
+if(refPacket.ap.cpop==1'b1) begin
 
 //invalid CPOP!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -590,7 +627,7 @@ end//CPOP_op
 
 
 //siext_b
-if(refPacket.ap.siext_b==1'b1) begin: siext_b_op
+if(refPacket.ap.siext_b==1'b1) begin 
 
 //invalid siext_b!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -622,11 +659,11 @@ end//siext_b_op
 
 
 //MAX ( signed op ) 
-if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.zbb=1'b1) begin: MAX_op
+if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1) begin 
 
 //invalid MAX!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({max:1,sub=1,zbb=1, default:0})) != 0) begin
+ if ((refPacket.ap & ~'({max:1,sub=1, default:0})) != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -651,7 +688,7 @@ end//MAX_op
 
 
 //Pack
-if(refPacket.ap.pack==1'b1 ) begin: Pack_op
+if(refPacket.ap.pack==1'b1 ) begin 
 
 //invalid Pack!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -680,7 +717,7 @@ end//Pack_op
 
 
 //grev
-if(refPacket.ap.grev==1'b1 ) begin: grev_op
+if(refPacket.ap.grev==1'b1 ) begin 
 
 //invalid grev!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -701,7 +738,7 @@ else begin
 
     refPacket.error=1'b0;
 
-    if(refPacket.b_in != 24) refPacket.result_ff=32'b0;
+    if(refPacket.b_in[4:0] != 24) refPacket.result_ff=32'b0;
     else 
     refPacket.result_ff= {refPacket.a_in[7:0], refPacket.a_in[15:8], refPacket.a_in[23:16], refPacket.a_in[31:24]};
 end
@@ -712,7 +749,7 @@ end//grev_op
 
 end//all_operations
 
-
+end//valid inputs ( dont have dont care bits)
 endtask
 
 
@@ -771,7 +808,7 @@ endfunction
 
 
 //initilizae the ap for the refPacket in case we make reset activated 
-task initializeAp(output rtl_alu_pkt_t op);
+task initializeAp(output rtl_alu_pkt_t op); 
 
 op.clz=0;
 op.ctz=0;
@@ -816,7 +853,7 @@ op.predict_nt=0;
 op.csr_write=0;
 op.csr_imm=0;
 
-
+ 
 endtask
 
 
@@ -824,16 +861,17 @@ endtask
 //this function will initialize the refpacket'inputs based to the actualP ones which it comes from DUT to calculate the output baed to my referene model
 function void initializeRefPacket(bmu_sequence_item actualP,bmu_sequence_item refP);
 
-  refP.a_in=actualP.a_in;
-  refP.b_in=actualP.b_in;
-  refP.rst_l=actualP.rst_l;
+//i make ternary operator to check x state 
+  refP.a_in= actualP.a_in===32'bx?0:actualP.a_in;
+  refP.b_in=actualP.b_in===32'bx?0:actualP.b_in;
+  refP.rst_l=actualP.rst_l===1'bx?0:actualP.rst_l;
   refP.ap=actualP.ap;
-  refP.valid_in=actualP.valid_in;
-  refP.scan_mode=actualP.scan_mode;
-  refP.csr_ren_in=actualP.csr_ren_in;
-  refP.csr_rddata_in=actualP.csr_rddata_in;
+  refP.valid_in=actualP.valid_in===1'bx?0:actualP.valid_in;
+  refP.scan_mode=actualP.scan_mode===1'bx?0:actualP.scan_mode;
+  refP.csr_ren_in=actualP.csr_ren_in===1'bx?0:actualP.csr_ren_in;
+  refP.csr_rddata_in=actualP.csr_rddata_in===32'bx?0:actualP.csr_rddata_in;
 
-  return;
+return;
 
 endfunction
 
