@@ -39,34 +39,38 @@ super.run_phase(phase);
 
 forever begin
 
+//$display("hello");
+
 wait(qPackets.size()!=0);
 actualPacket=qPackets.pop_front();
-
+ 
+//$display("hello");
 //initialize the refPacket's inputs with the actual Packet ( from DUT ) 
 initializeRefPacket(actualPacket,refPacket);
  
-
+ 
+ 
 //i implenment the ref model using task since in function() They cannot have output or inout arguments. Only input arguments are allowed.
    referenceModelBMU(refPacket);
 
-
+//$display("hello");
     
    if(if_equel(refPacket,actualPacket)==1'b1)begin  //matched :)
-      `uvm_info("pass", $sformatf("\033[32m ------ :: Match :: ------ \033[0m"), UVM_LOW);//low : the verbosty levl  
+      //`uvm_info("pass", $sformatf(" ------ :: Match :: ------ "), UVM_LOW);//low : the verbosty levl  
       `uvm_info("pass", 
-          $sformatf("A=%0d    B=%0d    Result=%0d    error=%b | RefA=%0d    RefB=%0d    RefResult=%0d    error=%b", 
+          $sformatf("A=%0d    B=%0d  Result=%0d   error=%b | RefA=%0d  RefB=%0d   RefResult=%0d   error=%b\n\n", 
                     actualPacket.a_in, actualPacket.b_in, actualPacket.result_ff,actualPacket.error, refPacket.a_in,
                     refPacket.b_in, refPacket.result_ff, refPacket.error),UVM_LOW)
    end
    else begin //not matched :(
-    `uvm_info("fail", $sformatf("\033[31m ------ :: Mismatch :: ------ \033[0m"), UVM_LOW);//low : the verbosty levl 
+   // `uvm_info("fail", $sformatf("------ :: Mismatch :: ------ "), UVM_LOW);//low : the verbosty levl 
     `uvm_info("fail", 
-          $sformatf("A=%0d    B=%0d    Result=%0d    error=%b | RefA=%0d    RefB=%0d    RefResult=%0d    error=%b", 
+          $sformatf("A=%0d    B=%0d    Result=%0d    error=%b | RefA=%0d    RefB=%0d    RefResult=%0d    error=%b\n\n", 
                     actualPacket.a_in, actualPacket.b_in, actualPacket.result_ff,actualPacket.error, refPacket.a_in,
                     refPacket.b_in, refPacket.result_ff, refPacket.error),UVM_LOW)
 
    end
-
+//$display("hello");
 end
 
 
@@ -103,7 +107,7 @@ task referenceModelBMU(bmu_sequence_item refPacket);
 refPacket.error=1'b0;
 refPacket.result_ff=32'b0;
 
-if(check_dont_care_inputs(refPacket)==1'b0)begin
+ 
  
 
  
@@ -134,8 +138,10 @@ else if (refPacket.csr_ren_in==1'b1) begin
 //invalid 
  if (refPacket.ap  != 0) begin 
  //other feilds are being activated once !
- `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are being activated once !")
-refPacket.error=1'b0;
+ //based to reference model i make the reading op with the higheset pririty , iow if ap.sub=1 and read=1 then read will be 
+ //be considered the base not the sub
+ `uvm_error("bmu_scoreboard","illegal op feilds value while you are attemping to perform reading op with writing operation !!")
+refPacket.error=1'b1;
  end
 
 else 
@@ -156,7 +162,7 @@ if(refPacket.ap.lor==1'b1) begin
 
 //invalid OR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lor:1, default:0})) != 0) begin 
+ if ($countones(refPacket.ap)>1) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
 refPacket.error=1'b0;
@@ -183,7 +189,7 @@ if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin
 
 //invalid Inverted_OR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lor:1, zbb:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>2) begin // if(refPacket.lor && )
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -210,7 +216,7 @@ if(refPacket.ap.lxor==1'b1) begin
 
 //invalid XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lxor:1, default:0}))!= 0) begin 
+ if ($countones(refPacket.ap)>1) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -238,7 +244,7 @@ if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin
 
 //invalid Inverted_XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({lxor:1, zbb:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -266,7 +272,7 @@ if(refPacket.ap.srl==1'b1) begin
 
 //invalid SRL !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({srl:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
 refPacket.error=1'b0;
@@ -294,7 +300,7 @@ if(refPacket.ap.sra==1'b1) begin
 
 //invalid SRA!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({sra:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
  refPacket.error=1'b0;
@@ -323,7 +329,7 @@ if(refPacket.ap.ror==1'b1) begin
 
 //invalid ROR!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({ror:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -361,7 +367,7 @@ if(refPacket.ap.binv==1'b1) begin
 
 //invalid BINV!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({binv:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
 refPacket.error=1'b0;
@@ -391,7 +397,7 @@ if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin
 
 //invalid SH2ADD!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({sh2add:1,zba=1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -435,7 +441,7 @@ if(refPacket.ap.sub==1'b1) begin
 
 //invalid
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({sub:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -473,7 +479,7 @@ if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin
 
 //invalid SLT signed!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({slt:1,sub=1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -502,7 +508,7 @@ if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1
 
 //invalid SLT unsigned!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({slt:1,sub=1,unsign=1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>3) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
 refPacket.error=1'b0;
@@ -529,7 +535,9 @@ else begin
 
     end*/
 
-    refPacket= $unsigned(refPacket.a_in) < $unsigned(refPacket.b_in) ? 32'h00000001:32'h00000000;
+   // refPacket= $unsigned(refPacket.a_in) < $unsigned(refPacket.b_in) ? 32'h00000001:32'h00000000;
+    refPacket.result_ff = ($unsigned(refPacket.a_in) < $unsigned(refPacket.b_in)) ? 32'h00000001 : 32'h00000000;
+
 
 end
   
@@ -544,14 +552,16 @@ if(refPacket.ap.ctz==1'b1) begin
 
 //invalid CTZ!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({ctz:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
+  
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
 refPacket.error=1'b0;
  end
 
 //inavlid CTZ!
  else if (refPacket.csr_ren_in!=1'b0) begin
+     
      `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
      refPacket.error=1'b1;
  end
@@ -560,6 +570,8 @@ refPacket.error=1'b0;
 else begin 
     refPacket.error=1'b0;
     refPacket.result_ff=count_trailing_zeroes(refPacket.a_in);
+    //or simplly we cand make like this 
+    //if(a[0]==1) result=0 else ctz(a);
 end
   
 end//CTZ_op
@@ -602,7 +614,7 @@ if(refPacket.ap.cpop==1'b1) begin
 
 //invalid CPOP!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({cpop:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
    refPacket.error=1'b0;
@@ -631,7 +643,7 @@ if(refPacket.ap.siext_b==1'b1) begin
 
 //invalid siext_b!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({siext_b:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
  refPacket.error=1'b0;
@@ -647,8 +659,8 @@ if(refPacket.ap.siext_b==1'b1) begin
 else begin 
     refPacket.error=1'b0;
     //extract the a[7]
-    logic [23:0]a_23_0={24{refPacket.a_in[7]}};
-    refPacket.result_ff= {a_23_0,refPacket.a_in[7:0]};
+   // logic [23:0]a_23_0={24{refPacket.a_in[7]}};
+    refPacket.result_ff= {{24{refPacket.a_in[7]}},refPacket.a_in[7:0]};
 end
   
 end//siext_b_op
@@ -663,7 +675,7 @@ if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1) begin
 
 //invalid MAX!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({max:1,sub=1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -692,7 +704,7 @@ if(refPacket.ap.pack==1'b1 ) begin
 
 //invalid Pack!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({pack:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -721,7 +733,7 @@ if(refPacket.ap.grev==1'b1 ) begin
 
 //invalid grev!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
- if ((refPacket.ap & ~'({grev:1, default:0})) != 0) begin
+ if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
@@ -749,7 +761,7 @@ end//grev_op
 
 end//all_operations
 
-end//valid inputs ( dont have dont care bits)
+
 endtask
 
 
@@ -834,7 +846,7 @@ op.sh2add=0;
 op.sh3add=0;
 op.zba=0;
 op.land=0;
-op.lol=0;
+op.lor=0;
 op.lxor=0;
 op.sll=0;
 op.srl=0;
@@ -862,6 +874,7 @@ endtask
 function void initializeRefPacket(bmu_sequence_item actualP,bmu_sequence_item refP);
 
 //i make ternary operator to check x state 
+/*
   refP.a_in= actualP.a_in===32'bx?0:actualP.a_in;
   refP.b_in=actualP.b_in===32'bx?0:actualP.b_in;
   refP.rst_l=actualP.rst_l===1'bx?0:actualP.rst_l;
@@ -869,11 +882,31 @@ function void initializeRefPacket(bmu_sequence_item actualP,bmu_sequence_item re
   refP.valid_in=actualP.valid_in===1'bx?0:actualP.valid_in;
   refP.scan_mode=actualP.scan_mode===1'bx?0:actualP.scan_mode;
   refP.csr_ren_in=actualP.csr_ren_in===1'bx?0:actualP.csr_ren_in;
-  refP.csr_rddata_in=actualP.csr_rddata_in===32'bx?0:actualP.csr_rddata_in;
+  refP.csr_rddata_in=actualP.csr_rddata_in===32'bx?0:actualP.csr_rddata_in;*/
+
+
+  refP.a_in = has_unknown_bits(actualP.a_in) ? 0 : actualP.a_in;
+refP.b_in = has_unknown_bits(actualP.b_in) ? 0 : actualP.b_in;
+refP.rst_l = has_unknown_bits(actualP.rst_l) ? 0 : actualP.rst_l;
+  refP.ap=actualP.ap;
+  refP.valid_in = has_unknown_bits(actualP.valid_in) ? 0 : actualP.valid_in;
+  refP.scan_mode = has_unknown_bits(actualP.scan_mode) ? 0 : actualP.scan_mode;
+  refP.csr_rddata_in = has_unknown_bits(actualP.csr_rddata_in) ? 0 : actualP.csr_rddata_in;
+  refP.csr_ren_in = has_unknown_bits(actualP.csr_ren_in) ? 0 : actualP.csr_ren_in;
+
+
+
 
 return;
 
 endfunction
+
+
+
+function bit has_unknown_bits(input logic [31:0] data);
+  return (|(^data === 1'bx));  // if reduction XOR is 'x', there's an unknown
+endfunction
+
 
 
 endclass
