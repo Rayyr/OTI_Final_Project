@@ -24,7 +24,10 @@ class conflict_reading_with_ctz_seq extends uvm_sequence #(bmu_sequence_item);
     initialize_ap(seq.ap);
     seq.ap.ctz=1'b1;
 
-    
+            //this is the solution for synch 
+   seq.valid_in.rand_mode(0);
+   seq.csr_rddata_in.rand_mode(0);
+   seq.scan_mode.rand_mode(0);
 
     seq.randomize() with {csr_ren_in==1'b1; seq.rst_l==1'b1;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface

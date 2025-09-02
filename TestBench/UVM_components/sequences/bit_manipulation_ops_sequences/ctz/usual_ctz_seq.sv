@@ -24,15 +24,10 @@ class usual_ctz_seq extends uvm_sequence #(bmu_sequence_item);
    initialize_ap(seq.ap);
    seq.ap.ctz=1'b1;
 
-   //this is the solution for synch 
-   seq.valid_in.rand_mode(0);
-   seq.csr_rddata_in.rand_mode(0);
-   seq.scan_mode.rand_mode(0);
- 
  
 
-  //a_in=101010(alternative input)  result=1
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'b10101010101010101010101010101010;seq.rst_l==1'b1;}; 
+   //a_in=101010(alternative input)  result=1
+   seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==0;seq.rst_l==1'b1;}; 
    start_item(seq); //t=0
    `uvm_info(get_type_name(), ("Standard CTZ with alternative-input(1010)"), UVM_NONE) 
    finish_item(seq);//t=0
@@ -40,8 +35,20 @@ class usual_ctz_seq extends uvm_sequence #(bmu_sequence_item);
     //t=5 sample the outputs from the dut via the monitor ( poedge)
     #10; //0+5 ( neg+pos (driver and monitor))
 
+
  
- 
+/*
+  //a_in=101010(alternative input)  result=1
+   seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==32'b10101010101010101010101010101010;seq.rst_l==1'b1;}; 
+   start_item(seq); //t=0
+   `uvm_info(get_type_name(), ("Standard CTZ with alternative-input(1010)"), UVM_NONE) 
+   finish_item(seq);//t=0
+    //t=0 drives the inputs to DUT via driver (negedge) ------
+    //t=5 sample the outputs from the dut via the monitor ( poedge)
+    #10; //0+5 ( neg+pos (driver and monitor))
+
+ */
+ /*
 
      //a_in=010101(alternative input)  result=0 (odd num)
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'b01010101010101010101010101010101;seq.rst_l==1'b1;}; 
@@ -75,7 +82,7 @@ class usual_ctz_seq extends uvm_sequence #(bmu_sequence_item);
    finish_item(seq);
    #10;
  
- 
+ */
  
   endtask
   
