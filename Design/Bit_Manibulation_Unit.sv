@@ -1,6 +1,11 @@
+`include "/home/Trainee6/final_project/Design/packages&libs/rtl_pdef.sv"
+
+`include "/home/Trainee6/final_project/Design/packages&libs/rtl_defines.sv"
+`include "/home/Trainee6/final_project/Design/packages&libs/rtl_lib.sv"
+ `include "/home/Trainee6/final_project/Design/packages&libs/rtl_def.sv"
 module Bit_Manipulation_Unit
   import rtl_pkg::*;
-  #(`include "../rtl/library/rtl_param.vh")
+ #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
  (
     input logic clk,       // Top level clock
     input logic rst_l,     // Reset
