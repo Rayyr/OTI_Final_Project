@@ -1,7 +1,5 @@
 class bmu_subscriber extends uvm_subscriber #(bmu_sequence_item); 
 
- 
-
   `uvm_component_utils(bmu_subscriber)
     bmu_sequence_item sub; 
 

@@ -27,12 +27,7 @@ class conflict_sh2add_data_path_seq extends uvm_sequence #(bmu_sequence_item);
     initialize_ap(seq.ap);
  
     seq.ap.sh2add=1'b1;
-    seq.ap.zba=1'b1;
-    
-
-    //activate ror operation once 
-    seq.ap.ror=1'b1;
-     
+     //zba=0!
 
     seq.randomize() with {csr_ren_in==1'b0;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface

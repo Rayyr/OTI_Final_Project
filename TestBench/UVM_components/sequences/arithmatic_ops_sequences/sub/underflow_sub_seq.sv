@@ -1,14 +1,14 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
-class usual_sub_seq extends uvm_sequence #(bmu_sequence_item);
+class underflow_sub_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(usual_sub_seq)
+  `uvm_object_utils(underflow_sub_seq)
  
 
 
   //overriden new()
-  function new(string name ="usual_sub_seq");
+  function new(string name ="underflow_sub_seq");
     super.new(name);
   endfunction
   
@@ -32,7 +32,7 @@ class usual_sub_seq extends uvm_sequence #(bmu_sequence_item);
  
 
 
- // underflow : min_input  -  1
+ // underflow : min_input  -  1   result= 2_147_483_647(max)    error=1
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'h80000000; b_in==32'h00000001;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard SUB with a_in=min 32-bit signed value , b_in=1 subtraction with underflow"), UVM_NONE) 

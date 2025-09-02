@@ -1,3 +1,5 @@
+
+import rtl_pkg::*;
 interface bmu_interface (input logic clk);
 
 
@@ -15,7 +17,7 @@ interface bmu_interface (input logic clk);
 
 //outputs
 logic signed [31:0] result_ff;
-logic bit error;
+logic  error;
 
 
 
@@ -37,7 +39,7 @@ logic bit error;
   endclocking
   
   
-  
+  //NOTE : since driver will work on neg edge of the pulse and the driver on the pos edge of ot , so each op require 1 cycle ( min)
   //modports 
   modport driver_mod (clocking driver_cb,input clk);
   modport monitor_mod(clocking monitor_cb,input clk);

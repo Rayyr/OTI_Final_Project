@@ -31,7 +31,7 @@ class conflict_sra_data_path_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.sra=1'b1;
 
    //activate others ops at a time 
-   seq.ap.ror=1'b1;
+   seq.ap.ror=1'b1; 
 
    //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
    seq.randomize() with { csr_ren_in==1'b0;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly

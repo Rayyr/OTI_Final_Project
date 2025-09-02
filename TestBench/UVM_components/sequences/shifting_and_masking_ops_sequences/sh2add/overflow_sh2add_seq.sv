@@ -1,14 +1,14 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
-class usual_sh2add_seq extends uvm_sequence #(bmu_sequence_item);
+class overflow_sh2add_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(usual_sh2add_seq)
+  `uvm_object_utils(overflow_sh2add_seq)
  
 
 
   //overriden new()
-  function new(string name ="usual_sh2add_seq");
+  function new(string name ="overflow_sh2add_seq");
     super.new(name);
   endfunction
   

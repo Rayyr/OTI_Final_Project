@@ -1,9 +1,13 @@
+ 
+
+
 class bmu_monitor extends uvm_monitor;
 
 //register in into uvm factory
-`uvm_component_utils(bmu_monitor);
+`uvm_component_utils(bmu_monitor)
 
 virtual bmu_interface vif;
+  
 uvm_analysis_port #(bmu_sequence_item) port; 
 
 
@@ -47,11 +51,12 @@ bmu_sequence_item packet=bmu_sequence_item::type_id::create("packet");
       
       printDataSentToUDT(vif);
     //  `uvm_info(get_type_name(), $sformatf("Monitor: input signals are sent to the DUT are:A = %0d, B = %0d, Opcode = %h", packet.a_in, packet.b_in),UVM_HIGH); 
-      packet.result_ff = vif.monitor_cb.result_ff; 
+       packet.result_ff = vif.monitor_cb.result_ff; 
       packet.error = vif.monitor_cb.error; 
-      
-     `uvm_info(get_type_name(), $sformatf("Monitor: the output signals recived from the DUT are: Result = %d, Error = %b",packet.result,packet.error), UVM_HIGH); 
+    //  `uvm_info(get_type_name(), $sformatf("Monitor Result = %d",vif.monitor_cb.result_ff), UVM_LOW)
+     `uvm_info(get_type_name(), $sformatf("Monitor: the output signals recived from the DUT are: Result = %d, Error = %b",packet.result_ff,packet.error), UVM_LOW)
       port.write(packet); //send it to the scoreboard
+      
 
 end
 
@@ -59,7 +64,7 @@ endtask
 
 
 function void printDataSentToUDT(virtual bmu_interface vif);
- `uvm_info(get_type_name(), $sformatf("Monitor: input signals are sent to the DUT are:A = %0d, B = %0d   , Reset = %0d", vif.monitor_cb.a_in, vif.monitor_cb.b_in,vif.monitor_cb.rst_l),UVM_HIGH); 
+ `uvm_info(get_type_name(), $sformatf("Monitor: input signals are sent to the DUT are:A = %0d, B = %0d , Reset = %0d", vif.monitor_cb.a_in, vif.monitor_cb.b_in,vif.monitor_cb.rst_l),UVM_LOW)
 endfunction
 
 

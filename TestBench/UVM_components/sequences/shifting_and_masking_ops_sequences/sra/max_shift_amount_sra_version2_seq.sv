@@ -32,7 +32,7 @@ class max_shift_amount_sra_version2_seq extends uvm_sequence #(bmu_sequence_item
 
 //a=pos value --version2
 //a=32'b0xxx... , b=31decimal  result=0
-    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b11111; a_in[31]=1'b0};
+    seq.randomize() with {csr_ren_in==1'b0;b_in[4:0]==5'b11111; a_in[31]==1'b0;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Max shift amount case"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )

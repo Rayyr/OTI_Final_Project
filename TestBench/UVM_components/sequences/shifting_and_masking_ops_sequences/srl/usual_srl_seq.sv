@@ -25,7 +25,7 @@ class usual_srl_seq extends uvm_sequence #(bmu_sequence_item);
     seq.rst_l=1'b1;
  
 
-//1st case : standard inverted XOR with random inputs a , b
+ 
    seq.ap.costraint_mode(0);//disable the randomization for the op feilds once we randomize the seq , this globally will be turned off
    initialize_ap(seq.ap);
    seq.ap.srl=1'b1;

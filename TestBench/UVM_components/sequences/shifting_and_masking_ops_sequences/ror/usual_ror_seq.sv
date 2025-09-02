@@ -33,7 +33,7 @@ class usual_ror_seq extends uvm_sequence #(bmu_sequence_item);
    //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
    seq.randomize() with { csr_ren_in==1'b0;};
    start_item(seq);
-   `uvm_info(get_type_name(), ("Standard ROR"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard ROR with random inputs"), UVM_NONE) 
    finish_item(seq);
  
  

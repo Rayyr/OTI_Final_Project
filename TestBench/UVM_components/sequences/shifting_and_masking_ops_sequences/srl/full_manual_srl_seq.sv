@@ -31,7 +31,7 @@ class full_manual_srl_seq extends uvm_sequence #(bmu_sequence_item);
     seq.ap.srl=1'b1;
 
 //a= 32'hFE5A4D10 , b= 32'hCC623F2F , result=32'h0001FC49
-    seq.randomize() with {csr_ren_in==1'b1;b_in==32'hCC623F2F; a_in==32'hFE5A4D10};
+    seq.randomize() with {csr_ren_in==1'b1;b_in==32'hCC623F2F; a_in==32'hFE5A4D10;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Max shift amount case"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )

@@ -1,0 +1,20 @@
+{
+    "xlm_snapshot": "rvdffsc",
+    "xlm_lib": "worklib",
+    "xlm_view": "sv",
+    "lwd_version": "03\/23\/25+12:17:49",
+    "install_root": "\/usr\/cadence\/installs\/xcelium\/XCELIUM2403",
+    "xlm_version": "24.03-s013",
+    "build_date": "2025.03.23",
+    "xlm_plat": "x86_64",
+    "xlm_bits": "64",
+    "real_as_wreal": "0",
+    "reals_recorded": "0",
+    "features":
+    {
+        "AVSREQ_195145": "1",
+        "INDAGO_61196": "1",
+        "AVSREQ_206414": "0",
+        "AVSREQ_211639": "0"
+    }
+}

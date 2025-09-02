@@ -1,6 +1,8 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
+import uvm_pkg::*;
+`include "uvm_macros.svh"
 
-class conflict_inverted_xor_data_path_seq extends uvm_sequence #(bmu_sequence_item);
+class conflict_inverted_xor_data_path_seq extends uvm_sequence#(bmu_sequence_item);
   
   //register the class into uvm factory
   `uvm_object_utils(conflict_inverted_xor_data_path_seq)
@@ -20,18 +22,24 @@ class conflict_inverted_xor_data_path_seq extends uvm_sequence #(bmu_sequence_it
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
     
     //disable the reset input
+    /*
     seq.rst_l.constraint_mode(0);
-    seq.rst_l=1'b1;
+    seq.rst_l=1'b1;*/
 
+/*
     seq.ap.constraint_mode(0);
     initialize_ap(seq.ap);
     seq.ap.lxor=1'b1;
-    seq.ab.zbb=1'b1;
+    seq.ab.zbb=1'b1;*/
 
     //activate sll operation once 
-    seq.ab.sll=1'b1;
+    //seq.ab.sll=1'b1;
 
-    seq.randomize() with {csr_ren_in==1'b0;};
+    seq.randomize() with {csr_ren_in==1'b0;seq.rst_l==1'b1;};
+       initialize_ap(seq.ap);
+    seq.ap.lxor=1'b1;
+    seq.ap.zbb=1'b1;
+    seq.ap.sll=1'b1;
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Conflict inverted xor data path by activation other operation once at a time"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
@@ -71,7 +79,7 @@ op.sh2add=0;
 op.sh3add=0;
 op.zba=0;
 op.land=0;
-op.lol=0;
+op.lor=0;
 op.lxor=0;
 op.sll=0;
 op.srl=0;

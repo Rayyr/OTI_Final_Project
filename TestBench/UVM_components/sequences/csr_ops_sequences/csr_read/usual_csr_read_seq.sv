@@ -1,14 +1,14 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
-class conflict_csr_read_data_path_seq extends uvm_sequence #(bmu_sequence_item);
+class usual_csr_read_data_path_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(conflict_csr_read_data_path_seq)
+  `uvm_object_utils(usual_csr_read_data_path_seq)
  
 
 
   //overriden new()
-  function new(string name ="conflict_csr_read_data_path_seq");
+  function new(string name ="usual_csr_read_data_path_seq");
     super.new(name);
   endfunction
   
@@ -29,7 +29,7 @@ class conflict_csr_read_data_path_seq extends uvm_sequence #(bmu_sequence_item);
     seq.ap.constraint_mode(0);
     initialize_ap(seq.ap);
 
-    seq.randomize() with {csr_ren_in=1'b1;csr_rddata_in==32'h2233ffcc;};
+    seq.randomize() with {csr_ren_in==1'b1;csr_rddata_in==32'h2233ffcc;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Standard CSR-read"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )

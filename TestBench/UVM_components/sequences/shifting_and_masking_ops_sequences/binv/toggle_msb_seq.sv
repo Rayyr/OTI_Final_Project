@@ -10,7 +10,7 @@ class toggle_msb_seq extends uvm_sequence #(bmu_sequence_item);
   //overriden new()
   function new(string name ="toggle_msb_seq");
     super.new(name);
-  endfunction
+  endfunction 
   
   
   //task stimul
@@ -35,7 +35,7 @@ class toggle_msb_seq extends uvm_sequence #(bmu_sequence_item);
 
 
 //a_in[msb]=0 , result=32'b1..... (pos to neg value)
-seq.randomize() with {csr_ren_in==1'b0; a_in[31]==1'b0 ; b_in[4:0]==5'b11111};
+seq.randomize() with {csr_ren_in==1'b0; a_in[31]==1'b0 ; b_in[4:0]==5'b11111;};
 start_item(seq);
 `uvm_info(get_type_name(),("Toggle MSB case eith MSB=0"),UVM_NONE)
 finish_item(seq);

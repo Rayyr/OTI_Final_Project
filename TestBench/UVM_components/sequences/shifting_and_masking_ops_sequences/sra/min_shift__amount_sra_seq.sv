@@ -31,7 +31,7 @@ class min_shift_amount_sra_seq extends uvm_sequence #(bmu_sequence_item);
     seq.ap.sra=1'b1;
 
 //a=32'b1xxx... , b=0decimal  result=a
-    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b00000; a_in[31]=1'b1};
+    seq.randomize() with {csr_ren_in==1'b0;b_in[4:0]==5'b00000; a_in[31]==1'b1;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Min shift amount case"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )

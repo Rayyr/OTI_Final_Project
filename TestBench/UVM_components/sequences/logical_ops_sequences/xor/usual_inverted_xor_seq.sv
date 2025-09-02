@@ -1,6 +1,8 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
+import uvm_pkg::*;
+`include "uvm_macros.svh"
 
-class usual_inverted_xor_seq extends uvm_sequence #(bmu_sequence_item);
+class usual_inverted_xor_seq extends uvm_sequence#(bmu_sequence_item);
   
   //register the class into uvm factory
   `uvm_object_utils(usual_inverted_xor_seq)
@@ -21,18 +23,22 @@ class usual_inverted_xor_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //disable the Reset signal for the test of test cases 
+ /*
     seq.rst_l.constraint_mode(0);
-    seq.rst_l=1'b1;
+    seq.rst_l=1'b1;*/
  
 
 //1st case : standard inverted XOR with random inputs a , b
-   seq.ap.costraint_mode(0);//disable the randomization for the op feilds once we randomize the seq , this globally will be turned off
+  /* seq.ap.costraint_mode(0);//disable the randomization for the op feilds once we randomize the seq , this globally will be turned off
+   initialize_ap(seq.ap);
+   seq.ap.lxor=1'b1;
+   seq.ap.zbb=1'b1;*/
+   //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
+   seq.randomize() with { csr_ren_in==1'b0; seq.rst_l==1'b1;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
    initialize_ap(seq.ap);
    seq.ap.lxor=1'b1;
    seq.ap.zbb=1'b1;
-   //all feilds of seq are being randomized instead of seq.rst_l,csr_ren_in
-   seq.randomize() with { csr_ren_in==1'b0;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-   start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
+  start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
    `uvm_info(get_type_name(), ("Standard inverted XOring"), UVM_NONE) 
    finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
  
@@ -72,7 +78,7 @@ op.sh2add=0;
 op.sh3add=0;
 op.zba=0;
 op.land=0;
-op.lol=0;
+op.lor=0;
 op.lxor=0;
 op.sll=0;
 op.srl=0;

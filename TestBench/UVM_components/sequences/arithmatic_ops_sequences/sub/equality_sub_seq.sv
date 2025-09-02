@@ -1,14 +1,14 @@
 // !! NOTE : in logical ops in general we dont have edge cases so all of them are applicavle without any errors thats why i implement them in one sequence class !
 
-class usual_sub_seq extends uvm_sequence #(bmu_sequence_item);
+class equality_sub_seq extends uvm_sequence #(bmu_sequence_item);
   
   //register the class into uvm factory
-  `uvm_object_utils(usual_sub_seq)
+  `uvm_object_utils(equality_sub_seq)
  
 
 
   //overriden new()
-  function new(string name ="usual_sub_seq");
+  function new(string name ="equality_sub_seq");
     super.new(name);
   endfunction
   
@@ -31,7 +31,7 @@ class usual_sub_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.sub=1'b1;
  
  
- // a-b (a=b) (both are pos values)
+ // a-b (a=b) (both are pos values) result=0 ,error=0
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'h7FFFFFFF; b_in==32'h7FFFFFFF;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard SUB with a_in = b_in input case"), UVM_NONE) 
@@ -40,7 +40,7 @@ class usual_sub_seq extends uvm_sequence #(bmu_sequence_item);
  
 
 
- // a-b (a=b) (both are neg values)
+ // a-b (a=b) (both are neg values) result=0 ,error=0
    seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFFFF; b_in==32'hFFFFFFFF;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard SUB with a_in = b_in input case"), UVM_NONE) 

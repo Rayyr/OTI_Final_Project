@@ -1,0 +1,10 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-uvm
+top.sv
+-access
++rwc
+-debug_opt
+verisium_interactive

@@ -1,0 +1,16 @@
+lwd_dir /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv/debug_db/rvdffsc/../..
+snapshot_name worklib.rvdffsc:sv
+cells 1
+hostname orionvtech
+work_directory /home/Trainee6/final_project/TestBench/UVM_components
+autofetch 0
+persistent_sources 0
+cdslib ./xcelium.d/run.lnx8664.24.03.d/cds.lib
+cds_implicit_tmplib worklib
+hdlvar ./xcelium.d/run.lnx8664.24.03.d/hdl.var
+platform x86_64
+bits 64
+du-agent YES
+xprop 0
+automsie 0
+cds_libs /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.lnx8664.24.03.d/cds.lib /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.lnx8664.24.03.d/cdsrun.lib /usr/cadence/installs/xcelium/XCELIUM2403/tools/inca/files/cds.lib /usr/cadence/installs/xcelium/XCELIUM2403/tools/inca/files/cdsvhdl.lib /usr/cadence/installs/xcelium/XCELIUM2403/tools/inca/files/cdsvlog.lib /usr/cadence/installs/xcelium/XCELIUM2403/tools/transrecord/files/cds.lib /usr/cadence/installs/xcelium/XCELIUM2403/tools/affirma_ams/etc/connect_lib/cds.lib /usr/cadence/installs/xcelium/XCELIUM2403/tools/affirma_ams/etc/dms/cds.lib

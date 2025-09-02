@@ -40,7 +40,7 @@ super.run_phase(phase);
 forever begin
 
 //$display("hello");
-
+ 
 wait(qPackets.size()!=0);
 actualPacket=qPackets.pop_front();
  
@@ -149,6 +149,9 @@ else
 
 end
 
+
+
+
 //here we will implement the actual BMU logic !
 else begin  
 
@@ -167,13 +170,7 @@ if(refPacket.ap.lor==1'b1) begin
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
 refPacket.error=1'b0;
  end
-
-//inavlid OR!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     //conflict !
-      refPacket.error=1'b1;
- end
+ 
 
 //valid OR !
  else begin
@@ -185,7 +182,7 @@ end//OR_op
 
 
 //Inverted OR op
-if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin
+else if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin
 
 //invalid Inverted_OR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -195,11 +192,7 @@ if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid Inverted_OR!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      refPacket.error=1'b1;
- end
+ 
 
 //valid Inverted_OR !
  else begin
@@ -212,7 +205,7 @@ end//Inverted_OR_op
 
 
 //XOR op
-if(refPacket.ap.lxor==1'b1) begin 
+else if(refPacket.ap.lxor==1'b1) begin 
 
 //invalid XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -222,11 +215,7 @@ if(refPacket.ap.lxor==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid XOR!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      refPacket.error=1'b1;
- end
+ 
 
 //valid XOR !
  else begin
@@ -240,7 +229,7 @@ end//XOR_op
 
 
 //Inverted_XOR op
-if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin 
+else if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin 
 
 //invalid Inverted_XOR !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -250,12 +239,7 @@ if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid Inverted_XOR!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      refPacket.error=1'b1;
- end
-
+ 
 //valid Inverted_XOR !
  else begin
 refPacket.result_ff=refPacket.a_in ^ ~refPacket.b_in;
@@ -268,7 +252,7 @@ end//Inverted_XOR_op
 
 //shifting and masking operations
 //SRL op
-if(refPacket.ap.srl==1'b1) begin 
+else if(refPacket.ap.srl==1'b1) begin 
 
 //invalid SRL !
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -278,11 +262,7 @@ if(refPacket.ap.srl==1'b1) begin
 refPacket.error=1'b0;
  end
 
-//inavlid SRL !
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid SRL !
  else begin
@@ -296,7 +276,7 @@ end//SRL_op
 
 
 //SRA op
-if(refPacket.ap.sra==1'b1) begin 
+else if(refPacket.ap.sra==1'b1) begin 
 
 //invalid SRA!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -306,11 +286,7 @@ if(refPacket.ap.sra==1'b1) begin
  refPacket.error=1'b0;
  end
 
-//inavlid SRA !
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      refPacket.error=1'b1;
- end
+ 
 
 //valid SRA !
  else begin
@@ -325,7 +301,7 @@ end//SRA_op
 
 
 //ROR op
-if(refPacket.ap.ror==1'b1) begin 
+else if(refPacket.ap.ror==1'b1) begin 
 
 //invalid ROR!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -335,11 +311,7 @@ if(refPacket.ap.ror==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid ROR !
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid ROR !
  else begin
@@ -363,7 +335,7 @@ end//ROR_op
 
 
 //BINV op
-if(refPacket.ap.binv==1'b1) begin 
+else if(refPacket.ap.binv==1'b1) begin 
 
 //invalid BINV!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -373,11 +345,7 @@ if(refPacket.ap.binv==1'b1) begin
 refPacket.error=1'b0;
  end
 
-//inavlid BINV!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid BINV !
 else begin
@@ -393,7 +361,7 @@ end//BINV_op
 
 
 //SH2ADD op
-if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin 
+else if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin 
 
 //invalid SH2ADD!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -403,11 +371,7 @@ if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid SH2ADD!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid SH2ADD !
 else begin 
@@ -430,7 +394,7 @@ end
 
 //arithmatic operations 
 //SUB op (a-b)
-if(refPacket.ap.sub==1'b1) begin 
+else if(refPacket.ap.sub==1'b1) begin 
 
 //invalid SUB!
  if (refPacket.ap.zba != 0) begin
@@ -447,11 +411,7 @@ if(refPacket.ap.sub==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid SUB!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      refPacket.error=1'b1;
- end
+ 
 
 //valid SUB !
 else begin
@@ -475,7 +435,7 @@ end
 
 //Bit Manipulation
 //SLT ( default is signed SLT)
-if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin 
+else if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin 
 
 //invalid SLT signed!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -484,12 +444,7 @@ if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
   refPacket.error=1'b0;
  end
-
-//inavlid SLT signed!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-      refPacket.error=1'b1;
- end
+ 
 
 //valid SLT signed!
 else begin 
@@ -504,7 +459,7 @@ end
 
 
 //SLT unsigned
-if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1) begin 
+else if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1) begin 
 
 //invalid SLT unsigned!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -514,11 +469,7 @@ if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign==1'b1
 refPacket.error=1'b0;
  end
 
-//inavlid SLT unsigned!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid SLT unsigned!
 else begin 
@@ -548,7 +499,7 @@ end//SLT_op unsigned
 
 
 //CTZ
-if(refPacket.ap.ctz==1'b1) begin 
+else if(refPacket.ap.ctz==1'b1) begin 
 
 //invalid CTZ!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -559,12 +510,7 @@ if(refPacket.ap.ctz==1'b1) begin
 refPacket.error=1'b0;
  end
 
-//inavlid CTZ!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid CTZ!
 else begin 
@@ -610,7 +556,7 @@ end//CLZ_op
 
 
 //CPOP
-if(refPacket.ap.cpop==1'b1) begin
+else if(refPacket.ap.cpop==1'b1) begin
 
 //invalid CPOP!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -620,11 +566,7 @@ if(refPacket.ap.cpop==1'b1) begin
    refPacket.error=1'b0;
  end
 
-//inavlid CPOP!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-       refPacket.error=1'b1;
- end
+ 
 
 //valid CPOP!
 else begin 
@@ -639,7 +581,7 @@ end//CPOP_op
 
 
 //siext_b
-if(refPacket.ap.siext_b==1'b1) begin 
+else if(refPacket.ap.siext_b==1'b1) begin 
 
 //invalid siext_b!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -649,11 +591,7 @@ if(refPacket.ap.siext_b==1'b1) begin
  refPacket.error=1'b0;
  end
 
-//inavlid siext_b!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid siext_b!
 else begin 
@@ -671,7 +609,7 @@ end//siext_b_op
 
 
 //MAX ( signed op ) 
-if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1) begin 
+else if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1) begin 
 
 //invalid MAX!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -681,11 +619,7 @@ if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1) begin
   refPacket.error=1'b0;
  end
 
-//inavlid MAX!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid MAX!
 else begin 
@@ -700,7 +634,7 @@ end//MAX_op
 
 
 //Pack
-if(refPacket.ap.pack==1'b1 ) begin 
+else if(refPacket.ap.pack==1'b1 ) begin 
 
 //invalid Pack!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -710,11 +644,7 @@ if(refPacket.ap.pack==1'b1 ) begin
   refPacket.error=1'b0;
  end
 
-//inavlid Pack!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid Pack!
 else begin 
@@ -729,7 +659,7 @@ end//Pack_op
 
 
 //grev
-if(refPacket.ap.grev==1'b1 ) begin 
+else if(refPacket.ap.grev==1'b1 ) begin 
 
 //invalid grev!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
@@ -739,11 +669,7 @@ if(refPacket.ap.grev==1'b1 ) begin
   refPacket.error=1'b0;
  end
 
-//inavlid grev!
- else if (refPacket.csr_ren_in!=1'b0) begin
-     `uvm_error("bmu_scoreboard","illegal : csr_ren_in must =0 not 1 !")
-     refPacket.error=1'b1;
- end
+ 
 
 //valid grev!
 else begin 

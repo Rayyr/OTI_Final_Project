@@ -1,10 +1,12 @@
+ 
+
 class bmu_agent extends uvm_agent; 
 
  bmu_driver driver;
  bmu_monitor monitor;
  bmu_sequencer sequencer;
 
- `uvm_component_utils(bmu_agent);
+ `uvm_component_utils(bmu_agent)
 
 
  //override new()
@@ -27,7 +29,7 @@ end
 //in all cases the monitor must be created either if it is active or passive
   monitor = bmu_monitor::type_id::create("bmu_monitor",this); 
  endfunction
-  
+   
 
 
 

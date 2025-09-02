@@ -1,29 +1,55 @@
 import uvm_pkg::*;
- 
 `include "uvm_macros.svh"
- 
-`include "/home/Trainee6/final_project/TestBench/interfaces/bmu_interface.sv"
-`include "/home/Trainee6/final_project/TestBench/classes_package/classes_pckage.sv"
 
-`include "/home/Trainee6/final_project/Design/packages&libs/rtl_pdef.sv"
-`include "/home/Trainee6/final_project/Design/packages&libs/rtl_def.sv"
-`include "/home/Trainee6/final_project/Design/packages&libs/rtl_defines.sv"
-`include "/home/Trainee6/final_project/Design/packages&libs/rtl_lib.sv"
-`include "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv"
+//RTL design and other related files 
 
-//note add the sequences into different package 
-`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/arithmatic_tests/sub_tests.sv"
-
-//RTL design
 `include "/home/Trainee6/final_project/Design/Bit_Manibulation_Unit.sv"
- import p::*;
 
 
+
+//bmu interface
+`include "/home/Trainee6/final_project/TestBench/interfaces/bmu_interface.sv"
+
+
+ //uvm components
+ `include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_sequence_item.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_sequencer.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_agent.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_subscriber.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_environment.sv"
+
+
+/*
+//sequences cpop
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/conflict_cpop_data_path_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/conflict_reading_with_cpop_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/reset_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/usual_cpop_seq.sv"
+*/
+
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/conflict_ctz_data_path_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/conflict_reading_with_ctz_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/reset_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/usual_ctz_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv"
+
+ 
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/usual_xor_seq.sv"
+//tests
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/cpop_tests.sv"
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/logical_tests/xor/xor_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/logical_tests/xor/xor_tests.sv"
+
+ 
 
 
 module top;
   
-  logic clk,rst;
+  logic clk;
   
   //interface
   bmu_interface intf(clk);
@@ -45,11 +71,7 @@ module top;
   
   initial begin
    clk=0;
-   rst = 0; 
-   #1; 
-   rst = 1; 
-   #1; 
-   rst = 0;   
+   
   end
   
   
@@ -58,8 +80,10 @@ module top;
   
  
  initial begin
-run_test("sub_tests");
-
+//run_test("cpop_test");
+//run_test("xor_test");
+ run_test("ctz_test");
+//run_test("xor_test");
  end
  
 endmodule  

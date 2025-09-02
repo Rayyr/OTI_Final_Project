@@ -22,7 +22,7 @@ class avg_oring_seq extends uvm_sequence #(bmu_sequence_item);
     //1st transaction
     seq.rst_l=0;
     start_item(seq);
-    `uvm_info(get_type_name(), (" Reset the DUT "), UVM_NONE) 
+    `uvm_info(get_type_name(), ("Reset Case"), UVM_NONE) 
     finish_item(seq);
 
  //disable the Reset signal for the test of test cases 

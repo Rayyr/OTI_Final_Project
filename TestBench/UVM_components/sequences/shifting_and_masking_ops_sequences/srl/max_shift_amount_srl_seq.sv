@@ -31,7 +31,7 @@ class max_shift_amount_srl_seq extends uvm_sequence #(bmu_sequence_item);
     seq.ap.srl=1'b1;
 
 //a=random_input , b=31decimal  result=0  
-    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b11111};
+    seq.randomize() with {csr_ren_in==1'b1;b_in[4:0]==5'b11111;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Max shift amount case"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )

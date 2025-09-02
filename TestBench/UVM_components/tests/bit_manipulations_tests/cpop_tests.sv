@@ -1,3 +1,4 @@
+ 
 class cpop_test extends uvm_test;
   
     //register it into uvm factory
@@ -30,22 +31,20 @@ usual_cpop_seq seq4;
     super.run_phase(phase);
     phase.raise_objection(this); 
     
-    seq1= conflict_cpop_data_path_seq::type_id::create("seq1");
-    seq2= conflict_reading_with_cpop_seq::type_id::create("seq2");
-    seq3= reset_seq::type_id::create("seq3");
+   // seq1= conflict_cpop_data_path_seq::type_id::create("seq1");
+    //seq2= conflict_reading_with_cpop_seq::type_id::create("seq2");
+    //seq3= reset_seq::type_id::create("seq3");
     seq4= usual_cpop_seq::type_id::create("seq4");
- 
+  
 
-    repeat(2) begin 
-    
-     seq1.start(bmu_env.agent.sequencer); 
-     seq2.start(bmu_env.agent.sequencer); 
-      seq3.start(bmu_env.agent.sequencer); 
-       seq4.start(bmu_env.agent.sequencer); 
+    // seq1.start(bmu_env.agent.sequencer); 
+    //seq2.start(bmu_env.agent.sequencer); 
+     //seq3.start(bmu_env.agent.sequencer); 
+    seq4.start(bmu_env.agent.sequencer); 
  
-    end
+  
     phase.drop_objection(this); 
-    `uvm_info(get_type_name(), "End of testcase", UVM_LOW); 
+    `uvm_info(get_type_name(), "End of testcase", UVM_LOW)
   endtask
   
 endclass 

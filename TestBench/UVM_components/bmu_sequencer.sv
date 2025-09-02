@@ -1,7 +1,8 @@
-class bmu_sequencer extends uvm_sequencer  #(bmu_sequence_item);
+
+class bmu_sequencer extends uvm_sequencer#(bmu_sequence_item);
 
 //register it into uvm factory
-`uvm_component_utils(bmu_sequencer);
+`uvm_component_utils(bmu_sequencer)
 
 
 //overidden cpnstructor

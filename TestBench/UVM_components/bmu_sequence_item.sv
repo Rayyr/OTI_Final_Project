@@ -1,5 +1,6 @@
 class bmu_sequence_item extends uvm_sequence_item;
 
+
 //data feilds for the BMU unit
 //inputs 
 rand logic signed [31:0]a_in;//1st operand input
@@ -15,17 +16,15 @@ rand rtl_alu_pkt_t ap;
 
 //outputs
 logic signed [31:0] result_ff;
-logic bit error;
+logic  error;
 
 
   
   //register the class feilds to the UVM factory using the macros below 
   `uvm_object_utils_begin (bmu_sequence_item) 
   `uvm_field_int(rst_l,UVM_ALL_ON);
-  
   //to register struct i use this macro since it is not int 
-  `uvm_field_object(ap,UVM_ALL_ON);
-  
+  `uvm_field_int(ap,UVM_ALL_ON);
   `uvm_field_int(a_in,UVM_ALL_ON);
   `uvm_field_int(b_in,UVM_ALL_ON);
   `uvm_field_int(valid_in,UVM_ALL_ON);
@@ -43,3 +42,4 @@ logic bit error;
   endfunction
 
 endclass
+//note : solve the ap registeration into factory issue 

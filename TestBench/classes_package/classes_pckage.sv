@@ -1,37 +1,36 @@
-package p;
+package xx;
 
 import uvm_pkg::*;
-/* sequences
-`include "alu_sequence_item.sv"
-`include "alu_random_sequence.sv"
-`include "alu_add_sequence.sv"
-`include "alu_sub_sequence.sv"
-`include "alu_and_sequence.sv"
-`include "alu_or_sequence.sv"
-`include "alu_xor_sequence.sv"
-`include "alu_undefined_opcode_sequence.sv"
-`include "alu_overflow_sequence.sv"
-`include "alu_underflow_sequence.sv"*/
 
 
+//sequences  cpop
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/conflict_cpop_data_path_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/conflict_reading_with_cpop_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/reset_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/usual_cpop_seq.sv"
+
+
+
+/*
+//sequences xor
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/conflict_inverted_xor_data_path_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/conflict_reading_with_xor_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/reset_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/usual_inverted_xor_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/usual_xor_seq.sv"
+*/
 
  
-`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_sequencer.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_agent.sv"
-//`include "alu_subscriber.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/bmu_environment.sv"
 
-/* tests
-`include "alu_random_test.sv"
-`include "alu_add_test.sv"
-`include "alu_and_test.sv"
-`include "alu_undefined_opcode_test.sv"
-`include "alu_xor_test.sv"
-`include "alu_or_test.sv"
-`include "alu_sub_test.sv"*/
+//sequences ctz
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/conflict_ctz_data_path_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/conflict_reading_with_ctz_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/reset_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/usual_ctz_seq.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv"
+
  
 
-endpackage
+ 
+
+endpackage  

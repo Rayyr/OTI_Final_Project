@@ -35,7 +35,7 @@ class toggle_lsb_seq extends uvm_sequence #(bmu_sequence_item);
 
 
 //a_in[lsb]=0 , result=32'b......1 
-seq.randomize() with {csr_ren_in==1'b0; a_in[0]==1'b1 ; b_in[4:0]==5'b00000};
+seq.randomize() with {csr_ren_in==1'b0; a_in[0]==1'b1 ; b_in[4:0]==5'b00000;};
 start_item(seq);
 `uvm_info(get_type_name(),("Toggle LSB case eith LSB=0"),UVM_NONE)
 finish_item(seq);
