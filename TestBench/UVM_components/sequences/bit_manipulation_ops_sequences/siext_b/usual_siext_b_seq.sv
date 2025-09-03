@@ -21,27 +21,21 @@ class usual_siext_b_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //disable the Reset signal for the test of test cases 
-    seq.rst_l.constraint_mode(0);
+    seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
  
 
  
-   seq.ap.costraint_mode(0); 
+   seq.ap.rand_mode(0); 
    initialize_ap(seq.ap);
    seq.ap.siext_b=1'b1;
  
- //random input
-   seq.randomize() with { csr_ren_in==1'b0;}; 
-   start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP random inputs"), UVM_NONE) 
-   finish_item(seq); 
-
- 
+  
 
  //a_in=0......0xxxxxx   , result= pos value ( remains pos)
-   seq.randomize() with { csr_ren_in==1'b0;(a_in[31]==1'b0) && (a_in[7]==1'b0) ;};//a[7]&a[31]=0 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;(a_in[31]==1'b0) && (a_in[7]==1'b0) ;};//a[7]&a[31]=0 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with a_in[7]=0 & a_in[31]=0 input"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard Siext_b with a_in[7]=0 & a_in[31]=0 input"), UVM_NONE) 
    finish_item(seq);
 
 
@@ -49,9 +43,9 @@ class usual_siext_b_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //a_in=1......1xxxxxx  ,  result= neg value (remains neg)
-   seq.randomize() with { csr_ren_in==1'b0;(a_in[31]==1'b1) && (a_in[7]==1'b1) ;};//a[7]&a[31]=1 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;(a_in[31]==1'b1) && (a_in[7]==1'b1) ;};//a[7]&a[31]=1 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with a_in[7]=1 & a_in[31]=1 input"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard Siext_b with a_in[7]=1 & a_in[31]=1 input"), UVM_NONE) 
    finish_item(seq);
  
 
@@ -59,18 +53,18 @@ class usual_siext_b_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //a_in=0......1xxxxxx   , result= neg value ( pos to neg )
-   seq.randomize() with { csr_ren_in==1'b0;(a_in[31]==1'b0) && (a_in[7]==1'b1) ;};//a[7]=1 &a[31]=0 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;(a_in[31]==1'b0) && (a_in[7]==1'b1) ;};//a[7]=1 &a[31]=0 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with a_in[7]=1 & a_in[31]=0 input"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard Siext_b with a_in[7]=1 & a_in[31]=0 input"), UVM_NONE) 
    finish_item(seq);
 
 
 
 
  //a_in=1......0xxxxxx   , result= pos value (neg to pos)
-   seq.randomize() with { csr_ren_in==1'b0;(a_in[31]==1'b1) && (a_in[7]==1'b0) ;};//a[7]=0 &a[31]=1 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;(a_in[31]==1'b1) && (a_in[7]==1'b0) ;};//a[7]=0 &a[31]=1 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with a_in[7]=0 & a_in[31]=1 input"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard Siext_b with a_in[7]=0 & a_in[31]=1 input"), UVM_NONE) 
    finish_item(seq);
 
  

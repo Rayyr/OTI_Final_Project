@@ -5,11 +5,8 @@ class ctz_test extends uvm_test;
 
   bmu_environment bmu_env;
 
-conflict_ctz_data_path_seq seq1;
-conflict_reading_with_ctz_seq seq2;
-reset_seq seq3;
-usual_ctz_seq seq4;
-random_seq seq5;
+ 
+random_ctz_seq seq5;
  
  
 
@@ -25,6 +22,16 @@ random_seq seq5;
     bmu_env=bmu_environment::type_id::create("bmu_env",this); 
   endfunction
   
+
+
+  function void end_of_elaboration_phase(uvm_phase phase);
+    super.end_of_elaboration_phase(phase);
+    // Pretty tree of everything that was constructed
+    uvm_top.print_topology(); // or: uvm_root::get().print_topology();
+  endfunction
+ 
+
+ 
   
   //run_phase()
   task run_phase(uvm_phase phase);
@@ -36,7 +43,7 @@ random_seq seq5;
     //seq2= conflict_reading_with_ctz_seq::type_id::create("seq2");
     //seq3= reset_seq::type_id::create("seq3");
     //seq4= usual_ctz_seq::type_id::create("seq4");
-    seq5=random_seq::type_id::create("seq5");
+    seq5=random_ctz_seq::type_id::create("seq5");
  
 
    

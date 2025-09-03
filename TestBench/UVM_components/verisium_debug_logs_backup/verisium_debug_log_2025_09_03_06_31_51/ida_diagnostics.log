@@ -1,0 +1,18 @@
+statement aborts at 10: [SELECT snum FROM messages ORDER BY snum DESC LIMIT 1;] database schema has changed17
+statement aborts at 17: [SELECT  id,str FROM dictionary ORDER BY id ASC;] database schema has changed17
+statement aborts at 10: [SELECT snum FROM messages ORDER BY snum DESC LIMIT 1;] database schema has changed17
+statement aborts at 17: [SELECT  id,str FROM dictionary ORDER BY id ASC;] database schema has changed17
+statement aborts at 10: [SELECT snum FROM messages ORDER BY snum DESC LIMIT 1;] database schema has changed17
+statement aborts at 17: [SELECT  id,str FROM dictionary ORDER BY id ASC;] database schema has changed17
+statement aborts at 10: [SELECT snum FROM messages ORDER BY snum DESC LIMIT 1;] database schema has changed17
+statement aborts at 17: [SELECT  id,str FROM dictionary ORDER BY id ASC;] database schema has changed17
+statement aborts at 10: [SELECT snum FROM messages ORDER BY snum DESC LIMIT 1;] database schema has changed17
+statement aborts at 17: [SELECT  id,str FROM dictionary ORDER BY id ASC;] database schema has changed17
+statement aborts at 10: [SELECT snum FROM messages ORDER BY snum DESC LIMIT 1;] database schema has changed17
+statement aborts at 17: [SELECT  id,str FROM dictionary ORDER BY id ASC;] database schema has changed17
+file unlinked while open: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.db_log28
+file unlinked while open: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.db_log_post28
+file unlinked while open: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.db_general28
+file unlinked while open: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.db_log28
+file unlinked while open: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.db_log_post28
+file unlinked while open: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.db_general28

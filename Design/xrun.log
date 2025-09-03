@@ -1,0 +1,67 @@
+xrun(64): 24.03-s013: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	24.03-s013: Started on Sep 03, 2025 at 14:57:31 EEST
+xrun
+	-sv
+	Bit_Manibulation_Unit.sv
+Recompiling... reason: file './Bit_Manibulation_Unit.sv' is newer than expected.
+	expected: Mon Sep  1 09:47:48 2025
+	actual:   Wed Sep  3 14:57:25 2025
+file: Bit_Manibulation_Unit.sv
+ #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
+          |
+xmvlog: *W,NOINUF (Bit_Manibulation_Unit.sv,8|10): `include directive not isolated on its own line [16.5(IEEE)].
+ #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
+                                                                            |
+xmvlog: *W,NOINUF (Bit_Manibulation_Unit.sv,8|76): `include directive not isolated on its own line [16.5(IEEE)].
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		$unit_0x13879ccd
+		rtl_pkg
+		rvdffsc
+		rvdffs_fpga
+		rvdffsc_fpga
+		rvdfflie
+		rvdffppe
+		rvdffie
+		rvdffiee
+		rvsyncss
+		rvsyncss_fpga
+		rvlsadder
+		rvtwoscomp
+		rvfindfirst1
+		rvfindfirst1hot
+		rvmaskandmatch
+		rvrangecheck
+		rveven_paritygen
+		rveven_paritycheck
+		rvecc_encode
+		rvecc_decode
+		rvecc_encode_64
+		rvecc_decode_64
+		clockhdr
+		rvoclkhdr
+		Bit_Manipulation_Unit
+	Building instance overlay tables: .................... Done
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		               Instances  Unique
+		Modules:              52      30
+		Verilog packages:      1       1
+		Registers:           169     147
+		Scalar wires:        216       -
+		Expanded wires:       62       3
+		Vectored wires:      108       -
+		Always blocks:        19       7
+		Cont. assignments:    53     168
+		Pseudo assignments:   50       -
+		Compilation units:     1       1
+		Process Clocks:       13       1
+	Writing initial simulation snapshot: worklib.rvdffsc:sv
+Loading snapshot worklib.rvdffsc:sv .................... Done
+xcelium> source /usr/cadence/installs/xcelium/XCELIUM2403/tools/xcelium/files/xmsimrc
+xcelium> run
+xmsim: *W,RNQUIE: Simulation is complete.
+xcelium> exit
+TOOL:	xrun(64)	24.03-s013: Exiting on Sep 03, 2025 at 14:57:31 EEST  (total: 00:00:00)

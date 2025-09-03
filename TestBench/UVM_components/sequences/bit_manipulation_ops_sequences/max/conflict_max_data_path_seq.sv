@@ -19,35 +19,20 @@ class conflict_max_data_path_seq extends uvm_sequence #(bmu_sequence_item);
     //declare&initialize sequence_item ( packet , transaction .. )
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
     
-    //disable the reset input
-    seq.rst_l.constraint_mode(0);
-    seq.rst_l=1'b1;
-
-    seq.ap.constraint_mode(0);
+    seq.ap.rand_mode(0);
     initialize_ap(seq.ap);
- 
     seq.ap.max=1'b1;
     seq.ap.sub=1'b1;
     
-
     //activate sra operation & zbb extension once 
     seq.ap.min=1'b1;
     
 
-    seq.randomize() with {csr_ren_in==1'b0;};
+    seq.randomize() with {csr_ren_in==1'b0; seq.rst_l==1'b1;valid_in==1;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Conflict MAX data path by activation other operation once at a time"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
 
-
-
-    seq.ap.min=1'b0;
-     seq.ap.sub=1'b0;
-     
-    seq.randomize() with {csr_ren_in==1'b0;};
-    start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-    `uvm_info(get_type_name(), ("Conflict MAX data path by activation other operation once at a time"), UVM_NONE) 
-    finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
  
 
   endtask

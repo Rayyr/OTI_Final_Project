@@ -5,8 +5,13 @@ bmu_sequence_item refPacket;//from reference model ( expected one )
 bmu_sequence_item actualPacket;//from DUT 
 bmu_sequence_item qPackets[$];
 
-//analysis port 
-uvm_analysis_imp #(bmu_sequence_item,bmu_scoreboard) exp;
+ 
+
+ // Analysis FIFO for receiving transactions from the monitor
+    uvm_tlm_analysis_fifo #(bmu_sequence_item) analysis_fifo;
+    
+    // Analysis port to connect to the monitor
+    uvm_analysis_imp #(bmu_sequence_item, bmu_scoreboard) exp;
 
 
 //register it into uvm factory
@@ -24,11 +29,17 @@ endfunction
 function void build_phase(uvm_phase phase);
 super.build_phase(phase);
 exp=new("exp",this);
+     analysis_fifo = new("analysis_fifo", this);
 endfunction
 
 //override write()
 function void write(bmu_sequence_item seq);
-qPackets.push_back(seq);
+      if(!analysis_fifo.try_put(seq)) begin
+            // This is a non-blocking error check, although with a
+            // UVM analysis FIFO, this case is highly unlikely as it's
+            // typically unbounded.
+            `uvm_fatal("TRY_PUT_FAILED", "Failed to put transaction into the analysis FIFO.")
+        end
 endfunction
 
 
@@ -39,21 +50,16 @@ super.run_phase(phase);
 
 forever begin
 
-//$display("hello");
  
-wait(qPackets.size()!=0);
-actualPacket=qPackets.pop_front();
+ analysis_fifo.get(actualPacket);
+
  
-//$display("hello");
-//initialize the refPacket's inputs with the actual Packet ( from DUT ) 
 initializeRefPacket(actualPacket,refPacket);
  
- 
- 
-//i implenment the ref model using task since in function() They cannot have output or inout arguments. Only input arguments are allowed.
-   referenceModelBMU(refPacket);
 
-//$display("hello");
+  referenceModelBMU(refPacket);
+
+ 
     
    if(if_equel(refPacket,actualPacket)==1'b1)begin  //matched :)
       //`uvm_info("pass", $sformatf(" ------ :: Match :: ------ "), UVM_LOW);//low : the verbosty levl  
@@ -107,7 +113,7 @@ task referenceModelBMU(bmu_sequence_item refPacket);
 refPacket.error=1'b0;
 refPacket.result_ff=32'b0;
 
- 
+ //logic signed [31:0] res;
  
 
  

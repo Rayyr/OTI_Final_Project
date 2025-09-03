@@ -1,0 +1,9 @@
+15:29:57:2957 [important] [FelixStartLevel] WARN  - InfoSource version is empty in getMajorMinorVersion()
+15:29:57:2957 [important] [FelixStartLevel] WARN  - InfoSource version not found!! skipping relevant version checks
+15:29:58:2958 [important] [FelixStartLevel] INFO  - xmsim gcc version is 9.3.0
+15:29:58:2958 [important] [FelixStartLevel] INFO  - indago gcc version is 9.3.0
+15:29:58:2958 [important] [TangoTaskManager-3] WARN  - An Indago Snapshot/LWD was not loaded. Scripting API functionality may be impacted.
+15:29:58:2958 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-5] INFO  - query: 
+15:30:06:306 [user_actions] [AWT-EventQueue-0] DEBUG - OK (GUFIQuestionDialog$1)
+	dialog = confirmExitDlg (GUFIQuestionDialog)
+

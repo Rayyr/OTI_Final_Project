@@ -9,6 +9,7 @@ conflict_pack_data_path_seq seq1;
 conflict_reading_with_pack_seq seq2;
 reset_seq seq3;
 usual_pack_seq seq4;
+random_pack_seq seq5;
  
  
  
@@ -36,17 +37,19 @@ usual_pack_seq seq4;
     seq3= reset_seq::type_id::create("seq3");
     seq4= usual_pack_seq::type_id::create("seq4");
    
- 
+     seq5= random_pack_seq::type_id::create("seq5");
 
-    repeat(2) begin 
-    
+   
+   
+   
      seq1.start(bmu_env.agent.sequencer); 
      seq2.start(bmu_env.agent.sequencer); 
       seq3.start(bmu_env.agent.sequencer); 
        seq4.start(bmu_env.agent.sequencer); 
-         
+           seq5.start(bmu_env.agent.sequencer); 
  
-    end
+ 
+
     phase.drop_objection(this); 
     `uvm_info(get_type_name(), "End of testcase", UVM_LOW); 
   endtask

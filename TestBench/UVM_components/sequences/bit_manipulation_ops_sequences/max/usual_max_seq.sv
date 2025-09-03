@@ -19,47 +19,35 @@ class usual_max_seq extends uvm_sequence #(bmu_sequence_item);
     //declare&initialize sequence_item ( packet , transaction .. )
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
 
-
- //disable the Reset signal for the test of test cases 
-    seq.rst_l.constraint_mode(0);
-    seq.rst_l=1'b1;
  
-
- 
-   seq.ap.costraint_mode(0); 
+   seq.ap.rand_mode(0); 
    initialize_ap(seq.ap);
    seq.ap.max=1'b1;
    seq.ap.sub=1'b1;
  
  
-   seq.randomize() with { csr_ren_in==1'b0;}; 
-   start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard MAX random inputs"), UVM_NONE) 
-   finish_item(seq); 
-
- 
 
  //a_in=200  b_in=34  result=200  ( both pos values )
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h000000C8; b_in==32'h00000022;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h000000C8; b_in==32'h00000022;seq.rst_l==1'b1;}; 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with both positive inputs"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard MAX with both positive inputs"), UVM_NONE) 
    finish_item(seq);
 
 
 
 
  //a_in=-200  b_in=-34  result=-34  ( both neg values )
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF38; b_in==32'h0xFFFFFFDE;}; 
+   seq.randomize() with {valid_in==1;seq.rst_l==1'b1;csr_ren_in==1'b0;a_in==32'hFFFFFF38; b_in==32'h0xFFFFFFDE;}; 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with both negative inputs"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard MAX with both negative inputs"), UVM_NONE) 
    finish_item(seq);
  
 
 
  //a_in=200  b_in=-34  result=200  ( pos & neg values )
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h000000C8; b_in==32'h0xFFFFFFDE;}; 
+   seq.randomize() with {valid_in==1;seq.rst_l==1'b1;csr_ren_in==1'b0;a_in==32'h000000C8; b_in==32'h0xFFFFFFDE;}; 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard CPOP with positive and negative inputs"), UVM_NONE) 
+   `uvm_info(get_type_name(), ("Standard MAX with positive and negative inputs"), UVM_NONE) 
    finish_item(seq);
     
   endtask

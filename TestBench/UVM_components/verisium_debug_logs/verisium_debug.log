@@ -59,7 +59,7 @@ GOT COMMAND:
 
 
 
-Scripting Service started, listening on port 37975...
+Scripting Service started, listening on port 38159...
 
 
 in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
@@ -81,7 +81,23 @@ End of dump DB Order
 
 
 in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
 in 'SimConnect::loadSnapshotHelper', database handle 'ida' is already associated with the design. skipping process creation.
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
 
 Dump DB Order:
 Strap design: simulator #8
@@ -91,83 +107,12 @@ End of dump DB Order
 
 
 
-Dump DB Order:
-Strap design: simulator #8
-
-End of dump DB Order
-
-
-
-
-File Opener Information:
-dbNameToHandleMap:
-dbPtrToNameMap:
-
-End of File Opener Information
-
-
-
-
-SimConnect Information:
-processMap:
-
-End of SimConnect Information
-
-
-
-
-JDACTBDataProvider Information:
-dbHandleMap:
-Key: simulator, Value = simulator::
-openedDBs:
-Key: simulator, Value: null, Order ID: 1
-
-End of JDACTBDataProvider Information
-
-
-in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
-
-Dump DB Order:
-Strap design: simulator #8
- --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #44
-
-End of dump DB Order
-
-
-
 
 **** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
 
 
 
 **** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
-
-
-
-**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
-
-
-
-**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
-
-in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
-
-Dump DB Order:
-Strap design: simulator #8
- --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #44
-
-End of dump DB Order
-
-
-
-
-**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
-
-
-
-**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
-
-
 
 
 Dump DB Order:
@@ -204,76 +149,22 @@ Key: simulator, Value: null, Order ID: 1
 End of JDACTBDataProvider Information
 
 
-
-
-**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
-
-
-
-**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
-
-in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
-
-Dump DB Order:
-Strap design: simulator #8
- --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #58
-
-End of dump DB Order
-
-
-
-
-**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
-
-
-
-**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
-
 in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
 
 Dump DB Order:
 Strap design: simulator #8
- --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #58
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
 
 End of dump DB Order
 
 
 
 
-
-Dump DB Order:
-Strap design: simulator #8
-
-End of dump DB Order
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
 
 
 
-
-File Opener Information:
-dbNameToHandleMap:
-dbPtrToNameMap:
-
-End of File Opener Information
-
-
-
-
-SimConnect Information:
-processMap:
-
-End of SimConnect Information
-
-
-
-
-JDACTBDataProvider Information:
-dbHandleMap:
-Key: simulator, Value = simulator::
-openedDBs:
-Key: simulator, Value: null, Order ID: 1
-
-End of JDACTBDataProvider Information
-
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
 
 
 
@@ -287,7 +178,25 @@ in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/Test
 
 Dump DB Order:
 Strap design: simulator #8
- --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #218
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
 
 End of dump DB Order
 
@@ -300,16 +209,5 @@ End of dump DB Order
 
 **** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
 
-in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
-
-Dump DB Order:
-Strap design: simulator #8
- --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #218
-
-End of dump DB Order
 
 
-
-
-*** shutting down gRPC server since JVM is shutting down
-*** server shut down

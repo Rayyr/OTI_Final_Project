@@ -1,11 +1,11 @@
-# Indago Command Script (Tue, 2 Sep 2025 15:29:23 +0300)
+# Indago Command Script (Wed, 3 Sep 2025 15:50:50 +0300)
 #
 # Version 24.09.002-s
 
 #
 # Markers
 #
-# CDL at time 50ns
+# CDL at time 25ns
 
 #
 # Time Folding
@@ -25,24 +25,18 @@ waveform column configure -align left -width 7 value
 #
 # Signal List
 #
+waveform add {top.dut.bitmanip_a_reverse_ff}
 waveform add {top.dut.a_in}
-waveform add {top.dut.ap}
 waveform add {top.dut.b_in}
-waveform add {top.dut.clk}
-waveform add {top.dut.csr_rddata_in}
-waveform add {top.dut.csr_ren_in}
-waveform add {top.dut.error}
 waveform add {top.dut.result_ff}
-waveform add {top.dut.rst_l}
-waveform add {top.dut.scan_mode}
-waveform add {top.dut.valid_in}
+waveform add {top.dut.ap}
 
 #
 # Visible Time Range
 #
-waveform xview limits 0ns 50ns
+waveform xview limits 0ns 25ns
 
 #
 # Insertion Point
 #
-waveform insertion {,10}
+waveform insertion {,4}

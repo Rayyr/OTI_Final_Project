@@ -1,0 +1,2 @@
+			ida_probe -wave -wave_probe_args "top.intf.monitor_cb.result_ff" -uvm_record_depth "10" -uvm FALSE 
+			ida_probe -wave -wave_probe_args "top.dut.ap" -uvm_record_depth "10" -uvm FALSE 

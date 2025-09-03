@@ -1,0 +1,346 @@
+Picked up _JAVA_OPTIONS:  -XX:+ExitOnOutOfMemoryError -XX:OnOutOfMemoryError="touch /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/out_of_memory_error" 
+CompilerOracle: exclude javax/swing/text/GlyphView.getBreakSpot
+CompilerOracle: exclude javax/swing/text/GlyphView.getBreakSpot
+Loading libdac.so from /usr/cadence/installs/VERISIUMDEBUG2409/tools/lib/64bit/libdac.so
+
+
+in 'SimConnect::_simcontrolConnect' overlay db = null, overlayH = 0, is valid = false, operation = dapOpen, duFilename = null, isLiveSim = true
+in 'JDACTBDataProvider::notifyLiveConnectionDB', sessionId = 0
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::notifyLiveConnectionDB', 'dbH' represents 'simulator' db.
+PPEAttributes values:
+    isAutofetch = false
+    isPersistentSources = false
+    isXprop = false
+    cdslib = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+    snapshot = worklib.rvdffsc:sv
+    workdir = /home/Trainee6/final_project/TestBench/UVM_components
+    xceliumDir = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d
+    rundDir = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d
+    bits = 64
+    cds_implicit_tmpdir = 
+    cds_alternate_tmpdir = 
+    du_agent = 
+    lwddir = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+    cds_alternate_cdslib = 
+    elab_options = 
+    found = true
+    nclsRun = false
+    includeCdslib = true
+    nclsOpts =  -snapshot -cdslib /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib -64
+    isMceMode = false
+    isMceInvolved = false
+    mceLshmDbPath = 
+    lowPowerInformationAvailable = false
+    hasLshmFile = false
+    workdirIsDirectory = true
+    hasOverlayRelatedInformation = true
+    cds_implicit_tmplib = 
+    cds_other_implicit_tmplibs = 
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+### Excluding compile: javax.swing.text.GlyphView::getBreakSpot
+
+
+GOT COMMAND: 
+
+
+
+Scripting Service started, listening on port 36271...
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'SimConnect::loadSnapshotHelper', database handle 'ida' is already associated with the design. skipping process creation.
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #1167
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+in 'SimConnect::loadSnapshotHelper', database handle 'ida' is already associated with the design. skipping process creation.
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #1167
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+
+
+File Opener Information:
+dbNameToHandleMap:
+dbPtrToNameMap:
+
+End of File Opener Information
+
+
+
+
+SimConnect Information:
+processMap:
+
+End of SimConnect Information
+
+
+
+
+JDACTBDataProvider Information:
+dbHandleMap:
+Key: simulator, Value = simulator::
+openedDBs:
+Key: simulator, Value: null, Order ID: 1
+
+End of JDACTBDataProvider Information
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #10
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+
+
+File Opener Information:
+dbNameToHandleMap:
+dbPtrToNameMap:
+
+End of File Opener Information
+
+
+
+
+SimConnect Information:
+processMap:
+
+End of SimConnect Information
+
+
+
+
+JDACTBDataProvider Information:
+dbHandleMap:
+Key: simulator, Value = simulator::
+openedDBs:
+Key: simulator, Value: null, Order ID: 1
+
+End of JDACTBDataProvider Information
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #42
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #42
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #42
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #42
+
+End of dump DB Order
+
+
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #42
+
+End of dump DB Order
+
+
+*** shutting down gRPC server since JVM is shutting down
+*** server shut down

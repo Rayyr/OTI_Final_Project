@@ -1,0 +1,27 @@
+Design
+	Design Database: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv/debug_db/debug_db_design
+Host Info
+	xmsim PID: 2395252
+	Hostname: orionvtech
+	Verisium Debug PID: 2391619
+	OS Version: 4.18.0-553.16.1.el8_10.x86_64
+	OS Architecture: amd64
+	JDK Version: 1.8.0_202-CDS_2021_b1
+	Scripting Port: 42855
+	OS Release: Red Hat Enterprise Linux release 8.10 (Ootpa)
+	Window Manager: xprop: error: Invalid window id format: -notype.
+	Available Cores: 80
+Databases
+	SHM Database: /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm
+Versions
+	xcelium version: 24.03-s013
+	lwd/snapshot version: 24.03-s013
+	Verisium Debug Version: 24.09.002-s
+Invocation command: /usr/cadence/installs/VERISIUMDEBUG2409/tools/bin/verisium_debug_internal   -connect dc:orionvtech.orionvtech.com:38263 -interactive
+Log Files
+	env log: /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/env.log
+	verisium_debug log: /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/verisium_debug.log
+	verisium_debug_karaf log: /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/verisium_debug_karaf.log
+	ida log: /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/ida.log
+	cdns_vwdbr log: /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/cdns_vwdbr.log
+	perf log: /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/perf.log

@@ -21,18 +21,18 @@ class invalid_b_in_grev_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //disable the Reset signal for the test of test cases 
-    seq.rst_l.constraint_mode(0);
+    seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
  
 
  
-   seq.ap.costraint_mode(0); 
+   seq.ap.rand_mode(0); 
    initialize_ap(seq.ap);
    seq.ap.grev=1'b1;
  
  
-  //error=0 result=0
-   seq.randomize() with { csr_ren_in==1'b0;b_in[4:0]!= 5'b11000;}; 
+  // result=0  error=1
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in[4:0]!= 5'b11000;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Invalid b_in (b[4:0]!=24d) GREV case"), UVM_NONE) 
    finish_item(seq); 

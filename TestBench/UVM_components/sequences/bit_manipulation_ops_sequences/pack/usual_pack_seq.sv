@@ -21,25 +21,19 @@ class usual_pack_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //disable the Reset signal for the test of test cases 
-    seq.rst_l.constraint_mode(0);
+    seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
  
 
  
-   seq.ap.costraint_mode(0); 
+   seq.ap.rand_mode(0); 
    initialize_ap(seq.ap);
    seq.ap.pack=1'b1;
  
  
-   seq.randomize() with { csr_ren_in==1'b0;}; 
-   start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard PACK random inputs"), UVM_NONE) 
-   finish_item(seq); 
-
- 
 
  //both inputs are zero
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000000;b_in==32'h00000000;}; 
+   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000000;b_in==32'h00000000;valid_in==1;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard CPOP with 0 inputs"), UVM_NONE) 
    finish_item(seq);
@@ -48,7 +42,7 @@ class usual_pack_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //both inputs are 1's bits
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hffffffff;b_in==32'hffffffff;}; 
+   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hffffffff;b_in==32'hffffffff;valid_in==1;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard CPOP with 1's-bits input"), UVM_NONE) 
    finish_item(seq);
@@ -57,7 +51,7 @@ class usual_pack_seq extends uvm_sequence #(bmu_sequence_item);
 
 
   //a_in=0......  b_in=.....1...   
-   seq.randomize() with { csr_ren_in==1'b0;a_in[31]==1'b0;b_in[15]==1'b1;}; 
+   seq.randomize() with { csr_ren_in==1'b0;a_in[31]==1'b0;b_in[15]==1'b1;valid_in==1;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard CPOP with a_in[31]=0  and b_in[15]=1 "), UVM_NONE) 
    finish_item(seq);
@@ -65,7 +59,7 @@ class usual_pack_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //a_in=1......  b_in=.....0...  
-   seq.randomize() with { csr_ren_in==1'b0;a_in[31]==1'b1;b_in[15]==1'b0;}; 
+   seq.randomize() with { csr_ren_in==1'b0;a_in[31]==1'b1;b_in[15]==1'b0;valid_in==1;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard CPOP with a_in[31]=1  and b_in[15]= 0 "), UVM_NONE) 
    finish_item(seq);

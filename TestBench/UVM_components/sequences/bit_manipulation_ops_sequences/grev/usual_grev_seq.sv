@@ -21,25 +21,20 @@ class usual_grev_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //disable the Reset signal for the test of test cases 
-    seq.rst_l.constraint_mode(0);
+    seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
  
 
  
-   seq.ap.costraint_mode(0); 
+   seq.ap.rand_mode(0); 
    initialize_ap(seq.ap);
    seq.ap.grev=1'b1;
  
- 
-   seq.randomize() with { csr_ren_in==1'b0;b_in[4:0]==5'b11000;}; 
-   start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard GREV random a_in input"), UVM_NONE) 
-   finish_item(seq); 
+
 
  
-
-//a_in=0
-   seq.randomize() with { csr_ren_in==1'b0;b_in[4:0]==5'b11000;a_in==32'h00000000;}; 
+//a_in=0  result=0
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in[4:0]==5'b11000;a_in==32'h00000000;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard GREV with a_in=0 "), UVM_NONE) 
    finish_item(seq); 
@@ -47,8 +42,8 @@ class usual_grev_seq extends uvm_sequence #(bmu_sequence_item);
 
 
 
-//a_in=1's bits
-   seq.randomize() with { csr_ren_in==1'b0;b_in[4:0]==5'b11000;a_in==32'hffffffff;}; 
+//a_in=1's bits   result=-1
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in[4:0]==5'b11000;a_in==32'hffffffff;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard GREV with a_in=1's bits"), UVM_NONE) 
    finish_item(seq); 
@@ -57,14 +52,14 @@ class usual_grev_seq extends uvm_sequence #(bmu_sequence_item);
  
 
   //a_in=101010(alternative input)(MSB=1)
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'b10101010101010101010101010101010;b_in[4:0]==5'b11000;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'b10101010101010101010101010101010;b_in[4:0]==5'b11000;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard CPOP with alternative-input (a_in) (1010...)"), UVM_NONE) 
    finish_item(seq);
 
 
    //a_in=0101010101(alternative input)(MSB=0)
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'b01010101010101010101010101010101;b_in[4:0]==5'b11000;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'b01010101010101010101010101010101;b_in[4:0]==5'b11000;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard CPOP with alternative-input (a_in) (0101...)"), UVM_NONE) 
    finish_item(seq);

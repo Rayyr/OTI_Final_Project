@@ -21,7 +21,7 @@ class reset_seq extends uvm_sequence #(bmu_sequence_item);
     
     seq.rst_l=1'b0;
     start_item(seq);
-    `uvm_info(get_type_name(),"Reset Case");
+    `uvm_info(get_type_name(),"Reset Case",UVM_LOW);
     finish_item(seq);
 
     

@@ -862,3 +862,309 @@ s430(02Sep2025:19:18:12):  xrun -uvm top.sv
 s431(02Sep2025:19:24:33):  xrun -uvm top.sv 
 #e432(02Sep2025:19:30:19): source ./xcelium.d/env.d/env.history.02Sep2025_19_30_19
 s432(02Sep2025:19:30:19):  xrun -uvm top.sv 
+#e433(02Sep2025:20:27:04): source ./xcelium.d/env.d/env.history.02Sep2025_20_27_04
+s433(02Sep2025:20:27:04):  xrun -uvm top.sv 
+#e434(02Sep2025:20:49:20): source ./xcelium.d/env.d/env.history.02Sep2025_20_49_20
+s434(02Sep2025:20:49:20):  xrun -uvm top.sv 
+#e435(02Sep2025:22:38:00): source ./xcelium.d/env.d/env.history.02Sep2025_22_38_00
+s435(02Sep2025:22:38:00):  xrun -uvm top.sv 
+#e436(03Sep2025:00:58:46): source ./xcelium.d/env.d/env.history.03Sep2025_00_58_46
+s436(03Sep2025:00:58:46):  xrun -uvm top.sv 
+#e437(03Sep2025:00:59:20): source ./xcelium.d/env.d/env.history.03Sep2025_00_59_20
+s437(03Sep2025:00:59:20):  xrun -uvm top.sv 
+#e438(03Sep2025:01:01:10): source ./xcelium.d/env.d/env.history.03Sep2025_01_01_10
+s438(03Sep2025:01:01:10):  xrun -uvm top.sv 
+#e439(03Sep2025:01:02:31): source ./xcelium.d/env.d/env.history.03Sep2025_01_02_31
+s439(03Sep2025:01:02:31):  xrun -uvm top.sv 
+#e440(03Sep2025:01:04:10): source ./xcelium.d/env.d/env.history.03Sep2025_01_04_10
+s440(03Sep2025:01:04:10):  xrun -uvm top.sv 
+#e441(03Sep2025:01:06:30): source ./xcelium.d/env.d/env.history.03Sep2025_01_06_30
+s441(03Sep2025:01:06:30):  xrun -uvm top.sv 
+#e442(03Sep2025:01:09:05): source ./xcelium.d/env.d/env.history.03Sep2025_01_09_05
+s442(03Sep2025:01:09:05):  xrun -uvm top.sv 
+#e443(03Sep2025:01:09:21): source ./xcelium.d/env.d/env.history.03Sep2025_01_09_21
+s443(03Sep2025:01:09:21):  xrun -uvm top.sv 
+#e444(03Sep2025:01:15:51): source ./xcelium.d/env.d/env.history.03Sep2025_01_15_51
+s444(03Sep2025:01:15:51):  xrun -uvm top.sv 
+#e445(03Sep2025:01:16:48): source ./xcelium.d/env.d/env.history.03Sep2025_01_16_48
+s445(03Sep2025:01:16:48):  xrun -uvm top.sv 
+#e446(03Sep2025:01:17:12): source ./xcelium.d/env.d/env.history.03Sep2025_01_17_12
+s446(03Sep2025:01:17:12):  xrun -uvm top.sv 
+#e447(03Sep2025:01:17:21): source ./xcelium.d/env.d/env.history.03Sep2025_01_17_21
+s447(03Sep2025:01:17:21):  xrun -uvm top.sv 
+#e448(03Sep2025:01:17:59): source ./xcelium.d/env.d/env.history.03Sep2025_01_17_59
+s448(03Sep2025:01:17:59):  xrun -uvm top.sv 
+#e449(03Sep2025:01:18:24): source ./xcelium.d/env.d/env.history.03Sep2025_01_18_24
+s449(03Sep2025:01:18:24):  xrun -uvm top.sv 
+#e450(03Sep2025:01:18:47): source ./xcelium.d/env.d/env.history.03Sep2025_01_18_47
+s450(03Sep2025:01:18:47):  xrun -uvm top.sv 
+#e451(03Sep2025:01:19:39): source ./xcelium.d/env.d/env.history.03Sep2025_01_19_39
+s451(03Sep2025:01:19:39):  xrun -uvm top.sv 
+#e452(03Sep2025:01:22:52): source ./xcelium.d/env.d/env.history.03Sep2025_01_22_52
+s452(03Sep2025:01:22:52):  xrun -uvm top.sv 
+#e453(03Sep2025:01:24:09): source ./xcelium.d/env.d/env.history.03Sep2025_01_24_09
+s453(03Sep2025:01:24:09):  xrun -uvm top.sv 
+#e454(03Sep2025:01:25:26): source ./xcelium.d/env.d/env.history.03Sep2025_01_25_26
+s454(03Sep2025:01:25:26):  xrun -uvm top.sv 
+#e455(03Sep2025:01:27:11): source ./xcelium.d/env.d/env.history.03Sep2025_01_27_11
+s455(03Sep2025:01:27:11):  xrun -uvm top.sv 
+#e456(03Sep2025:01:28:54): source ./xcelium.d/env.d/env.history.03Sep2025_01_28_54
+s456(03Sep2025:01:28:54):  xrun -uvm top.sv 
+#e457(03Sep2025:08:39:54): source ./xcelium.d/env.d/env.history.03Sep2025_08_39_54
+s457(03Sep2025:08:39:54):  xrun -uvm top.sv 
+#e458(03Sep2025:08:40:18): source ./xcelium.d/env.d/env.history.03Sep2025_08_40_18
+s458(03Sep2025:08:40:18):  xrun -uvm top.sv 
+#e459(03Sep2025:08:43:29): source ./xcelium.d/env.d/env.history.03Sep2025_08_43_29
+s459(03Sep2025:08:43:29):  xrun -uvm top.sv 
+#e460(03Sep2025:08:43:53): source ./xcelium.d/env.d/env.history.03Sep2025_08_43_53
+s460(03Sep2025:08:43:53):  xrun -uvm top.sv 
+#e461(03Sep2025:08:44:09): source ./xcelium.d/env.d/env.history.03Sep2025_08_44_09
+s461(03Sep2025:08:44:09):  xrun -uvm top.sv 
+#e462(03Sep2025:08:48:27): source ./xcelium.d/env.d/env.history.03Sep2025_08_48_27
+s462(03Sep2025:08:48:27):  xrun -uvm top.sv 
+#e463(03Sep2025:08:49:22): source ./xcelium.d/env.d/env.history.03Sep2025_08_49_22
+s463(03Sep2025:08:49:22):  xrun -uvm top.sv 
+#e464(03Sep2025:08:52:43): source ./xcelium.d/env.d/env.history.03Sep2025_08_52_43
+s464(03Sep2025:08:52:43):  xrun -uvm top.sv 
+#e465(03Sep2025:08:52:53): source ./xcelium.d/env.d/env.history.03Sep2025_08_52_53
+s465(03Sep2025:08:52:53):  xrun -uvm top.sv 
+#e466(03Sep2025:08:54:12): source ./xcelium.d/env.d/env.history.03Sep2025_08_54_12
+s466(03Sep2025:08:54:12):  xrun -uvm top.sv 
+#e467(03Sep2025:08:56:49): source ./xcelium.d/env.d/env.history.03Sep2025_08_56_49
+s467(03Sep2025:08:56:49):  xrun -uvm top.sv 
+#e468(03Sep2025:09:10:05): source ./xcelium.d/env.d/env.history.03Sep2025_09_10_05
+s468(03Sep2025:09:10:05):  xrun -uvm top.sv 
+#e469(03Sep2025:09:10:58): source ./xcelium.d/env.d/env.history.03Sep2025_09_10_58
+s469(03Sep2025:09:10:58):  xrun -uvm top.sv 
+#e470(03Sep2025:09:17:16): source ./xcelium.d/env.d/env.history.03Sep2025_09_17_16
+s470(03Sep2025:09:17:16):  xrun -uvm top.sv 
+#e471(03Sep2025:09:18:48): source ./xcelium.d/env.d/env.history.03Sep2025_09_18_48
+s471(03Sep2025:09:18:48):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e472(03Sep2025:09:21:39): source ./xcelium.d/env.d/env.history.03Sep2025_09_21_39
+s472(03Sep2025:09:21:39):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv "-s " 
+#e473(03Sep2025:09:23:50): source ./xcelium.d/env.d/env.history.03Sep2025_09_23_50
+s473(03Sep2025:09:23:50):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e474(03Sep2025:09:25:12): source ./xcelium.d/env.d/env.history.03Sep2025_09_25_12
+s474(03Sep2025:09:25:12):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e475(03Sep2025:09:26:02): source ./xcelium.d/env.d/env.history.03Sep2025_09_26_02
+s475(03Sep2025:09:26:02):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e476(03Sep2025:09:27:20): source ./xcelium.d/env.d/env.history.03Sep2025_09_27_20
+s476(03Sep2025:09:27:20):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e477(03Sep2025:09:31:41): source ./xcelium.d/env.d/env.history.03Sep2025_09_31_41
+s477(03Sep2025:09:31:41):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e478(03Sep2025:09:37:47): source ./xcelium.d/env.d/env.history.03Sep2025_09_37_47
+s478(03Sep2025:09:37:47):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e479(03Sep2025:09:40:50): source ./xcelium.d/env.d/env.history.03Sep2025_09_40_50
+s479(03Sep2025:09:40:50):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e480(03Sep2025:09:41:53): source ./xcelium.d/env.d/env.history.03Sep2025_09_41_53
+s480(03Sep2025:09:41:53):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e481(03Sep2025:09:47:28): source ./xcelium.d/env.d/env.history.03Sep2025_09_47_28
+s481(03Sep2025:09:47:28):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e482(03Sep2025:09:48:45): source ./xcelium.d/env.d/env.history.03Sep2025_09_48_45
+s482(03Sep2025:09:48:45):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e483(03Sep2025:10:08:11): source ./xcelium.d/env.d/env.history.03Sep2025_10_08_11
+s483(03Sep2025:10:08:11):  xrun -uvm top.sv 
+#e484(03Sep2025:10:08:43): source ./xcelium.d/env.d/env.history.03Sep2025_10_08_43
+s484(03Sep2025:10:08:43):  xrun -uvm top.sv 
+#e485(03Sep2025:10:11:32): source ./xcelium.d/env.d/env.history.03Sep2025_10_11_32
+s485(03Sep2025:10:11:32):  xrun -uvm top.sv 
+#e486(03Sep2025:10:12:02): source ./xcelium.d/env.d/env.history.03Sep2025_10_12_02
+s486(03Sep2025:10:12:02):  xrun -uvm top.sv 
+#e487(03Sep2025:10:13:15): source ./xcelium.d/env.d/env.history.03Sep2025_10_13_15
+s487(03Sep2025:10:13:15):  xrun -uvm top.sv 
+#e488(03Sep2025:10:14:45): source ./xcelium.d/env.d/env.history.03Sep2025_10_14_45
+s488(03Sep2025:10:14:45):  xrun -uvm top.sv 
+#e489(03Sep2025:10:15:33): source ./xcelium.d/env.d/env.history.03Sep2025_10_15_33
+s489(03Sep2025:10:15:33):  xrun -uvm top.sv 
+#e490(03Sep2025:10:16:45): source ./xcelium.d/env.d/env.history.03Sep2025_10_16_45
+s490(03Sep2025:10:16:45):  xrun -uvm top.sv 
+#e491(03Sep2025:10:20:49): source ./xcelium.d/env.d/env.history.03Sep2025_10_20_49
+s491(03Sep2025:10:20:49):  xrun -uvm top.sv 
+#e492(03Sep2025:10:21:14): source ./xcelium.d/env.d/env.history.03Sep2025_10_21_14
+s492(03Sep2025:10:21:14):  xrun -uvm top.sv 
+#e493(03Sep2025:10:22:27): source ./xcelium.d/env.d/env.history.03Sep2025_10_22_27
+s493(03Sep2025:10:22:27):  xrun -uvm top.sv 
+#e494(03Sep2025:10:23:08): source ./xcelium.d/env.d/env.history.03Sep2025_10_23_08
+s494(03Sep2025:10:23:08):  xrun -uvm top.sv 
+#e495(03Sep2025:10:24:03): source ./xcelium.d/env.d/env.history.03Sep2025_10_24_03
+s495(03Sep2025:10:24:03):  xrun -uvm top.sv 
+#e496(03Sep2025:10:24:15): source ./xcelium.d/env.d/env.history.03Sep2025_10_24_15
+s496(03Sep2025:10:24:15):  xrun -uvm top.sv 
+#e497(03Sep2025:10:24:36): source ./xcelium.d/env.d/env.history.03Sep2025_10_24_36
+s497(03Sep2025:10:24:36):  xrun -uvm top.sv 
+#e498(03Sep2025:10:26:57): source ./xcelium.d/env.d/env.history.03Sep2025_10_26_57
+s498(03Sep2025:10:26:57):  xrun -uvm top.sv 
+#e499(03Sep2025:10:27:30): source ./xcelium.d/env.d/env.history.03Sep2025_10_27_30
+s499(03Sep2025:10:27:30):  xrun -uvm top.sv 
+#e500(03Sep2025:10:28:02): source ./xcelium.d/env.d/env.history.03Sep2025_10_28_02
+s500(03Sep2025:10:28:02):  xrun -uvm top.sv 
+#e501(03Sep2025:10:44:37): source ./xcelium.d/env.d/env.history.03Sep2025_10_44_37
+s501(03Sep2025:10:44:37):  xrun -uvm top.sv 
+#e502(03Sep2025:10:46:16): source ./xcelium.d/env.d/env.history.03Sep2025_10_46_16
+s502(03Sep2025:10:46:16):  xrun -uvm top.sv 
+#e503(03Sep2025:10:46:33): source ./xcelium.d/env.d/env.history.03Sep2025_10_46_33
+s503(03Sep2025:10:46:33):  xrun -uvm top.sv 
+#e504(03Sep2025:10:50:37): source ./xcelium.d/env.d/env.history.03Sep2025_10_50_37
+s504(03Sep2025:10:50:37):  xrun -uvm top.sv 
+#e505(03Sep2025:10:51:46): source ./xcelium.d/env.d/env.history.03Sep2025_10_51_46
+s505(03Sep2025:10:51:46):  xrun -uvm top.sv 
+#e506(03Sep2025:10:52:15): source ./xcelium.d/env.d/env.history.03Sep2025_10_52_15
+s506(03Sep2025:10:52:15):  xrun -uvm top.sv 
+#e507(03Sep2025:10:53:36): source ./xcelium.d/env.d/env.history.03Sep2025_10_53_36
+s507(03Sep2025:10:53:36):  xrun -uvm top.sv 
+#e508(03Sep2025:10:55:49): source ./xcelium.d/env.d/env.history.03Sep2025_10_55_49
+s508(03Sep2025:10:55:49):  xrun -uvm top.sv 
+#e509(03Sep2025:10:58:01): source ./xcelium.d/env.d/env.history.03Sep2025_10_58_01
+s509(03Sep2025:10:58:01):  xrun -uvm top.sv 
+#e510(03Sep2025:11:02:32): source ./xcelium.d/env.d/env.history.03Sep2025_11_02_32
+s510(03Sep2025:11:02:32):  xrun -uvm top.sv 
+#e511(03Sep2025:11:10:09): source ./xcelium.d/env.d/env.history.03Sep2025_11_10_09
+s511(03Sep2025:11:10:09):  xrun -uvm top.sv 
+#e512(03Sep2025:11:16:54): source ./xcelium.d/env.d/env.history.03Sep2025_11_16_54
+s512(03Sep2025:11:16:54):  xrun -uvm top.sv 
+#e513(03Sep2025:11:27:14): source ./xcelium.d/env.d/env.history.03Sep2025_11_27_14
+s513(03Sep2025:11:27:14):  xrun -uvm top.sv 
+#e514(03Sep2025:11:28:44): source ./xcelium.d/env.d/env.history.03Sep2025_11_28_44
+s514(03Sep2025:11:28:44):  xrun -uvm top.sv 
+#e515(03Sep2025:11:29:48): source ./xcelium.d/env.d/env.history.03Sep2025_11_29_48
+s515(03Sep2025:11:29:48):  xrun -uvm top.sv 
+#e516(03Sep2025:11:42:38): source ./xcelium.d/env.d/env.history.03Sep2025_11_42_38
+s516(03Sep2025:11:42:38):  xrun -uvm top.sv 
+#e517(03Sep2025:11:54:44): source ./xcelium.d/env.d/env.history.03Sep2025_11_54_44
+s517(03Sep2025:11:54:44):  xrun -uvm top.sv 
+#e518(03Sep2025:12:37:25): source ./xcelium.d/env.d/env.history.03Sep2025_12_37_25
+s518(03Sep2025:12:37:25):  xrun -uvm top.sv 
+#e519(03Sep2025:12:38:16): source ./xcelium.d/env.d/env.history.03Sep2025_12_38_16
+s519(03Sep2025:12:38:16):  xrun -uvm top.sv 
+#e520(03Sep2025:12:38:54): source ./xcelium.d/env.d/env.history.03Sep2025_12_38_54
+s520(03Sep2025:12:38:54):  xrun -uvm top.sv 
+#e521(03Sep2025:12:39:20): source ./xcelium.d/env.d/env.history.03Sep2025_12_39_20
+s521(03Sep2025:12:39:20):  xrun -uvm top.sv 
+#e522(03Sep2025:12:41:13): source ./xcelium.d/env.d/env.history.03Sep2025_12_41_13
+s522(03Sep2025:12:41:13):  xrun -uvm top.sv 
+#e523(03Sep2025:12:41:34): source ./xcelium.d/env.d/env.history.03Sep2025_12_41_34
+s523(03Sep2025:12:41:34):  xrun -uvm top.sv 
+#e524(03Sep2025:12:42:05): source ./xcelium.d/env.d/env.history.03Sep2025_12_42_05
+s524(03Sep2025:12:42:05):  xrun -uvm top.sv 
+#e525(03Sep2025:12:46:55): source ./xcelium.d/env.d/env.history.03Sep2025_12_46_55
+s525(03Sep2025:12:46:55):  xrun -uvm : -access +rwc -debug_opt verisium_interactive 
+#e526(03Sep2025:12:47:03): source ./xcelium.d/env.d/env.history.03Sep2025_12_47_03
+s526(03Sep2025:12:47:03):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e527(03Sep2025:12:56:07): source ./xcelium.d/env.d/env.history.03Sep2025_12_56_07
+s527(03Sep2025:12:56:07):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv "-s " 
+#e528(03Sep2025:12:56:29): source ./xcelium.d/env.d/env.history.03Sep2025_12_56_29
+s528(03Sep2025:12:56:29):  xrun -uvm top.sv 
+#e529(03Sep2025:12:58:28): source ./xcelium.d/env.d/env.history.03Sep2025_12_58_28
+s529(03Sep2025:12:58:28):  xrun -uvm top.sv 
+#e530(03Sep2025:12:59:36): source ./xcelium.d/env.d/env.history.03Sep2025_12_59_36
+s530(03Sep2025:12:59:36):  xrun -uvm top.sv 
+#e531(03Sep2025:13:00:07): source ./xcelium.d/env.d/env.history.03Sep2025_13_00_07
+s531(03Sep2025:13:00:07):  xrun -uvm top.sv 
+#e532(03Sep2025:13:01:53): source ./xcelium.d/env.d/env.history.03Sep2025_13_01_53
+s532(03Sep2025:13:01:53):  xrun -uvm top.sv 
+#e533(03Sep2025:13:01:57): source ./xcelium.d/env.d/env.history.03Sep2025_13_01_57
+s533(03Sep2025:13:01:57):  xrun -uvm top.sv 
+#e534(03Sep2025:13:08:19): source ./xcelium.d/env.d/env.history.03Sep2025_13_08_19
+s534(03Sep2025:13:08:19):  xrun -uvm top.sv 
+#e535(03Sep2025:13:09:29): source ./xcelium.d/env.d/env.history.03Sep2025_13_09_29
+s535(03Sep2025:13:09:29):  xrun -uvm top.sv 
+#e536(03Sep2025:13:32:42): source ./xcelium.d/env.d/env.history.03Sep2025_13_32_42
+s536(03Sep2025:13:32:42):  xrun -uvm top.sv 
+#e537(03Sep2025:13:33:45): source ./xcelium.d/env.d/env.history.03Sep2025_13_33_45
+s537(03Sep2025:13:33:45):  xrun -uvm top.sv 
+#e538(03Sep2025:13:35:01): source ./xcelium.d/env.d/env.history.03Sep2025_13_35_01
+s538(03Sep2025:13:35:01):  xrun -uvm top.sv 
+#e539(03Sep2025:13:37:30): source ./xcelium.d/env.d/env.history.03Sep2025_13_37_30
+s539(03Sep2025:13:37:30):  xrun -uvm top.sv 
+#e540(03Sep2025:13:37:52): source ./xcelium.d/env.d/env.history.03Sep2025_13_37_52
+s540(03Sep2025:13:37:52):  xrun -uvm top.sv 
+#e541(03Sep2025:13:38:12): source ./xcelium.d/env.d/env.history.03Sep2025_13_38_12
+s541(03Sep2025:13:38:12):  xrun -uvm top.sv 
+#e542(03Sep2025:13:38:37): source ./xcelium.d/env.d/env.history.03Sep2025_13_38_37
+s542(03Sep2025:13:38:37):  xrun -uvm top.sv 
+#e543(03Sep2025:13:41:22): source ./xcelium.d/env.d/env.history.03Sep2025_13_41_22
+s543(03Sep2025:13:41:22):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e544(03Sep2025:13:43:11): source ./xcelium.d/env.d/env.history.03Sep2025_13_43_11
+s544(03Sep2025:13:43:11):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv "-s " 
+#e545(03Sep2025:13:43:54): source ./xcelium.d/env.d/env.history.03Sep2025_13_43_54
+s545(03Sep2025:13:43:54):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e546(03Sep2025:13:44:23): source ./xcelium.d/env.d/env.history.03Sep2025_13_44_23
+s546(03Sep2025:13:44:23):  xrun -uvm top.sv 
+#e547(03Sep2025:13:45:16): source ./xcelium.d/env.d/env.history.03Sep2025_13_45_16
+s547(03Sep2025:13:45:16):  xrun -uvm top.sv 
+#e548(03Sep2025:13:48:33): source ./xcelium.d/env.d/env.history.03Sep2025_13_48_33
+s548(03Sep2025:13:48:33):  xrun -uvm top.sv 
+#e549(03Sep2025:13:49:05): source ./xcelium.d/env.d/env.history.03Sep2025_13_49_05
+s549(03Sep2025:13:49:05):  xrun -uvm top.sv 
+#e550(03Sep2025:13:51:09): source ./xcelium.d/env.d/env.history.03Sep2025_13_51_09
+s550(03Sep2025:13:51:09):  xrun -uvm top.sv 
+#e551(03Sep2025:13:51:34): source ./xcelium.d/env.d/env.history.03Sep2025_13_51_34
+s551(03Sep2025:13:51:34):  xrun -uvm top.sv 
+#e552(03Sep2025:13:51:56): source ./xcelium.d/env.d/env.history.03Sep2025_13_51_56
+s552(03Sep2025:13:51:56):  xrun -uvm top.sv 
+#e553(03Sep2025:13:52:17): source ./xcelium.d/env.d/env.history.03Sep2025_13_52_17
+s553(03Sep2025:13:52:17):  xrun -uvm top.sv 
+#e554(03Sep2025:13:52:43): source ./xcelium.d/env.d/env.history.03Sep2025_13_52_43
+s554(03Sep2025:13:52:43):  xrun -uvm top.sv 
+#e555(03Sep2025:13:53:34): source ./xcelium.d/env.d/env.history.03Sep2025_13_53_34
+s555(03Sep2025:13:53:34):  xrun -uvm top.sv 
+#e556(03Sep2025:14:44:26): source ./xcelium.d/env.d/env.history.03Sep2025_14_44_26
+s556(03Sep2025:14:44:26):  xrun -uvm top.sv 
+#e557(03Sep2025:14:45:01): source ./xcelium.d/env.d/env.history.03Sep2025_14_45_01
+s557(03Sep2025:14:45:01):  xrun -uvm top.sv 
+#e558(03Sep2025:14:45:24): source ./xcelium.d/env.d/env.history.03Sep2025_14_45_24
+s558(03Sep2025:14:45:24):  xrun -uvm top.sv 
+#e559(03Sep2025:14:46:17): source ./xcelium.d/env.d/env.history.03Sep2025_14_46_17
+s559(03Sep2025:14:46:17):  xrun -uvm top.sv 
+#e560(03Sep2025:14:47:04): source ./xcelium.d/env.d/env.history.03Sep2025_14_47_04
+s560(03Sep2025:14:47:04):  xrun -uvm top.sv 
+#e561(03Sep2025:14:48:10): source ./xcelium.d/env.d/env.history.03Sep2025_14_48_10
+s561(03Sep2025:14:48:10):  xrun -uvm top.sv 
+#e562(03Sep2025:14:49:29): source ./xcelium.d/env.d/env.history.03Sep2025_14_49_29
+s562(03Sep2025:14:49:29):  xrun -uvm top.sv 
+#e563(03Sep2025:14:50:06): source ./xcelium.d/env.d/env.history.03Sep2025_14_50_06
+s563(03Sep2025:14:50:06):  xrun -uvm top.sv 
+#e564(03Sep2025:14:51:18): source ./xcelium.d/env.d/env.history.03Sep2025_14_51_18
+s564(03Sep2025:14:51:18):  xrun -uvm top.sv 
+#e565(03Sep2025:15:01:46): source ./xcelium.d/env.d/env.history.03Sep2025_15_01_46
+s565(03Sep2025:15:01:46):  xrun -uvm top.sv 
+#e566(03Sep2025:15:02:17): source ./xcelium.d/env.d/env.history.03Sep2025_15_02_17
+s566(03Sep2025:15:02:17):  xrun -uvm top.sv 
+#e567(03Sep2025:15:03:20): source ./xcelium.d/env.d/env.history.03Sep2025_15_03_20
+s567(03Sep2025:15:03:20):  xrun -uvm top.sv 
+#e568(03Sep2025:15:05:22): source ./xcelium.d/env.d/env.history.03Sep2025_15_05_22
+s568(03Sep2025:15:05:22):  xrun -uvm top.sv 
+#e569(03Sep2025:15:06:34): source ./xcelium.d/env.d/env.history.03Sep2025_15_06_34
+s569(03Sep2025:15:06:34):  xrun -uvm top.sv 
+#e570(03Sep2025:15:08:52): source ./xcelium.d/env.d/env.history.03Sep2025_15_08_52
+s570(03Sep2025:15:08:52):  xrun -uvm bmu_sequence_item.sv 
+#e571(03Sep2025:15:10:59): source ./xcelium.d/env.d/env.history.03Sep2025_15_10_59
+s571(03Sep2025:15:10:59):  xrun -uvm bmu_sequence_item.sv 
+#e572(03Sep2025:15:12:00): source ./xcelium.d/env.d/env.history.03Sep2025_15_12_00
+s572(03Sep2025:15:12:00):  xrun -uvm top.sv 
+#e573(03Sep2025:15:12:55): source ./xcelium.d/env.d/env.history.03Sep2025_15_12_55
+s573(03Sep2025:15:12:55):  xrun -uvm top.sv 
+#e574(03Sep2025:15:14:46): source ./xcelium.d/env.d/env.history.03Sep2025_15_14_46
+s574(03Sep2025:15:14:46):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e575(03Sep2025:15:22:59): source ./xcelium.d/env.d/env.history.03Sep2025_15_22_59
+s575(03Sep2025:15:22:59):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv "-s " 
+#e576(03Sep2025:15:28:52): source ./xcelium.d/env.d/env.history.03Sep2025_15_28_52
+s576(03Sep2025:15:28:52):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv -s 
+#e577(03Sep2025:15:29:51): source ./xcelium.d/env.d/env.history.03Sep2025_15_29_51
+s577(03Sep2025:15:29:51):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e578(03Sep2025:15:30:12): source ./xcelium.d/env.d/env.history.03Sep2025_15_30_12
+s578(03Sep2025:15:30:12):  xrun -uvm top.sv 
+#e579(03Sep2025:15:31:45): source ./xcelium.d/env.d/env.history.03Sep2025_15_31_45
+s579(03Sep2025:15:31:45):  xrun -uvm top.sv 
+#e580(03Sep2025:15:34:43): source ./xcelium.d/env.d/env.history.03Sep2025_15_34_43
+s580(03Sep2025:15:34:43):  xrun -uvm top.sv 
+#e581(03Sep2025:15:36:11): source ./xcelium.d/env.d/env.history.03Sep2025_15_36_11
+s581(03Sep2025:15:36:11):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e582(03Sep2025:15:40:55): source ./xcelium.d/env.d/env.history.03Sep2025_15_40_55
+s582(03Sep2025:15:40:55):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv "-s " 
+#e583(03Sep2025:15:43:08): source ./xcelium.d/env.d/env.history.03Sep2025_15_43_08
+s583(03Sep2025:15:43:08):  xrun -uvm top.sv 
+#e584(03Sep2025:15:45:06): source ./xcelium.d/env.d/env.history.03Sep2025_15_45_06
+s584(03Sep2025:15:45:06):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv 
+#e585(03Sep2025:15:50:51): source ./xcelium.d/env.d/env.history.03Sep2025_15_50_51
+s585(03Sep2025:15:50:51):  xrun -uvm -access +rwc -debug_opt verisium_interactive top.sv "-s " 

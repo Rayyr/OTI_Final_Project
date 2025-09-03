@@ -20,19 +20,18 @@ class conflict_siext_b_data_path_seq extends uvm_sequence #(bmu_sequence_item);
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
     
     //disable the reset input
-    seq.rst_l.constraint_mode(0);
+    seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
 
-    seq.ap.constraint_mode(0);
+    seq.ap.rand_mode(0);
     initialize_ap(seq.ap);
- 
     seq.ap.siext_b=1'b1;
     
 
     //activate sra operation & zbb extension once 
     seq.ap.sra=1'b1;
 
-    seq.randomize() with {csr_ren_in==1'b0;};
+    seq.randomize() with {valid_in==1;csr_ren_in==1'b0;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
     `uvm_info(get_type_name(), ("Conflict siext_b data path by activation other operation once at a time"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )

@@ -1,0 +1,193 @@
+15:14:56:1456 [important] [FelixStartLevel] WARN  - InfoSource version is empty in getMajorMinorVersion()
+15:14:56:1456 [important] [FelixStartLevel] WARN  - InfoSource version not found!! skipping relevant version checks
+15:14:57:1457 [important] [FelixStartLevel] INFO  - xmsim gcc version is 9.3.0
+15:14:57:1457 [important] [FelixStartLevel] INFO  - indago gcc version is 9.3.0
+15:14:57:1457 [important] [TangoTaskManager-3] WARN  - An Indago Snapshot/LWD was not loaded. Scripting API functionality may be impacted.
+15:14:57:1457 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-5] INFO  - query: 
+15:15:07:157 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+15:15:07:157 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:15:07:157 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:15:07:157 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:15:10:1510 [user_actions] [AWT-EventQueue-0] DEBUG - Keep current (GUFIQuestionDialog$1)
+	dialog = restoreLayoutsDialog (GUFIQuestionDialog)
+
+15:15:11:1511 [important] [TangoTaskManager-3] INFO  - ScriptingActivator while loop has finished
+15:15:12:1512 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+15:15:38:1538 [user_actions] [AWT-EventQueue-0] DEBUG - topsSignalDefaultAction (TopsSignalTypeFilter$1)
+
+15:15:39:1539 [user_actions] [AWT-EventQueue-0] DEBUG - signalTypeFilterInterface Signals (TopsSignalTypeFilter$3)
+
+15:15:56:1556 [user_actions] [AWT-EventQueue-0] DEBUG - Waveform (GSLSendVariablesToWaveAction)
+	source = designTopsTreeTable_topsSignalsTreeTable
+	entities[11] = 
+		[0] top.dut.b_in[31:0]
+		[1] top.dut.a_in[31:0]
+		..
+		[5] top.dut.csr_ren_in
+		..
+		[9] top.dut.scan_mode
+		[10] top.dut.valid_in
+
+15:16:04:164 [user_actions] [AWT-EventQueue-0] DEBUG - Delete (RemoveSignalsAction)
+	selected[11] = 
+		[0] top.dut.b_in[31:0]
+		[1] top.dut.a_in[31:0]
+		..
+		[5] top.dut.csr_ren_in
+		..
+		[9] top.dut.scan_mode
+		[10] top.dut.valid_in
+
+15:16:14:1614 [user_actions] [AWT-EventQueue-0] DEBUG - dndaction (GUFITransferHandler$DnDAction)
+	source = designTopsTreeTable (GSLDesignTopsTreeTable)
+	target = WAVEFORMTreeTable (GTXWaveTreeTable)
+	entity = top.dut
+
+15:16:37:1637 [user_actions] [AWT-EventQueue-0] DEBUG - dndaction (GUFITransferHandler$DnDAction)
+	source = designTopsTreeTable (GSLDesignTopsTreeTable)
+	target = WAVEFORMTreeTable (GTXWaveTreeTable)
+	entity = top.intf
+
+15:17:41:1741 [user_actions] [AWT-EventQueue-0] DEBUG - exportWaveform (ExportWaveformAction)
+	selected[12] = 
+		[0] top.intf
+		[1] top.intf.a_in[31:0]
+		..
+		[6] top.intf.csr_ren_in
+		..
+		[10] top.intf.scan_mode
+		[11] top.intf.valid_in
+
+15:17:50:1750 [user_actions] [AWT-EventQueue-0] DEBUG - cancel (GUFIDefaultDialog$3)
+	dialog = textLabelBrowseDialog (ExportWaveformDialog)
+
+15:17:58:1758 [user_actions] [AWT-EventQueue-0] DEBUG - Save Waveform (SaveWaveformAction)
+	selected[12] = 
+		[0] top.intf
+		[1] top.intf.a_in[31:0]
+		..
+		[6] top.intf.csr_ren_in
+		..
+		[10] top.intf.scan_mode
+		[11] top.intf.valid_in
+
+15:18:08:188 [user_actions] [AWT-EventQueue-0] DEBUG - OK (GSLUserStateDialog$2)
+	dialog = save (GSLUserStateDialog)
+			path = UVM_project
+			pathKind = Private
+			SaveMode = Replace
+
+15:18:14:1814 [user_actions] [AWT-EventQueue-0] DEBUG - Yes (GUFIQuestionDialog$1)
+	dialog = presetExistsQuestionDialog (GUFIQuestionDialog)
+
+15:18:17:1817 [user_actions] [AWT-EventQueue-0] DEBUG - Restore Waveform (RestoreWaveformAction)
+	selected[12] = 
+		[0] top.intf
+		[1] top.intf.a_in[31:0]
+		..
+		[6] top.intf.csr_ren_in
+		..
+		[10] top.intf.scan_mode
+		[11] top.intf.valid_in
+
+15:18:25:1825 [user_actions] [AWT-EventQueue-0] DEBUG - restoreSelectedUserState (GSLRestoreUserStateDialog$ReplaceAction)
+	entity = Private.UVM_project.wsf
+
+15:18:36:1836 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+15:18:36:1836 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+15:18:36:1836 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:18:36:1836 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:18:40:1840 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+15:18:40:1840 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+15:18:40:1840 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:18:40:1840 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:19:24:1924 [user_actions] [AWT-EventQueue-0] DEBUG - Waveform (GSLSendVariablesToWaveAction)
+	source = designTopsTreeTable_topsSignalsTreeTable
+	entities[3] = 
+		top.dut.a_in[31:0]
+		top.dut.b_in[31:0]
+		top.dut.result_ff[31:0]
+
+15:21:01:211 [user_actions] [AWT-EventQueue-0] DEBUG - Add Signal (AddSignalsAction)
+	selected = top.intf
+
+15:21:24:2124 [user_actions] [AWT-EventQueue-0] DEBUG - sendToWaveformActionSet (SignalChooserMainPanel$1)
+
+15:21:28:2128 [user_actions] [AWT-EventQueue-0] DEBUG - closeSignalChooser (SignalChooserMainPanel$3)
+
+15:21:47:2147 [user_actions] [AWT-EventQueue-0] DEBUG - Hexadecimal (SetRadixAction)
+	selected = top.intf.result_ff[31:0]
+
+15:22:46:2246 [user_actions] [AWT-EventQueue-0] DEBUG - Waveform (GSLSendVariablesToWaveAction)
+	source = designTopsTreeTable_topsSignalsTreeTable
+	entity = top.intf.monitor_cb.result_ff[31:0]
+
+15:22:55:2255 [user_actions] [AWT-EventQueue-0] DEBUG - reinvokeSimulator (GSLReinvokeSimulatorAction)
+
+15:22:59:2259 [user_actions] [AWT-EventQueue-0] DEBUG - Yes (GUFIQuestionDialog$1)
+	dialog = reinvokeSimulatorDialog (GSLReinvokeSimulatorDialog)
+
+15:23:00:230 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:23:00:230 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:23:01:231 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-7] INFO  - query: 
+15:23:01:231 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+15:23:01:231 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+15:23:01:231 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-8] INFO  - query: 
+15:23:02:232 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-6] INFO  - query: 
+15:23:03:233 [user_actions] [AWT-EventQueue-0] DEBUG - ok (TopsSignalTypeFilterDialog$5)
+
+15:23:03:233 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+15:23:03:233 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+15:23:03:233 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:23:03:233 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:23:34:2334 [user_actions] [AWT-EventQueue-0] DEBUG - Hexadecimal (SetRadixAction)
+	selected = top.intf.monitor_cb.result_ff[31:0]
+
+15:28:49:2849 [user_actions] [AWT-EventQueue-0] DEBUG - reinvokeSimulator (GSLReinvokeSimulatorAction)
+
+15:28:51:2851 [user_actions] [AWT-EventQueue-0] DEBUG - Yes (GUFIQuestionDialog$1)
+	dialog = reinvokeSimulatorDialog (GSLReinvokeSimulatorDialog)
+
+15:28:54:2854 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:28:54:2854 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:28:55:2855 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-3] INFO  - query: 
+15:28:55:2855 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+15:28:55:2855 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+15:28:55:2855 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-6] INFO  - query: 
+15:28:56:2856 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-3] INFO  - query: 
+15:28:56:2856 [user_actions] [AWT-EventQueue-0] DEBUG - ok (TopsSignalTypeFilterDialog$5)
+
+15:28:58:2858 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+15:28:58:2858 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+15:28:58:2858 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+15:29:46:2946 [user_actions] [AWT-EventQueue-0] DEBUG - OK (GUFIQuestionDialog$1)
+	dialog = confirmExitDlg (GUFIQuestionDialog)
+

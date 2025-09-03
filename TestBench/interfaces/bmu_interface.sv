@@ -19,21 +19,23 @@ interface bmu_interface (input logic clk);
 logic signed [31:0] result_ff;
 logic  error;
 
-
+ 
 
 //clocking controller blocks
   //neg edge since the dut will operate on posedge so the driver will take the 
   //seq_obj from the sequencer to send it to the dut so it must receive it before posedge 
-  clocking driver_cb @(negedge clk);
+  clocking driver_cb @(posedge clk);
+     
     //this means driver will drive the transaction(sequence item) before 1 time unit to the dut and it will gets the outputs from the dut exactly without any delays ( at negedge ) 
-    default input#1   output#0;
+    default input#1step   output#0;
     //since he will send the transaction obj to the dut via the intercae so all of ports are output (logically) !
     output a_in,b_in,ap,rst_l,valid_in,scan_mode,csr_ren_in ,csr_rddata_in;
+   
   endclocking 
   
   
   clocking monitor_cb @(posedge clk);
-      default input#0  output#1;
+      default input#2step  output#0;
       //since he will receive the transaction obj from dut via the interfcae so all ports are inputs (logically) !
     input a_in,b_in,ap,rst_l,valid_in,scan_mode,csr_ren_in ,csr_rddata_in,result_ff,error;
   endclocking

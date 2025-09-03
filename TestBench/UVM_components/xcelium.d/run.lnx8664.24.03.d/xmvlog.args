@@ -8,6 +8,10 @@
 -UVMNOSINGLESTEP
 -define
 UVM_PLI
+-source_debug
+-CLASSLINEDEBUG
+-EXT_SRC_INFO
+-EXT_MACRO_SRC_INFO
 top.sv
 -CDSLIB
 ./xcelium.d/run.lnx8664.24.03.d/cdsrun.lib

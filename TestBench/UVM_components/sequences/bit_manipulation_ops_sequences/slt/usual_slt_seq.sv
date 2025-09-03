@@ -21,12 +21,12 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
  //disable the Reset signal for the test of test cases 
-    seq.rst_l.constraint_mode(0);
+    seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
  
 
  
-   seq.ap.costraint_mode(0); 
+   seq.ap.rand_mode(0); 
    initialize_ap(seq.ap);
 
    //signed slt with random inputs
@@ -35,17 +35,10 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
    //seq.ap.unsign=1'b0;
    seq.ap.sub=1'b1;
  
-   seq.randomize() with { csr_ren_in==1'b0;}; 
-   start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard Signed SLT random inputs"), UVM_NONE) 
-   finish_item(seq); 
-
  
 
-
-
     //signed slt with a=-120 , b=-10  ( neg values ) result=1
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF88; b_in==32'hFFFFFFF6;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF88; b_in==32'hFFFFFFF6;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Signed SLT both neg inputs"), UVM_NONE) 
    finish_item(seq); 
@@ -54,7 +47,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //signed slt with a=33 , b=52  ( pos values )  result=0
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000021; b_in==32'h00000034;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h00000021; b_in==32'h00000034;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Signed SLT both pos inputs"), UVM_NONE) 
    finish_item(seq); 
@@ -63,7 +56,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //signed slt with a=150 , b=-200  (different signs )  result=0
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000096; b_in==32'hFFFFFF38;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h00000096; b_in==32'hFFFFFF38;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Signed SLT different signs inputs"), UVM_NONE) 
    finish_item(seq); 
@@ -71,7 +64,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     //signed slt with same inputs = 150 result=0 
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h00000096;b_in==32'h00000096;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h00000096;b_in==32'h00000096;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT with equal inputs "), UVM_NONE) 
    finish_item(seq);
@@ -80,7 +73,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
     //unsigned slt with random inputs
    seq.ap.unsign=1'b1;
-   seq.randomize() with { csr_ren_in==1'b0;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT random inputs"), UVM_NONE) 
    finish_item(seq); 
@@ -89,7 +82,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
    //unsigned slt with a=210 , b=96  ( pos values)  result=0
    seq.ap.unsign=1'b1;
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'h000000D2;b_in==32'h00000060;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h000000D2;b_in==32'h00000060;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
    finish_item(seq); 
@@ -99,7 +92,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
  
    //unsigned slt with a=-100 , b=-90  ( neg values)  result=0
    seq.ap.unsign=1'b1;
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFFA6;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFFA6;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
    finish_item(seq);
@@ -108,7 +101,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
     //unsigned slt with a=-100 , b=90  ( different signs )  result=0
    seq.ap.unsign=1'b1; 
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'h0000005A;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'h0000005A;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT"), UVM_NONE) 
    finish_item(seq);
@@ -116,7 +109,7 @@ class usual_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
     //unsigned slt with same inputs = -100 result=0
    seq.ap.unsign=1'b1; 
-   seq.randomize() with { csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFF9C;}; 
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFF9C;}; 
    start_item(seq); 
    `uvm_info(get_type_name(), ("Standard Unsigned SLT with equal inputs "), UVM_NONE) 
    finish_item(seq);

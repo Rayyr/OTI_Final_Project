@@ -91,7 +91,7 @@ module Bit_Manipulation_Unit
   logic        ap_sh3add;
   logic        ap_zba;
 
-
+//$display("hi");
 
   if (pt.BITMANIP_ZBB == 1) begin
     assign ap_clz    = ap.clz;

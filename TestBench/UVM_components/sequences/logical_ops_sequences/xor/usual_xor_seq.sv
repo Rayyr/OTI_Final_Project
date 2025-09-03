@@ -15,41 +15,56 @@ class usual_xor_seq extends uvm_sequence#(bmu_sequence_item);
   endfunction
   
   
-  //task stimul
+  //task stimuls
   task body(); 
       
     //declare&initialize sequence_item ( packet , transaction .. )
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
-
+repeat(2) begin
  
+  seq.ap.rand_mode(0);
+  initialize_ap(seq.ap);
+  seq.ap.lxor=1'b1;
+
  //a=223  b=5548   result = 5523  (pos)  error=0      (both + inputs) 
-   seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==223;b_in==5548;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-     initialize_ap(seq.ap);
-     seq.ap.lxor=1'b1;
-     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-     `uvm_info(get_type_name(), ("Standard XOring"), UVM_NONE) ;
-     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
-    #10;
+   seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==223;b_in==5548;}; 
+     start_item(seq); 
+     `uvm_info(get_type_name(), ("Standard XOring with both pos sign inputs "), UVM_NONE) ;
+     finish_item(seq); 
+  //  #10;
   
  
- //a=-9223  b=-548   result = 8213 (pos)  error=0      (both - inputs) 
-    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==-9223;b_in==-548;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-     initialize_ap(seq.ap);
-     seq.ap.lxor=1'b1;
-     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-     `uvm_info(get_type_name(), ("Standard XOring"), UVM_NONE) ;
-     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
-    #10;
+ //a=-9223  b=-548   result = 9765 (pos)  error=0      (both - inputs) 
+    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==-9223;b_in==-548;};
+     start_item(seq); 
+     `uvm_info(get_type_name(), ("Standard XOring with both neg sign inputs "), UVM_NONE) ;
+     finish_item(seq); 
+  //  #10;
 
 
      //a=-92233  b=23   result = -9280 (neg)  error=0      (+ & - inputs) 
-    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==-92233;b_in==23;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-     initialize_ap(seq.ap);
-     seq.ap.lxor=1'b1;
-     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-     `uvm_info(get_type_name(), ("Standard XOring"), UVM_NONE) ;
-     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
-    #10;
+    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==-92233;b_in==23;};
+     start_item(seq);
+     `uvm_info(get_type_name(), ("Standard XOring with different signs inputs"), UVM_NONE) ;
+     finish_item(seq);
+   // #10;
+
+
+    //a=101010...  b=01010..   result =-1 (neg)  error=0      (alternative inputs) 
+    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==32'b10101010101010101010101010101010;b_in==32'b01010101010101010101010101010101;};
+     start_item(seq);
+     `uvm_info(get_type_name(), ("Standard XOring with (101010...  &  010101....) inputs"), UVM_NONE) ;
+     finish_item(seq);
+   // #10;
+
+
+
+    //a=10101...  b=10101..   result =0  error=0    (alternative same inputs) 
+    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==32'b10101010101010101010101010101010;b_in==32'b10101010101010101010101010101010;};
+     start_item(seq);
+     `uvm_info(get_type_name(), ("Standard XOring with (101010... ) inputs"), UVM_NONE) ;
+     finish_item(seq);
+    end
     
   endtask
   

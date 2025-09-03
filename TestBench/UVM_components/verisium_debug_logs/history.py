@@ -1,9 +1,9 @@
 #########################################################################
 # Verisium Debug version 24.09.002-s (Built on 2025-01-14T21:04:24Z)
-# history.py generated at 2025/09/02 15:24:32
+# history.py generated at 2025/09/03 15:45:32
 # host: orionvtech
-# port: 37975
-# launch command: indago -connect dc:orionvtech.orionvtech.com:57479 -interactive
+# port: 38159
+# launch command: indago -connect dc:orionvtech.orionvtech.com:53515 -interactive
 # #########################################################################
 import time, os, sys
 if 'self' not in globals():
@@ -12,11 +12,11 @@ if 'self' not in globals():
     self = VerisiumDebugServer(VerisiumDebugArgs(
         is_gui=True,
         is_launch_needed=True,
-        port=37975,
-        extra_args='-connect dc:orionvtech.orionvtech.com:57479 -interactive'
+        port=38159,
+        extra_args='-connect dc:orionvtech.orionvtech.com:53515 -interactive'
     ))
 
-# Verisium: Attempting to connect to Verisium server on host: localhost, port: 37975
+# Verisium: Attempting to connect to Verisium server on host: localhost, port: 38159
 # Verisium: **************************************************************************************
 # Verisium: *****                        Verisium version 24.09.002-s                        *****
 # Verisium: *****                 NOTE: Some API features are Beta quality.                  *****

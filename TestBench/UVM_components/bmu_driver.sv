@@ -30,7 +30,7 @@ forever begin
 //here
 seq_item_port.get_next_item(seq);
 drive(seq);
-`uvm_info(get_type_name(), $sformatf("Driver: signals driven to the DUT are: A = %0d , B = %0d",seq.a_in, seq.b_in), UVM_LOW); 
+`uvm_info(get_type_name(), $sformatf("Driver: signals driven to the DUT are: A = %0d , B = %0d",seq.a_in, seq.b_in), UVM_HIGH); 
 seq_item_port.item_done();
 
 

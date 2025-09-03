@@ -1,0 +1,22 @@
+Connected to dc:orionvtech.orionvtech.com:59409
+%
+%
+%
+xmsim ida_probe -wave -wave_probe_args {top.dut top.intf}
+xmsim run
+xmsim run
+xmsim ida_probe -wave -wave_probe_args {top.intf.monitor_cb.result_ff}
+xmsim stop -delete Randomize
+xmsim uvm_message -stop_on_error ON
+%
+%
+%
+xmsim ida_probe -wave -wave_probe_args {top.dut top.intf}
+xmsim run
+xmsim stop -delete Randomize
+xmsim uvm_message -stop_on_error ON
+%
+%
+%
+xmsim ida_probe -wave -wave_probe_args {top.dut top.intf}
+xmsim run

@@ -1,199 +1,31 @@
 xrun(64): 24.03-s013: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s013: Started on Sep 02, 2025 at 19:30:19 EEST
+TOOL:	xrun(64)	24.03-s013: Started on Sep 03, 2025 at 15:50:50 EEST
 xrun
 	-uvm
+	-access +rwc
+	-debug_opt verisium_interactive
+		-source_debug
+		-lwdgen
+		-classlinedebug
+		-enable_tpe
+		-gui
+		-verisium
+		-ext_src_info
+		-ext_macro_src_info
 	top.sv
-Recompiling... reason: file './top.sv' is newer than expected.
-	expected: Tue Sep  2 19:17:45 2025
-	actual:   Tue Sep  2 19:30:16 2025
-Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d
-file: top.sv
- #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
-          |
-xmvlog: *W,NOINUF (/home/Trainee6/final_project/Design/Bit_Manibulation_Unit.sv,8|10): `include directive not isolated on its own line [16.5(IEEE)].
- #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
-                                                                            |
-xmvlog: *W,NOINUF (/home/Trainee6/final_project/Design/Bit_Manibulation_Unit.sv,8|76): `include directive not isolated on its own line [16.5(IEEE)].
-    seq.randomize() with {csr_ren_in==1'b0; seq.rst_l==1'b1;seq.a_in==65;};
-                |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/conflict_ctz_data_path_seq.sv,34|16): function called as a task without void'().
-    seq.randomize() with {csr_ren_in==1'b1; seq.rst_l==1'b1;};
-                |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/conflict_reading_with_ctz_seq.sv,32|16): function called as a task without void'().
-   seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==0;seq.rst_l==1'b1;}; 
-               |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/usual_ctz_seq.sv,30|15): function called as a task without void'().
-   seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0;seq.rst_l==1'b1;}; 
-               |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv,32|15): function called as a task without void'().
-   seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==223;b_in==5548;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-               |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/usual_xor_seq.sv,26|15): function called as a task without void'().
-    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==-9223;b_in==-548;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-                |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/usual_xor_seq.sv,36|16): function called as a task without void'().
-    seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;a_in==-92233;b_in==23;};//these constraints locally for this line so this the difference of constraint_mode(0) vs inline constraint which is globally , locally respectivlly
-                |
-xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/logical_ops_sequences/xor/usual_xor_seq.sv,46|16): function called as a task without void'().
-	module worklib.top:sv
-		errors: 0, warnings: 0
-	Total errors/warnings found outside modules and primitives:
-		errors: 0, warnings: 7
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-	Top level design units:
-		uvm_pkg
-		cdns_uvmapi
-		cdns_assert2uvm_pkg
-		cdns_uvm_pkg
-		rtl_pkg
-		$unit_0x64683678
-		rvdffsc
-		rvdffs_fpga
-		rvdffsc_fpga
-		rvdfflie
-		rvdffppe
-		rvdffie
-		rvdffiee
-		rvsyncss
-		rvsyncss_fpga
-		rvlsadder
-		rvtwoscomp
-		rvfindfirst1
-		rvfindfirst1hot
-		rvmaskandmatch
-		rvrangecheck
-		rveven_paritygen
-		rveven_paritycheck
-		rvecc_encode
-		rvecc_decode
-		rvecc_encode_64
-		rvecc_decode_64
-		clockhdr
-		rvoclkhdr
-		top
-   .ap(intf.ap),
-             |
-xmelab: *W,CUVMPW (./top.sv,63|13): port sizes differ in port connection(56/42) for the instance(top) .
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.rvbradder:sv <0x1704742e>
-			streams:   4, words:  1530
-		worklib.rvdff:sv <0x0d62612d>
-			streams:   3, words:   746
-		worklib.rvdffs:sv <0x29181aeb>
-			streams:   2, words:   543
-		worklib.rvdffe:sv <0x60a8eb70>
-			streams:   1, words:   339
-		worklib.rvdff:sv <0x72436deb>
-			streams:   3, words:   796
-		worklib.rvdffs:sv <0x55031f1e>
-			streams:   2, words:   575
-		worklib.rvdffpcie:sv <0x12b6b0fe>
-			streams:   1, words:   357
-		worklib.Bit_Manipulation_Unit:sv <0x0bbbdcb4>
-			streams:  56, words: 29382
-		worklib.rvoclkhdr:sv <0x54fbcbdd>
-			streams:   0, words:     0
-		worklib.clockhdr:sv <0x003286b1>
-			streams:   0, words:     0
-		worklib.rvecc_decode_64:sv <0x5f2bd875>
-			streams:   0, words:     0
-		worklib.rvecc_encode_64:sv <0x6ba4abca>
-			streams:   0, words:     0
-		worklib.rvecc_encode:sv <0x41525e72>
-			streams:   0, words:     0
-		worklib.rveven_paritycheck:sv <0x20b34c7a>
-			streams:   0, words:     0
-		worklib.rveven_paritygen:sv <0x21929fb7>
-			streams:   0, words:     0
-		worklib.rvrangecheck:sv <0x628c7032>
-			streams:   0, words:     0
-		worklib.rvfindfirst1hot:sv <0x7b1f1af2>
-			streams:   0, words:     0
-		worklib.rvfindfirst1:sv <0x632983b1>
-			streams:   0, words:     0
-		worklib.rvlsadder:sv <0x6653fb4b>
-			streams:   0, words:     0
-		worklib.rvdffs:sv <0x1d438efd>
-			streams:   2, words:  1137
-		worklib.rvdff_fpga:sv <0x7e73af01>
-			streams:   1, words:   588
-		worklib.rvsyncss_fpga:sv <0x4751fbf4>
-			streams:   3, words:  1083
-		worklib.rvdff:sv <0x3aa96ce3>
-			streams:   3, words:  1485
-		worklib.rvsyncss:sv <0x424d20ad>
-			streams:   3, words:  1083
-		worklib.rvdffiee:sv <0x09c0b4d7>
-			streams:   3, words:   861
-		worklib.rvdff:sv <0x225ee9fa>
-			streams:   3, words:   790
-		worklib.rvdffs:sv <0x4a180435>
-			streams:   2, words:   572
-		worklib.rvdffie:sv <0x41ec14af>
-			streams:   3, words:   836
-		worklib.rvdff:sv <0x2283547a>
-			streams:   3, words:  1045
-		worklib.rvdffs:sv <0x60506884>
-			streams:   2, words:   745
-		worklib.rvdffppe:sv <0x76108273>
-			streams:   1, words:   339
-		worklib.rvdff:sv <0x1ec7fc06>
-			streams:   3, words:   796
-		worklib.rvdffs:sv <0x13d1bcd2>
-			streams:   2, words:   575
-		worklib.rvdfflie:sv <0x7220f1aa>
-			streams:   1, words:   290
-		worklib.rvdffsc_fpga:sv <0x78687b1d>
-			streams:   3, words:   629
-		worklib.rvdffs:sv <0x3993fbde>
-			streams:   2, words:   590
-		worklib.rvdffs_fpga:sv <0x57d8db4a>
-			streams:   2, words:   435
-		worklib.rvdff:sv <0x6ee8d7a7>
-			streams:   3, words:   747
-		worklib.rvdffsc:sv <0x4e869e84>
-			streams:   3, words:   920
-		worklib.rvtwoscomp:sv <0x74a26825>
-			streams:   0, words:     0
-		worklib.rvmaskandmatch:sv <0x6e99ea07>
-			streams:   0, words:     0
-		worklib.rvecc_decode:sv <0x2e19ded4>
-			streams:   0, words:     0
-		worklib.bmu_interface:sv <0x3facd047>
-			streams: 748, words: 962035
-	Building instance specific data structures.
-	Loading native compiled code:     .................... Done
-	Design hierarchy summary:
-		                        Instances  Unique
-		Modules:                       53      31
-		Interfaces:                     1       1
-		Verilog packages:               5       5
-		Registers:                 14,315  10,480
-		Scalar wires:                 224       -
-		Expanded wires:                62       3
-		Vectored wires:               110       -
-		Named events:                   4      12
-		Always blocks:                 20       8
-		Initial blocks:               305     163
-		Clocking blocks:                2       2
-		Clocking items:                18      18
-		Parallel blocks:               26      27
-		Cont. assignments:             53     168
-		Pseudo assignments:            61       -
-		Assertions:                     2       2
-		Covergroup Instances:           0       1
-		Compilation units:              1       1
-		SV Class declarations:        206     319
-		SV Class specializations:     397     397
-		Process Clocks:                13       2
-	Writing initial simulation snapshot: worklib.rvdffsc:sv
-Loading snapshot worklib.rvdffsc:sv .................... Done
+	-s
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
 SVSEED default: 1
+xcelium> 
 xcelium> source /usr/cadence/installs/xcelium/XCELIUM2403/tools/xcelium/files/xmsimrc
 xcelium> source /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
-xcelium> run
+xcelium> 
+-------------------------------------
+Relinquished control to Verisium Debug...
+# Restoring simulation environment...
+xcelium> input -quiet .reinvoke.sim
+xcelium> file delete .reinvoke.sim
+xcelium> uvm_message -stop_on_error ON
 ----------------------------------------------------------------
 CDNS-UVM-1.1d (24.03-s013)
 (C) 2007-2013 Mentor Graphics Corporation
@@ -214,81 +46,63 @@ CDNS-UVM-1.1d (24.03-s013)
 
       (Specify +UVM_NO_RELNOTES to turn off this notice)
 
+UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/cdns_tcl.svh(885) @ 0: reporter [CDNS_EXT] STOP_ON_ERROR
+UVM_WARNING @ 0: reporter [CBUNREG] Callback cdns_catcher cannot be registered with object (*) because callback type  is not registered with object type uvm_object
+xcelium> uvm_message -stop_on_error ON
+UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/cdns_tcl.svh(885) @ 0: reporter [CDNS_EXT] STOP_ON_ERROR
+xcelium> 
+xcelium> run
 UVM_INFO @ 0: reporter [RNTST] Running test ctz_test...
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 0: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 0: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = 1043536398 , B = -656415147
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 5: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = 1043536398, B = -656415147 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 5: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =  -656415147, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 5: uvm_test_top.bmu_env.scoreboard [fail] A=1043536398    B=-656415147    Result=-656415147    error=0 | RefA=1043536398    RefB=-656415147    RefResult=1    error=0
+UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
+------------------------------------------------------------------
+Name                       Type                        Size  Value
+------------------------------------------------------------------
+uvm_test_top               ctz_test                    -     @2647
+  bmu_env                  bmu_environment             -     @2711
+    agent                  bmu_agent                   -     @2742
+      bmu_driver           bmu_driver                  -     @3544
+        rsp_port           uvm_analysis_port           -     @3643
+        seq_item_port      uvm_seq_item_pull_port      -     @3594
+      bmu_monitor          bmu_monitor                 -     @3623
+        monitor_port       uvm_analysis_port           -     @3722
+      bmu_sequencer        bmu_sequencer               -     @2907
+        rsp_export         uvm_analysis_export         -     @2965
+        seq_item_export    uvm_seq_item_pull_imp       -     @3513
+        arbitration_queue  array                       0     -    
+        lock_queue         array                       0     -    
+        num_last_reqs      integral                    32    'd1  
+        num_last_rsps      integral                    32    'd1  
+    scoreboard             bmu_scoreboard              -     @2772
+      analysis_fifo        uvm_tlm_analysis_fifo #(T)  -     @3827
+        analysis_export    uvm_analysis_imp            -     @4069
+        get_ap             uvm_analysis_port           -     @4019
+        get_peek_export    uvm_get_peek_imp            -     @3923
+        put_ap             uvm_analysis_port           -     @3971
+        put_export         uvm_put_imp                 -     @3875
+      exp                  uvm_analysis_imp            -     @3797
+    subscriber             bmu_subscriber              -     @2814
+      analysis_imp         uvm_analysis_imp            -     @2863
+------------------------------------------------------------------
+
+stop -create -name Randomize -randomize
+Created stop Randomize
+
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_ctz_seq.sv(32) @ 0: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_ctz_seq] Standard CTZ with alternative-input(1010)
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(69) @ 5: uvm_test_top.bmu_env.scoreboard [pass] A=x    B=x  Result=0   error=0 | RefA=0  RefB=0   RefResult=0   error=0
 
 
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 10: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 10: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = 1202430938 , B = 583524342
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 15: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = 1202430938, B = 583524342 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 15: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =   583524342, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 15: uvm_test_top.bmu_env.scoreboard [fail] A=1202430938    B=583524342    Result=583524342    error=0 | RefA=1202430938    RefB=583524342    RefResult=1    error=0
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_ctz_seq.sv(32) @ 5: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_ctz_seq] Standard CTZ with alternative-input(1010)
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(76) @ 15: uvm_test_top.bmu_env.scoreboard [fail] A=2    B=335    Result=0    error=0 | RefA=2    RefB=335    RefResult=1    error=0
 
 
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 20: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 20: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = -1610770425 , B = -1701603344
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 25: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = -1610770425, B = -1701603344 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 25: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result = -1701603344, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 25: uvm_test_top.bmu_env.scoreboard [fail] A=-1610770425    B=-1701603344    Result=-1701603344    error=0 | RefA=-1610770425    RefB=-1701603344    RefResult=0    error=0
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_ctz_seq.sv(32) @ 15: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_ctz_seq] Standard CTZ with alternative-input(1010)
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(76) @ 25: uvm_test_top.bmu_env.scoreboard [fail] A=2    B=335    Result=335    error=0 | RefA=2    RefB=335    RefResult=1    error=0
 
 
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 30: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 30: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = 1352761442 , B = -1779991324
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 35: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = 1352761442, B = -1779991324 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 35: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result = -1779991324, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 35: uvm_test_top.bmu_env.scoreboard [fail] A=1352761442    B=-1779991324    Result=-1779991324    error=0 | RefA=1352761442    RefB=-1779991324    RefResult=1    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 40: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 40: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = 1503091946 , B = 151460305
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 45: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = 1503091946, B = 151460305 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 45: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =   151460305, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 45: uvm_test_top.bmu_env.scoreboard [fail] A=1503091946    B=151460305    Result=151460305    error=0 | RefA=1503091946    RefB=151460305    RefResult=1    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 50: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 50: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = -1159778913 , B = -202215752
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 55: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = -1159778913, B = -202215752 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 55: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =  -202215752, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 55: uvm_test_top.bmu_env.scoreboard [fail] A=-1159778913    B=-202215752    Result=-202215752    error=0 | RefA=-1159778913    RefB=-202215752    RefResult=0    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 60: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 60: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = 1954083457 , B = 169081963
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 65: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = 1954083457, B = 169081963 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 65: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =   169081963, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 65: uvm_test_top.bmu_env.scoreboard [fail] A=1954083457    B=169081963    Result=169081963    error=0 | RefA=1954083457    RefB=169081963    RefResult=0    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 70: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 70: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = -2040222831 , B = -262982074
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 75: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = -2040222831, B = -262982074 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 75: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =  -262982073, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 75: uvm_test_top.bmu_env.scoreboard [fail] A=-2040222831    B=-262982074    Result=-262982073    error=0 | RefA=-2040222831    RefB=-262982074    RefResult=0    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 80: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 80: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = -257795890 , B = 1314793498
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 85: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = -257795890, B = 1314793498 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 85: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =  1314793498, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 85: uvm_test_top.bmu_env.scoreboard [fail] A=-257795890    B=1314793498    Result=1314793498    error=0 | RefA=-257795890    RefB=1314793498    RefResult=1    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_seq.sv(38) @ 90: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_seq] Standard CTZ random inputs
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_driver.sv(33) @ 90: uvm_test_top.bmu_env.agent.bmu_driver [bmu_driver] Driver: signals driven to the DUT are: A = -1288570311 , B = 804341480
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(67) @ 95: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: input signals are sent to the DUT are:A = -1288570311, B = 804341480 , Reset = 1
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_monitor.sv(57) @ 95: uvm_test_top.bmu_env.agent.bmu_monitor [bmu_monitor] Monitor: the output signals recived from the DUT are: Result =   804341481, Error = 0
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(70) @ 95: uvm_test_top.bmu_env.scoreboard [fail] A=-1288570311    B=804341480    Result=804341481    error=0 | RefA=-1288570311    RefB=804341480    RefResult=0    error=0
-
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv(51) @ 100: uvm_test_top [ctz_test] End of testcase
-UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 100: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-xmsim: *N,COVNSM: (File: ./bmu_subscriber.sv, Line: 41):(Time: 100 NS + 34) Sampling of covergroup type "bmu_subscriber::bmuCoverage" (./bmu_subscriber.sv:7), referred in the statement is not enabled. As a result, coverage methods get_coverage(), get_inst_coverage(), get_hitcount(), and get_inst_hitcount() will return 0 coverage.
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_subscriber.sv(41) @ 100: uvm_test_top.bmu_env.subscriber [bmu_subscriber] coverage:           0
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv(58) @ 25: uvm_test_top [ctz_test] End of testcase
+UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 25: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+xmsim: *N,COVNSM: (File: ./bmu_subscriber.sv, Line: 41):(Time: 25 NS + 36) Sampling of covergroup type "bmu_subscriber::bmuCoverage" (./bmu_subscriber.sv:7), referred in the statement is not enabled. As a result, coverage methods get_coverage(), get_inst_coverage(), get_hitcount(), and get_inst_hitcount() will return 0 coverage.
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_subscriber.sv(41) @ 25: uvm_test_top.bmu_env.subscriber [bmu_subscriber] coverage:           0
 
 --- UVM Report catcher Summary ---
 
@@ -303,20 +117,21 @@ Number of caught UVM_WARNING reports :    0
 --- UVM Report Summary ---
 
 ** Report counts by severity
-UVM_INFO :   54
-UVM_WARNING :    0
+UVM_INFO :   13
+UVM_WARNING :    1
 UVM_ERROR :    0
 UVM_FATAL :    0
 ** Report counts by id
+[CBUNREG]     1
+[CDNS_EXT]     2
 [RNTST]     1
 [TEST_DONE]     1
-[bmu_driver]    10
-[bmu_monitor]    20
+[UVMTOP]     1
 [bmu_subscriber]     1
 [ctz_test]     1
-[fail]    10
-[random_seq]    10
-Simulation complete via $finish(1) at time 100 NS + 49
+[fail]     2
+[pass]     1
+[random_ctz_seq]     3
+Simulation complete via $finish(1) at time 25 NS + 51
 /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
-xcelium> exit
-TOOL:	xrun(64)	24.03-s013: Exiting on Sep 02, 2025 at 19:30:21 EEST  (total: 00:00:02)
+xcelium> 

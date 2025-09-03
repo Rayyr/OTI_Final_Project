@@ -1,0 +1,6 @@
+#e1(03Sep2025:14:55:13): source ./xcelium.d/env.d/env.history.03Sep2025_14_55_13
+s1(03Sep2025:14:55:13):  xrun -sv Bit_Manibulation_Unit.sv 
+#e2(03Sep2025:14:56:48): source ./xcelium.d/env.d/env.history.03Sep2025_14_56_48
+s2(03Sep2025:14:56:48):  xrun -sv Bit_Manibulation_Unit.sv 
+#e3(03Sep2025:14:57:31): source ./xcelium.d/env.d/env.history.03Sep2025_14_57_31
+s3(03Sep2025:14:57:31):  xrun -sv Bit_Manibulation_Unit.sv 
