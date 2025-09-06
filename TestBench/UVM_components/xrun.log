@@ -1,31 +1,221 @@
 xrun(64): 24.03-s013: (c) Copyright 1995-2025 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	24.03-s013: Started on Sep 03, 2025 at 15:50:50 EEST
+TOOL:	xrun(64)	24.03-s013: Started on Sep 05, 2025 at 23:54:10 EEST
 xrun
 	-uvm
-	-access +rwc
-	-debug_opt verisium_interactive
-		-source_debug
-		-lwdgen
-		-classlinedebug
-		-enable_tpe
-		-gui
-		-verisium
-		-ext_src_info
-		-ext_macro_src_info
 	top.sv
-	-s
-xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+Recompiling... reason: file './sequences/bit_manipulation_ops_sequences/slt/conflict_reading_with_slt_seq.sv' is newer than expected.
+	expected: Fri Sep  5 23:34:06 2025
+	actual:   Fri Sep  5 23:53:32 2025
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d
+file: top.sv
+ #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
+          |
+xmvlog: *W,NOINUF (/home/Trainee6/final_project/Design/Bit_Manibulation_Unit.sv,8|10): `include directive not isolated on its own line [16.5(IEEE)].
+ #(`include  "/home/Trainee6/final_project/Design/packages&libs/rtl_param.sv")
+                                                                            |
+xmvlog: *W,NOINUF (/home/Trainee6/final_project/Design/Bit_Manibulation_Unit.sv,8|76): `include directive not isolated on its own line [16.5(IEEE)].
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF88; b_in==32'hFFFFFFF6;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,43|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h00000021; b_in==32'h00000034;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,52|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h00000096; b_in==32'hFFFFFF38;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,61|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h00000096;b_in==32'h00000096;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,71|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,84|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'h000000D2;b_in==32'h00000060;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,97|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFFA6;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,109|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'h0000005A;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,121|15): function called as a task without void'().
+   seq.randomize() with {valid_in==1;csr_ren_in==1'b0;a_in==32'hFFFFFF9C;b_in==32'hFFFFFF9C;}; 
+               |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv,133|15): function called as a task without void'().
+    seq.randomize() with {valid_in==1;csr_ren_in==1'b1;};
+                |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_reading_with_slt_seq.sv,36|16): function called as a task without void'().
+    seq.randomize() with {valid_in==1;csr_ren_in==1'b0;};
+                |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_slt_data_path_seq.sv,37|16): function called as a task without void'().
+    seq.randomize() with {valid_in==1;csr_ren_in==1'b0;};
+                |
+xmvlog: *W,FUNTSK (/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_slt_data_path_seq.sv,48|16): function called as a task without void'().
+      referenceModelBMU(prod,exp_res,exp_err);//or directlly we can modify the prod's result_ff pf course basd to valid_in since to the comments i wrote in the notepad**
+                      |
+xmvlog: *W,BADTIF (/home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv,58|22): a function cannot enable a task [10.3.4(IEEE)].
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 13
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Top level design units:
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		rtl_pkg
+		$unit_0x64683678
+		rvdffsc
+		rvdffs_fpga
+		rvdffsc_fpga
+		rvdfflie
+		rvdffppe
+		rvdffie
+		rvdffiee
+		rvsyncss
+		rvsyncss_fpga
+		rvlsadder
+		rvtwoscomp
+		rvfindfirst1
+		rvfindfirst1hot
+		rvmaskandmatch
+		rvrangecheck
+		rveven_paritygen
+		rveven_paritycheck
+		rvecc_encode
+		rvecc_decode
+		rvecc_encode_64
+		rvecc_decode_64
+		clockhdr
+		rvoclkhdr
+		top
+   .ap(intf.ap),
+             |
+xmelab: *W,CUVMPW (./top.sv,136|13): port sizes differ in port connection(56/42) for the instance(top) .
+      referenceModelBMU(prod,exp_res,exp_err);//or directlly we can modify the prod's result_ff pf course basd to valid_in since to the comments i wrote in the notepad**
+                      |
+xmelab: *W,NOTVFW (./bmu_scoreboard.sv,58|22): Expecting a SystemVerilog void function name. The task 'referenceModelBMU' should be made a void function, not a task. Currently this is treated as a warning for backward compatibility but be aware that calling a task in this context is illegal SystemVerilog and can give unpredictable results. Further, this condition may be treated as an error in the future.
+initializeAp(refPacket.ap);
+           |
+xmelab: *W,NOTVFW (./bmu_scoreboard.sv,166|11): Expecting a SystemVerilog void function name. The task 'initializeAp' should be made a void function, not a task. Currently this is treated as a warning for backward compatibility but be aware that calling a task in this context is illegal SystemVerilog and can give unpredictable results. Further, this condition may be treated as an error in the future.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.rvbradder:sv <0x0652bedc>
+			streams:   4, words:  1530
+		worklib.rvdff:sv <0x18b84383>
+			streams:   3, words:   746
+		worklib.rvdffs:sv <0x5f2fc9fd>
+			streams:   2, words:   543
+		worklib.rvdffe:sv <0x2e8a5c70>
+			streams:   1, words:   339
+		worklib.rvdff:sv <0x67994f45>
+			streams:   3, words:   796
+		worklib.rvdffs:sv <0x2334cc08>
+			streams:   2, words:   575
+		worklib.rvdffpcie:sv <0x457235e5>
+			streams:   1, words:   357
+		worklib.Bit_Manipulation_Unit:sv <0x65facbdd>
+			streams:  56, words: 29382
+		worklib.rvoclkhdr:sv <0x5f276d09>
+			streams:   0, words:     0
+		worklib.clockhdr:sv <0x5c4495f6>
+			streams:   0, words:     0
+		worklib.rvecc_decode_64:sv <0x365d3346>
+			streams:   0, words:     0
+		worklib.rvecc_encode_64:sv <0x4e284db8>
+			streams:   0, words:     0
+		worklib.rvecc_encode:sv <0x1d244d35>
+			streams:   0, words:     0
+		worklib.rveven_paritycheck:sv <0x0eb2817b>
+			streams:   0, words:     0
+		worklib.rveven_paritygen:sv <0x48da5566>
+			streams:   0, words:     0
+		worklib.rvrangecheck:sv <0x0ca117b9>
+			streams:   0, words:     0
+		worklib.rvfindfirst1hot:sv <0x4d55aab9>
+			streams:   0, words:     0
+		worklib.rvfindfirst1:sv <0x67f36e57>
+			streams:   0, words:     0
+		worklib.rvlsadder:sv <0x770531b9>
+			streams:   0, words:     0
+		worklib.rvdffs:sv <0x6b745deb>
+			streams:   2, words:  1137
+		worklib.rvdff_fpga:sv <0x3bbce2c3>
+			streams:   1, words:   588
+		worklib.rvsyncss_fpga:sv <0x62c6eec9>
+			streams:   3, words:  1083
+		worklib.rvdff:sv <0x2f734e4d>
+			streams:   3, words:  1485
+		worklib.rvsyncss:sv <0x7d068642>
+			streams:   3, words:  1083
+		worklib.rvdffiee:sv <0x28d9e403>
+			streams:   3, words:   861
+		worklib.rvdff:sv <0x3784cb54>
+			streams:   3, words:   790
+		worklib.rvdffs:sv <0x3c2fd723>
+			streams:   2, words:   572
+		worklib.rvdffie:sv <0x428ed2f4>
+			streams:   3, words:   836
+		worklib.rvdff:sv <0x375976d4>
+			streams:   3, words:  1045
+		worklib.rvdffs:sv <0x1667bb92>
+			streams:   2, words:   745
+		worklib.rvdffppe:sv <0x687d3f5d>
+			streams:   1, words:   339
+		worklib.rvdff:sv <0x0b1ddea8>
+			streams:   3, words:   796
+		worklib.rvdffs:sv <0x65e66fc4>
+			streams:   2, words:   575
+		worklib.rvdfflie:sv <0x6c4d4c84>
+			streams:   1, words:   290
+		worklib.rvdffsc_fpga:sv <0x16451c96>
+			streams:   3, words:   629
+		worklib.rvdffs:sv <0x4fa428c8>
+			streams:   2, words:   590
+		worklib.rvdffs_fpga:sv <0x0961d19a>
+			streams:   2, words:   435
+		worklib.rvdff:sv <0x7b32f509>
+			streams:   3, words:   747
+		worklib.rvdffsc:sv <0x4837057f>
+			streams:   3, words:   920
+		worklib.rvtwoscomp:sv <0x0f6e91b1>
+			streams:   0, words:     0
+		worklib.rvmaskandmatch:sv <0x7740a3ce>
+			streams:   0, words:     0
+		worklib.rvecc_decode:sv <0x35747539>
+			streams:   0, words:     0
+		worklib.bmu_interface:sv <0x57847336>
+			streams: 654, words: 874019
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                        Instances  Unique
+		Modules:                       53      31
+		Interfaces:                     1       1
+		Verilog packages:               5       5
+		Registers:                 14,147  10,409
+		Scalar wires:                 224       -
+		Expanded wires:                62       3
+		Vectored wires:               110       -
+		Named events:                   4      12
+		Always blocks:                 20       8
+		Initial blocks:               293     159
+		Clocking blocks:                2       2
+		Clocking items:                18      18
+		Parallel blocks:               26      27
+		Cont. assignments:             53     168
+		Pseudo assignments:            61       -
+		Assertions:                     2       2
+		Covergroup Instances:           0       1
+		Compilation units:              1       1
+		SV Class declarations:        202     315
+		SV Class specializations:     389     389
+		Process Clocks:                13       2
+	Writing initial simulation snapshot: worklib.rvdffsc:sv
+Loading snapshot worklib.rvdffsc:sv .................... Done
 SVSEED default: 1
-xcelium> 
 xcelium> source /usr/cadence/installs/xcelium/XCELIUM2403/tools/xcelium/files/xmsimrc
 xcelium> source /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/files/tcl/uvm_sim.tcl
-xcelium> 
--------------------------------------
-Relinquished control to Verisium Debug...
-# Restoring simulation environment...
-xcelium> input -quiet .reinvoke.sim
-xcelium> file delete .reinvoke.sim
-xcelium> uvm_message -stop_on_error ON
+xcelium> run
 ----------------------------------------------------------------
 CDNS-UVM-1.1d (24.03-s013)
 (C) 2007-2013 Mentor Graphics Corporation
@@ -46,63 +236,31 @@ CDNS-UVM-1.1d (24.03-s013)
 
       (Specify +UVM_NO_RELNOTES to turn off this notice)
 
-UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/cdns_tcl.svh(885) @ 0: reporter [CDNS_EXT] STOP_ON_ERROR
-UVM_WARNING @ 0: reporter [CBUNREG] Callback cdns_catcher cannot be registered with object (*) because callback type  is not registered with object type uvm_object
-xcelium> uvm_message -stop_on_error ON
-UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/cdns_tcl.svh(885) @ 0: reporter [CDNS_EXT] STOP_ON_ERROR
-xcelium> 
-xcelium> run
-UVM_INFO @ 0: reporter [RNTST] Running test ctz_test...
-UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
-------------------------------------------------------------------
-Name                       Type                        Size  Value
-------------------------------------------------------------------
-uvm_test_top               ctz_test                    -     @2647
-  bmu_env                  bmu_environment             -     @2711
-    agent                  bmu_agent                   -     @2742
-      bmu_driver           bmu_driver                  -     @3544
-        rsp_port           uvm_analysis_port           -     @3643
-        seq_item_port      uvm_seq_item_pull_port      -     @3594
-      bmu_monitor          bmu_monitor                 -     @3623
-        monitor_port       uvm_analysis_port           -     @3722
-      bmu_sequencer        bmu_sequencer               -     @2907
-        rsp_export         uvm_analysis_export         -     @2965
-        seq_item_export    uvm_seq_item_pull_imp       -     @3513
-        arbitration_queue  array                       0     -    
-        lock_queue         array                       0     -    
-        num_last_reqs      integral                    32    'd1  
-        num_last_rsps      integral                    32    'd1  
-    scoreboard             bmu_scoreboard              -     @2772
-      analysis_fifo        uvm_tlm_analysis_fifo #(T)  -     @3827
-        analysis_export    uvm_analysis_imp            -     @4069
-        get_ap             uvm_analysis_port           -     @4019
-        get_peek_export    uvm_get_peek_imp            -     @3923
-        put_ap             uvm_analysis_port           -     @3971
-        put_export         uvm_put_imp                 -     @3875
-      exp                  uvm_analysis_imp            -     @3797
-    subscriber             bmu_subscriber              -     @2814
-      analysis_imp         uvm_analysis_imp            -     @2863
-------------------------------------------------------------------
+UVM_INFO @ 0: reporter [RNTST] Running test slt_test...
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_slt_data_path_seq.sv(22) @ 0: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq2 [conflict_slt_data_path_seq] Conflict signed-slt data path by activation other operation once at a time
 
-stop -create -name Randomize -randomize
-Created stop Randomize
-
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_ctz_seq.sv(32) @ 0: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_ctz_seq] Standard CTZ with alternative-input(1010)
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(69) @ 5: uvm_test_top.bmu_env.scoreboard [pass] A=x    B=x  Result=0   error=0 | RefA=0  RefB=0   RefResult=0   error=0
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(74) @ 25: uvm_test_top.bmu_env.scoreboard [fail] Mismatch: refA=-156959598 refB=331091122 _________ dut_a=-156959598 dut_b=331091122 ________ refResult=0/1 _________ DUTResult=-117447083/0
 
 
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_ctz_seq.sv(32) @ 5: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_ctz_seq] Standard CTZ with alternative-input(1010)
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(76) @ 15: uvm_test_top.bmu_env.scoreboard [fail] A=2    B=335    Result=0    error=0 | RefA=2    RefB=335    RefResult=1    error=0
+
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_slt_data_path_seq.sv(44) @ 25: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq2 [conflict_slt_data_path_seq] Conflict unsigned-slt data path by activation other operation once at a time
+
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(74) @ 35: uvm_test_top.bmu_env.scoreboard [fail] Mismatch: refA=1324806336 refB=-1757136468 _________ dut_a=1324806336 dut_b=-1757136468 ________ refResult=0/1 _________ DUTResult=-71562062/0
 
 
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/ctz/random_ctz_seq.sv(32) @ 15: uvm_test_top.bmu_env.agent.bmu_sequencer@@seq5 [random_ctz_seq] Standard CTZ with alternative-input(1010)
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(76) @ 25: uvm_test_top.bmu_env.scoreboard [fail] A=2    B=335    Result=335    error=0 | RefA=2    RefB=335    RefResult=1    error=0
+
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(74) @ 45: uvm_test_top.bmu_env.scoreboard [fail] Mismatch: refA=-6629094 refB=-2032424545 _________ dut_a=-6629094 dut_b=-2032424545 ________ refResult=0/1 _________ DUTResult=-1211745875/0
 
 
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv(58) @ 25: uvm_test_top [ctz_test] End of testcase
-UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 25: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
-xmsim: *N,COVNSM: (File: ./bmu_subscriber.sv, Line: 41):(Time: 25 NS + 36) Sampling of covergroup type "bmu_subscriber::bmuCoverage" (./bmu_subscriber.sv:7), referred in the statement is not enabled. As a result, coverage methods get_coverage(), get_inst_coverage(), get_hitcount(), and get_inst_hitcount() will return 0 coverage.
-UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_subscriber.sv(41) @ 25: uvm_test_top.bmu_env.subscriber [bmu_subscriber] coverage:           0
+
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_scoreboard.sv(74) @ 55: uvm_test_top.bmu_env.scoreboard [fail] Mismatch: refA=143701410 refB=-1385838752 _________ dut_a=143701410 dut_b=-1385838752 ________ refResult=0/1 _________ DUTResult=-2032424545/0
+
+
+
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv(53) @ 55: uvm_test_top [slt_test] End of testcase
+UVM_INFO /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_objection.svh(1268) @ 55: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+xmsim: *N,COVNSM: (File: ./bmu_subscriber.sv, Line: 41):(Time: 55 NS + 41) Sampling of covergroup type "bmu_subscriber::bmuCoverage" (./bmu_subscriber.sv:7), referred in the statement is not enabled. As a result, coverage methods get_coverage(), get_inst_coverage(), get_hitcount(), and get_inst_hitcount() will return 0 coverage.
+UVM_INFO /home/Trainee6/final_project/TestBench/UVM_components/bmu_subscriber.sv(41) @ 55: uvm_test_top.bmu_env.subscriber [bmu_subscriber] coverage:           0
 
 --- UVM Report catcher Summary ---
 
@@ -117,21 +275,18 @@ Number of caught UVM_WARNING reports :    0
 --- UVM Report Summary ---
 
 ** Report counts by severity
-UVM_INFO :   13
-UVM_WARNING :    1
+UVM_INFO :   10
+UVM_WARNING :    0
 UVM_ERROR :    0
 UVM_FATAL :    0
 ** Report counts by id
-[CBUNREG]     1
-[CDNS_EXT]     2
 [RNTST]     1
 [TEST_DONE]     1
-[UVMTOP]     1
 [bmu_subscriber]     1
-[ctz_test]     1
-[fail]     2
-[pass]     1
-[random_ctz_seq]     3
-Simulation complete via $finish(1) at time 25 NS + 51
+[conflict_slt_data_path_seq]     2
+[fail]     4
+[slt_test]     1
+Simulation complete via $finish(1) at time 55 NS + 56
 /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/sv/src/base/uvm_root.svh:457     $finish;
-xcelium> 
+xcelium> exit
+TOOL:	xrun(64)	24.03-s013: Exiting on Sep 05, 2025 at 23:54:11 EEST  (total: 00:00:01)

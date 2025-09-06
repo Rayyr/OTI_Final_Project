@@ -3,9 +3,4 @@
 // Do not modify this file
 //
 -uvm
--access
-+rwc
--debug_opt
-verisium_interactive
 top.sv
--s

@@ -1,4 +1,0 @@
-Connected to dc:orionvtech.orionvtech.com:36993
-xmsim ida_probe -wave -wave_probe_args {top.dut.error top.dut.b_in top.dut.valid_in top.dut.a_in top.dut.result_ff top.dut.clk top.dut.rst_l top.dut.ap top.dut.scan_mode top.dut.csr_rddata_in top.dut.csr_ren_in}
-xmsim run
-xmsim run

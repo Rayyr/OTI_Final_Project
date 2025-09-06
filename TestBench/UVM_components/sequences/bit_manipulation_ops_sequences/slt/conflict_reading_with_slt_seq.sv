@@ -19,6 +19,8 @@ class conflict_reading_with_slt_seq extends uvm_sequence #(bmu_sequence_item);
     //declare&initialize sequence_item ( packet , transaction .. )
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
     
+    `uvm_info(get_type_name(), ("Conflict SLT data path by activation the read signal once at a time\n"), UVM_NONE) 
+    repeat(3) begin// =================passed
     //disable the reset input
     seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
@@ -33,9 +35,8 @@ class conflict_reading_with_slt_seq extends uvm_sequence #(bmu_sequence_item);
 
     seq.randomize() with {valid_in==1;csr_ren_in==1'b1;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-    `uvm_info(get_type_name(), ("Conflict SLT data path by activation the read signal once at a time"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
-
+    end
     
   endtask
   

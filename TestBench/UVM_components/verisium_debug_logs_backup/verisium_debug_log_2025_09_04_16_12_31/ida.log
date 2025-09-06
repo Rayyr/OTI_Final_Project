@@ -1,0 +1,44 @@
+19:12:15:1215 [important] [FelixStartLevel] WARN  - InfoSource version is empty in getMajorMinorVersion()
+19:12:15:1215 [important] [FelixStartLevel] WARN  - InfoSource version not found!! skipping relevant version checks
+19:12:15:1215 [important] [FelixStartLevel] INFO  - xmsim gcc version is 9.3.0
+19:12:15:1215 [important] [FelixStartLevel] INFO  - indago gcc version is 9.3.0
+19:12:15:1215 [important] [TangoTaskManager-3] WARN  - An Indago Snapshot/LWD was not loaded. Scripting API functionality may be impacted.
+19:12:16:1216 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-5] INFO  - query: 
+19:12:26:1226 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+19:12:26:1226 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+19:12:26:1226 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+19:12:26:1226 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+19:12:30:1230 [user_actions] [AWT-EventQueue-0] DEBUG - Keep current (GUFIQuestionDialog$1)
+	dialog = restoreLayoutsDialog (GUFIQuestionDialog)
+
+19:12:31:1231 [important] [TangoTaskManager-3] INFO  - ScriptingActivator while loop has finished
+19:12:32:1232 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+19:12:43:1243 [user_actions] [AWT-EventQueue-0] DEBUG - topsSignalDefaultAction (TopsSignalTypeFilter$1)
+
+19:12:44:1244 [user_actions] [AWT-EventQueue-0] DEBUG - signalTypeFilterInterface Signals (TopsSignalTypeFilter$3)
+
+19:12:51:1251 [user_actions] [AWT-EventQueue-0] DEBUG - Waveform (GSLSendVariablesToWaveAction)
+	source = designTopsTreeTable_topsSignalsTreeTable
+	entities[11] = 
+		[0] top.dut.csr_ren_in
+		[1] top.dut.a_in[31:0]
+		..
+		[5] top.dut.csr_rddata_in[31:0]
+		..
+		[9] top.dut.scan_mode
+		[10] top.dut.valid_in
+
+19:12:53:1253 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+19:12:53:1253 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+19:12:54:1254 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+19:13:19:1319 [user_actions] [AWT-EventQueue-0] DEBUG - Hexadecimal (SetRadixAction)
+	selected = top.dut.a_in[31:0]
+

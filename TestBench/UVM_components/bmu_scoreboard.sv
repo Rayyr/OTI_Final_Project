@@ -2,17 +2,11 @@ class bmu_scoreboard extends uvm_scoreboard ;
 
 
 bmu_sequence_item refPacket;//from reference model ( expected one ) 
-bmu_sequence_item actualPacket;//from DUT 
-bmu_sequence_item qPackets[$];
-
+bmu_sequence_item cmd_pipe[$];
  
-
- // Analysis FIFO for receiving transactions from the monitor
-    uvm_tlm_analysis_fifo #(bmu_sequence_item) analysis_fifo;
-    
     // Analysis port to connect to the monitor
-    uvm_analysis_imp #(bmu_sequence_item, bmu_scoreboard) exp;
-
+uvm_analysis_imp #(bmu_sequence_item, bmu_scoreboard) exp;
+ int unsigned latency = 1;
 
 //register it into uvm factory
 `uvm_component_utils(bmu_scoreboard)
@@ -29,21 +23,67 @@ endfunction
 function void build_phase(uvm_phase phase);
 super.build_phase(phase);
 exp=new("exp",this);
-     analysis_fifo = new("analysis_fifo", this);
+/*
+    int unsigned tmp_latency;
+        // Optional: allow overriding latency from test/env
+    if (uvm_config_db#(int unsigned)::get(this, "", "latency", tmp_latency))
+      latency = tmp_latency;*/
 endfunction
 
 //override write()
-function void write(bmu_sequence_item seq);
-      if(!analysis_fifo.try_put(seq)) begin
-            // This is a non-blocking error check, although with a
-            // UVM analysis FIFO, this case is highly unlikely as it's
-            // typically unbounded.
-            `uvm_fatal("TRY_PUT_FAILED", "Failed to put transaction into the analysis FIFO.")
-        end
+function void write(bmu_sequence_item actualPacket);
+ 
+ //actualPacket : from DUT(via the Monitor)
+   //  bmu_sequence_item in_tr;
+    bmu_sequence_item prod;
+    logic signed [31:0]  exp_res;
+    bit   exp_err;
+
+  
+    
+    initializeRefPacket(actualPacket,refPacket);
+    cmd_pipe.push_back(refPacket);
+
+  
+
+    if (cmd_pipe.size() > 2) begin // here cmd_pipe stores the history of the inputs and outputs
+     prod = cmd_pipe.pop_front(); // here we pop the front of the pipe
+    
+/*
+      $display("ref-a=%0d",prod.a_in);
+      $display("ref-b=%0d",prod.b_in);
+      $display("res=%0d",prod.result_ff);*/
+
+//compute the expected result based to my reference model 
+      referenceModelBMU(prod,exp_res,exp_err);//or directlly we can modify the prod's result_ff pf course basd to valid_in since to the comments i wrote in the notepad**
+      
+      if(prod.valid_in==1) begin 
+        prod.result_ff=exp_res;
+        prod.error=exp_err; end
+
+      else begin 
+        prod.result_ff=0; 
+        prod.error=0; end//that means currentlly we cant assign the result to ff since it is not valid in (logically)!
+ 
+  
+      // here we check if the expected result is correct
+      if ( (actualPacket.result_ff !==  prod.result_ff) || (actualPacket.error !=  prod.error) ) begin
+        `uvm_info("fail",
+          $sformatf("Mismatch: refA=%0d refB=%0d _________ dut_a=%0d dut_b=%0d ________ refResult=%0d/%0b _________ DUTResult=%0d/%0b\n\n\n",
+                    prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in,prod.result_ff,  prod.error,
+                    actualPacket.result_ff, actualPacket.error),UVM_LOW)
+      end
+      else `uvm_info("pass",
+          $sformatf("Match: refA=%0d refB=%0d  _________ dut_a=%0d  dut_b=%0d _________ refResult=%0d/%0b _________ DUTResult=%0d/%0b\n\n\n",
+                    prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in, prod.result_ff,  prod.error,
+                    actualPacket.result_ff, actualPacket.error),UVM_LOW)
+   end
+  // else $display("hi");
+
 endfunction
 
 
-
+/*
 //override run_phase()
 task run_phase(uvm_phase phase);
 super.run_phase(phase);
@@ -81,7 +121,7 @@ end
 
 
 endtask
-
+*/
 
 
 function bit if_equel(bmu_sequence_item actualP,bmu_sequence_item refP);
@@ -108,10 +148,10 @@ endfunction
 
 
 //the reference model of my BMU
-task referenceModelBMU(bmu_sequence_item refPacket);
+task referenceModelBMU(bmu_sequence_item refPacket,output logic signed [31:0]  exp_res,output bit er);
 
-refPacket.error=1'b0;
-refPacket.result_ff=32'b0;
+er=1'b0;
+exp_res=32'b0;
 
  //logic signed [31:0] res;
  
@@ -131,9 +171,9 @@ refPacket.csr_rddata_in=32'b0;
 
 
 //outputs
-refPacket.result_ff=32'b0;
+exp_res=32'b0;
 //no error since no operation !
-refPacket.error=1'b0;
+er=1'b0;
 end
 
 
@@ -147,11 +187,11 @@ else if (refPacket.csr_ren_in==1'b1) begin
  //based to reference model i make the reading op with the higheset pririty , iow if ap.sub=1 and read=1 then read will be 
  //be considered the base not the sub
  `uvm_error("bmu_scoreboard","illegal op feilds value while you are attemping to perform reading op with writing operation !!")
-refPacket.error=1'b1;
+er=1'b1;
  end
 
 else 
- refPacket.result_ff=refPacket.csr_rddata_in;
+exp_res=refPacket.csr_rddata_in;
 
 end
 
@@ -162,8 +202,8 @@ end
 else begin  
 
 //the default , only they will be considered in case of invalid combination ( not defined op ), others it will be overridden
-refPacket.result_ff=32'b0;
-refPacket.error=1'b1;
+exp_res=32'b0;
+er=1'b1;
 
 //logical operations
 //OR op
@@ -174,14 +214,14 @@ if(refPacket.ap.lor==1'b1) begin
  if ($countones(refPacket.ap)>1) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-refPacket.error=1'b0;
+er=1'b0;
  end
  
 
 //valid OR !
  else begin
-refPacket.result_ff=refPacket.a_in | refPacket.b_in;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in | refPacket.b_in;
+er=1'b0;
  end
 
 end//OR_op
@@ -195,15 +235,15 @@ else if(refPacket.ap.lor==1'b1 && refPacket.ap.zbb==1'b1) begin
  if ($countones(refPacket.ap)>2) begin // if(refPacket.lor && )
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+ er=1'b0;
  end
 
  
 
 //valid Inverted_OR !
  else begin
-refPacket.result_ff=refPacket.a_in | ~refPacket.b_in;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in | ~refPacket.b_in;
+er=1'b0;
  end
 
 end//Inverted_OR_op
@@ -218,15 +258,15 @@ else if(refPacket.ap.lxor==1'b1) begin
  if ($countones(refPacket.ap)>1) begin 
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+  er=1'b0;
  end
 
  
 
 //valid XOR !
  else begin
-refPacket.result_ff=refPacket.a_in ^ refPacket.b_in;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in ^ refPacket.b_in;
+er=1'b0;
  end
 
 end//XOR_op
@@ -242,14 +282,14 @@ else if(refPacket.ap.lxor==1'b1 && refPacket.ap.zbb==1'b1) begin
  if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+  er=1'b0;
  end
 
  
 //valid Inverted_XOR !
  else begin
-refPacket.result_ff=refPacket.a_in ^ ~refPacket.b_in;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in ^ ~refPacket.b_in;
+er=1'b0;
  end
 
 end//Inverted_XOR_op
@@ -265,15 +305,15 @@ else if(refPacket.ap.srl==1'b1) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-refPacket.error=1'b0;
+er=1'b0;
  end
 
  
 
 //valid SRL !
  else begin
-refPacket.result_ff=refPacket.a_in >> refPacket.b_in[4:0];
-refPacket.error=1'b0;
+exp_res=refPacket.a_in >> refPacket.b_in[4:0];
+er=1'b0;
  end
 
 end//SRL_op
@@ -289,15 +329,15 @@ else if(refPacket.ap.sra==1'b1) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
- refPacket.error=1'b0;
+er=1'b0;
  end
 
  
 
 //valid SRA !
  else begin
-refPacket.result_ff=refPacket.a_in >>> refPacket.b_in[4:0];
-refPacket.error=1'b0;
+exp_res=refPacket.a_in >>> refPacket.b_in[4:0];
+er=1'b0;
  end
 
 end//SRA_op
@@ -314,7 +354,7 @@ else if(refPacket.ap.ror==1'b1) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+ er=1'b0;
  end
 
  
@@ -329,8 +369,8 @@ else if(refPacket.ap.ror==1'b1) begin
 
 
   end
-refPacket.result_ff=refPacket.a_in ;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in ;
+er=1'b0;
  end
 
 end//ROR_op
@@ -348,7 +388,7 @@ else if(refPacket.ap.binv==1'b1) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-refPacket.error=1'b0;
+er=1'b0;
  end
 
  
@@ -356,8 +396,8 @@ refPacket.error=1'b0;
 //valid BINV !
 else begin
 refPacket.a_in[refPacket.b_in[4:0]]=~refPacket.a_in[refPacket.b_in[4:0]];
-refPacket.result_ff=refPacket.a_in ;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in ;
+er=1'b0;
 end
 
 end//BINV_op
@@ -374,21 +414,21 @@ else if(refPacket.ap.sh2add==1'b1 && refPacket.ap.zba==1'b1) begin
  if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+er=1'b0;
  end
 
  
 
 //valid SH2ADD !
 else begin 
-refPacket.result_ff=(refPacket.a_in<<2)+refPacket.b_in ;
-refPacket.error=1'b0;
+exp_res=(refPacket.a_in<<2)+refPacket.b_in ;
+er=1'b0;
 
 if(refPacket.a_in>0 && refPacket.b_in>0 && refPacket.result_ff<0)
-refPacket.error=1'b1;
+er=1'b1;
 
 if(refPacket.a_in<0 && refPacket.b_in<0 && refPacket.result_ff>0)
-refPacket.error=1'b1;
+er=1'b1;
 end
  
  end//SH2ADD_op
@@ -400,35 +440,38 @@ end
 
 //arithmatic operations 
 //SUB op (a-b)
-else if(refPacket.ap.sub==1'b1) begin 
+else if(refPacket.ap.sub==1'b1 && refPacket.ap.zba==1) begin 
 
+/*
 //invalid SUB!
  if (refPacket.ap.zba != 0) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feild ZBA value !")
-  refPacket.error=1'b1;
+er=1'b1;
  end
+*/
+
 
 //invalid
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
  if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+ er=1'b0;
  end
 
  
 
 //valid SUB !
 else begin
-refPacket.result_ff=refPacket.a_in - refPacket.b_in ;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in - refPacket.b_in ;
+er=1'b0;
 
 if(refPacket.a_in>0 && refPacket.b_in<0 && refPacket.result_ff<0) // (+) - (-) = (-) error!
-refPacket.error=1'b1;
+er=1'b1;
 
 if(refPacket.a_in<0 && refPacket.b_in>0 && refPacket.result_ff>0) // (-) - (+) = (+) error!
-refPacket.error=1'b1;
+er=1'b1;
 end
 
  // (-) - (-) == (-) + (+) no error 
@@ -448,14 +491,14 @@ else if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1) begin
  if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+er=1'b0;
  end
  
 
 //valid SLT signed!
 else begin 
-refPacket.result_ff=refPacket.a_in < refPacket.b_in?32'h00000001:32'h00000000 ;
-refPacket.error=1'b0;
+exp_res=refPacket.a_in < refPacket.b_in?32'h00000001:32'h00000000 ;
+er=1'b0;
 end
   
  end//SLT_op signed
@@ -472,14 +515,14 @@ else if(refPacket.ap.slt==1'b1 && refPacket.ap.sub==1'b1 && refPacket.ap.unsign=
  if ($countones(refPacket.ap)>3) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-refPacket.error=1'b0;
+er=1'b0;
  end
 
  
 
 //valid SLT unsigned!
 else begin 
-    refPacket.error=1'b0;
+   er=1'b0;
 /*
     if(refPacket.a_in[31]==refPacket.b_in[31]) begin //same MSP == same sign bit !
        refPacket.result_ff=refPacket.a_in < refPacket.b_in?32'h00000001:32'h00000000 ;
@@ -493,7 +536,7 @@ else begin
     end*/
 
    // refPacket= $unsigned(refPacket.a_in) < $unsigned(refPacket.b_in) ? 32'h00000001:32'h00000000;
-    refPacket.result_ff = ($unsigned(refPacket.a_in) < $unsigned(refPacket.b_in)) ? 32'h00000001 : 32'h00000000;
+    exp_res= ($unsigned(refPacket.a_in) < $unsigned(refPacket.b_in)) ? 32'h00000001 : 32'h00000000;
 
 
 end
@@ -513,15 +556,15 @@ else if(refPacket.ap.ctz==1'b1) begin
  //other feilds are being activated once !
   
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-refPacket.error=1'b0;
+er=1'b0;
  end
 
  
 
 //valid CTZ!
 else begin 
-    refPacket.error=1'b0;
-    refPacket.result_ff=count_trailing_zeroes(refPacket.a_in);
+   er=1'b0;
+    exp_res=count_trailing_zeroes(refPacket.a_in);
     //or simplly we cand make like this 
     //if(a[0]==1) result=0 else ctz(a);
 end
@@ -569,15 +612,15 @@ else if(refPacket.ap.cpop==1'b1) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-   refPacket.error=1'b0;
+   er=1'b0;
  end
 
  
 
 //valid CPOP!
 else begin 
-    refPacket.error=1'b0;
-    refPacket.result_ff=count_ones(refPacket.a_in);
+  er=1'b0;
+   exp_res=count_ones(refPacket.a_in);
 end
   
 end//CPOP_op
@@ -594,17 +637,17 @@ else if(refPacket.ap.siext_b==1'b1) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
- refPacket.error=1'b0;
+er=1'b0;
  end
 
  
 
 //valid siext_b!
 else begin 
-    refPacket.error=1'b0;
+   er=1'b0;
     //extract the a[7]
    // logic [23:0]a_23_0={24{refPacket.a_in[7]}};
-    refPacket.result_ff= {{24{refPacket.a_in[7]}},refPacket.a_in[7:0]};
+  exp_res= {{24{refPacket.a_in[7]}},refPacket.a_in[7:0]};
 end
   
 end//siext_b_op
@@ -617,20 +660,23 @@ end//siext_b_op
 //MAX ( signed op ) 
 else if(refPacket.ap.max==1'b1 && refPacket.ap.sub==1'b1) begin 
 
+
 //invalid MAX!
 //since ap is packed struct so we can use struct litreal {} symbol , otherwise if it is unpacked we cant!
  if ($countones(refPacket.ap)>2) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+ 
+ er=1'b0;
  end
 
  
 
 //valid MAX!
 else begin 
-    refPacket.error=1'b0;
-    refPacket.result_ff= refPacket.a_in > refPacket.b_in ? refPacket.a_in : refPacket.b_in;
+    er=1'b0;
+   exp_res= refPacket.a_in > refPacket.b_in ? refPacket.a_in : refPacket.b_in;
+   
 end
   
 end//MAX_op
@@ -647,15 +693,15 @@ else if(refPacket.ap.pack==1'b1 ) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+  er=1'b0;
  end
 
  
 
 //valid Pack!
 else begin 
-    refPacket.error=1'b0;
-    refPacket.result_ff= {refPacket.b_in[15:0], refPacket.a_in[15:0]};
+   er=1'b0;
+   exp_res = {refPacket.b_in[15:0], refPacket.a_in[15:0]};
 end
   
 end//Pack_op
@@ -672,7 +718,7 @@ else if(refPacket.ap.grev==1'b1 ) begin
  if ($countones(refPacket.ap)>1) begin
  //other feilds are being activated once !
  `uvm_error("bmu_scoreboard","illegal op feilds value since other feilds are bing activated once !")
-  refPacket.error=1'b0;
+  er=1'b0;
  end
 
  
@@ -680,11 +726,11 @@ else if(refPacket.ap.grev==1'b1 ) begin
 //valid grev!
 else begin 
 
-    refPacket.error=1'b0;
+   er=1'b0;
 
-    if(refPacket.b_in[4:0] != 24) refPacket.result_ff=32'b0;
+    if(refPacket.b_in[4:0] != 24) exp_res=32'b0;
     else 
-    refPacket.result_ff= {refPacket.a_in[7:0], refPacket.a_in[15:8], refPacket.a_in[23:16], refPacket.a_in[31:24]};
+    exp_res= {refPacket.a_in[7:0], refPacket.a_in[15:8], refPacket.a_in[23:16], refPacket.a_in[31:24]};
 end
   
 end//grev_op
@@ -806,28 +852,15 @@ endtask
 function void initializeRefPacket(bmu_sequence_item actualP,bmu_sequence_item refP);
 
 //i make ternary operator to check x state 
-/*
-  refP.a_in= actualP.a_in===32'bx?0:actualP.a_in;
-  refP.b_in=actualP.b_in===32'bx?0:actualP.b_in;
-  refP.rst_l=actualP.rst_l===1'bx?0:actualP.rst_l;
-  refP.ap=actualP.ap;
-  refP.valid_in=actualP.valid_in===1'bx?0:actualP.valid_in;
-  refP.scan_mode=actualP.scan_mode===1'bx?0:actualP.scan_mode;
-  refP.csr_ren_in=actualP.csr_ren_in===1'bx?0:actualP.csr_ren_in;
-  refP.csr_rddata_in=actualP.csr_rddata_in===32'bx?0:actualP.csr_rddata_in;*/
-
 
   refP.a_in = has_unknown_bits(actualP.a_in) ? 0 : actualP.a_in;
-refP.b_in = has_unknown_bits(actualP.b_in) ? 0 : actualP.b_in;
-refP.rst_l = has_unknown_bits(actualP.rst_l) ? 0 : actualP.rst_l;
+  refP.b_in = has_unknown_bits(actualP.b_in) ? 0 : actualP.b_in;
+  refP.rst_l = has_unknown_bits(actualP.rst_l) ? 0 : actualP.rst_l;
   refP.ap=actualP.ap;
   refP.valid_in = has_unknown_bits(actualP.valid_in) ? 0 : actualP.valid_in;
   refP.scan_mode = has_unknown_bits(actualP.scan_mode) ? 0 : actualP.scan_mode;
   refP.csr_rddata_in = has_unknown_bits(actualP.csr_rddata_in) ? 0 : actualP.csr_rddata_in;
   refP.csr_ren_in = has_unknown_bits(actualP.csr_ren_in) ? 0 : actualP.csr_ren_in;
-
-
-
 
 return;
 

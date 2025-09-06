@@ -8,17 +8,14 @@
 /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d
 -sv_lib
 /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmpli.so
--enable_tpe
--gui
--VERISIUM
--TCL
 -MESSAGES
+-RUN
 -SV_LIB
 /usr/cadence/installs/xcelium/XCELIUM2403/tools/methodology/UVM/CDNS-1.1d/additions/sv/lib/64bit/libuvmdpi.so
 +EMGRLOG
 xrun.log
 -XLSTIME
-1756903850
+1757105650
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.24.03.d
@@ -32,4 +29,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun(64)	24.03-s013"
 -XLNAME
-./xcelium.d/run.lnx8664.24.03.d/orionvtech_2491887
+./xcelium.d/run.lnx8664.24.03.d/orionvtech_74654

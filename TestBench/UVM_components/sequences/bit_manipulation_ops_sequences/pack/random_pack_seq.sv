@@ -30,9 +30,9 @@ repeat (3) begin
    seq.ap.pack=1'b1;
  
  
-   seq.randomize() with { csr_ren_in==1'b0;valid_in==1;}; 
+   seq.randomize() with {csr_ren_in==1'b0;valid_in==1;}; 
    start_item(seq); 
-   `uvm_info(get_type_name(), ("Standard PACK random inputs"), UVM_NONE) 
+  // `uvm_info(get_type_name(), ("Standard PACK random inputs"), UVM_NONE) 
    finish_item(seq); 
 
  

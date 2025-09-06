@@ -19,6 +19,8 @@ class conflict_slt_data_path_seq extends uvm_sequence #(bmu_sequence_item);
     //declare&initialize sequence_item ( packet , transaction .. )
     bmu_sequence_item seq=bmu_sequence_item::type_id::create("seq");
     
+    `uvm_info(get_type_name(), ("Conflict signed-slt data path by activation other operation once at a time\n"), UVM_NONE) 
+    repeat(3) begin
     //disable the reset input
     seq.rst_l.rand_mode(0);
     seq.rst_l=1'b1;
@@ -34,18 +36,19 @@ class conflict_slt_data_path_seq extends uvm_sequence #(bmu_sequence_item);
 
     seq.randomize() with {valid_in==1;csr_ren_in==1'b0;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-    `uvm_info(get_type_name(), ("Conflict signed-slt data path by activation other operation once at a time"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
-
+    end
     
 
+
+  `uvm_info(get_type_name(), ("Conflict unsigned-slt data path by activation other operation once at a time\n"), UVM_NONE) 
+repeat(3) begin
 //unsigned
     seq.ap.unsign=1'b1;
-    seq.randomize() with {csr_ren_in==1'b0;};
+    seq.randomize() with {valid_in==1;csr_ren_in==1'b0;};
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface
-    `uvm_info(get_type_name(), ("Conflict unsigned-slt data path by activation other operation once at a time"), UVM_NONE) 
     finish_item(seq);//notify that the process is finished ( sent sucessfully to the DUT )
-
+end
 
   endtask
   

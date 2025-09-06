@@ -1,0 +1,484 @@
+Picked up _JAVA_OPTIONS:  -XX:+ExitOnOutOfMemoryError -XX:OnOutOfMemoryError="touch /home/Trainee6/final_project/TestBench/UVM_components/verisium_debug_logs/out_of_memory_error" 
+CompilerOracle: exclude javax/swing/text/GlyphView.getBreakSpot
+CompilerOracle: exclude javax/swing/text/GlyphView.getBreakSpot
+Loading libdac.so from /usr/cadence/installs/VERISIUMDEBUG2409/tools/lib/64bit/libdac.so
+
+
+in 'SimConnect::_simcontrolConnect' overlay db = null, overlayH = 0, is valid = false, operation = dapOpen, duFilename = null, isLiveSim = true
+in 'JDACTBDataProvider::notifyLiveConnectionDB', sessionId = 0
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::notifyLiveConnectionDB', 'dbH' represents 'simulator' db.
+PPEAttributes values:
+    isAutofetch = false
+    isPersistentSources = false
+    isXprop = false
+    cdslib = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+    snapshot = worklib.rvdffsc:sv
+    workdir = /home/Trainee6/final_project/TestBench/UVM_components
+    xceliumDir = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d
+    rundDir = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d
+    bits = 64
+    cds_implicit_tmpdir = 
+    cds_alternate_tmpdir = 
+    du_agent = 
+    lwddir = /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+    cds_alternate_cdslib = 
+    elab_options = 
+    found = true
+    nclsRun = false
+    includeCdslib = true
+    nclsOpts =  -snapshot -cdslib /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib -64
+    isMceMode = false
+    isMceInvolved = false
+    mceLshmDbPath = 
+    lowPowerInformationAvailable = false
+    hasLshmFile = false
+    workdirIsDirectory = true
+    hasOverlayRelatedInformation = true
+    cds_implicit_tmplib = 
+    cds_other_implicit_tmplibs = 
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+### Excluding compile: javax.swing.text.GlyphView::getBreakSpot
+
+
+GOT COMMAND: 
+
+
+
+Scripting Service started, listening on port 41097...
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'SimConnect::loadSnapshotHelper', database handle 'ida' is already associated with the design. skipping process creation.
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #857
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+in 'SimConnect::loadSnapshotHelper', database handle 'ida' is already associated with the design. skipping process creation.
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #857
+
+End of dump DB Order
+
+
+17:40:09:409 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException:java.lang.NullPointerException
+17:40:09:409 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException
+java.lang.NullPointerException: null
+	at com.cadence.indago.waveform2.ui.ZoomAxis.collectUserDataFromEntity(ZoomAxis.java:803) ~[?:?]
+	at com.cadence.indago.waveform2.ui.WaveTraceViewBase.refreshTrace(WaveTraceViewBase.java:319) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis.refreshTrace(ZoomAxis.java:551) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis$3.doWork(ZoomAxis.java:181) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:40:12:4012 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException:java.lang.NullPointerException
+17:40:12:4012 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException
+java.lang.NullPointerException: null
+	at com.cadence.indago.waveform2.ui.ZoomAxis.collectUserDataFromEntity(ZoomAxis.java:803) ~[?:?]
+	at com.cadence.indago.waveform2.ui.WaveTraceViewBase.refreshTrace(WaveTraceViewBase.java:319) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis.refreshTrace(ZoomAxis.java:551) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis$3.doWork(ZoomAxis.java:181) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+in 'SimConnect::loadSnapshotHelper', database handle 'ida' is already associated with the design. skipping process creation.
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #857
+
+End of dump DB Order
+
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+
+
+File Opener Information:
+dbNameToHandleMap:
+dbPtrToNameMap:
+
+End of File Opener Information
+
+
+
+
+SimConnect Information:
+processMap:
+
+End of SimConnect Information
+
+
+
+
+JDACTBDataProvider Information:
+dbHandleMap:
+Key: simulator, Value = simulator::
+openedDBs:
+Key: simulator, Value: null, Order ID: 1
+
+End of JDACTBDataProvider Information
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #48
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #48
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #48
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.:java.lang.NullPointerException
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.
+java.lang.NullPointerException: null
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.processTargetIO(CustomConsoleThread.java:374) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.handleEvent(CustomConsoleThread.java:104) ~[?:?]
+	at com.cadence.ufi.common.UFIBaseEvent.lambda$wrapWithOriginalEventFix$0(UFIBaseEvent.java:113) ~[?:?]
+	at com.cadence.ufi.common.EventHandlerWithExceptionLogging.handleEvent(EventHandlerWithExceptionLogging.java:23) ~[?:?]
+	at org.apache.felix.eventadmin.impl.handler.EventHandlerProxy.sendEvent(EventHandlerProxy.java:412) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.SyncDeliverTasks.execute(SyncDeliverTasks.java:118) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.handler.EventAdminImpl.sendEvent(EventAdminImpl.java:114) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.security.EventAdminSecurityDecorator.sendEvent(EventAdminSecurityDecorator.java:96) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at com.cadence.ufi.common.UFIBaseEvent.sendEvent(UFIBaseEvent.java:63) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$InputCommand.execute(InputCmd.java:329) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:207) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:195) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.:java.lang.NullPointerException
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.
+java.lang.NullPointerException: null
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.processTargetIO(CustomConsoleThread.java:374) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.handleEvent(CustomConsoleThread.java:104) ~[?:?]
+	at com.cadence.ufi.common.UFIBaseEvent.lambda$wrapWithOriginalEventFix$0(UFIBaseEvent.java:113) ~[?:?]
+	at com.cadence.ufi.common.EventHandlerWithExceptionLogging.handleEvent(EventHandlerWithExceptionLogging.java:23) ~[?:?]
+	at org.apache.felix.eventadmin.impl.handler.EventHandlerProxy.sendEvent(EventHandlerProxy.java:412) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.SyncDeliverTasks.execute(SyncDeliverTasks.java:118) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.handler.EventAdminImpl.sendEvent(EventAdminImpl.java:114) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.security.EventAdminSecurityDecorator.sendEvent(EventAdminSecurityDecorator.java:96) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at com.cadence.ufi.common.UFIBaseEvent.sendEvent(UFIBaseEvent.java:63) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$InputCommand.execute(InputCmd.java:378) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:207) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:195) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:44:42:4442 [general] [TangoTaskManager-2] ERROR - un-handled exception in GUFITaskExecutor.handleException:java.lang.NullPointerException
+17:44:42:4442 [general] [TangoTaskManager-2] ERROR - un-handled exception in GUFITaskExecutor.handleException
+java.lang.NullPointerException: null
+	at tcl.lang.Var.lookupVar(Var.java:567) ~[?:?]
+	at tcl.lang.Var.setVar(Var.java:975) ~[?:?]
+	at tcl.lang.Interp.setVar(Interp.java:1169) ~[?:?]
+	at tcl.lang.Interp.setErrorCode(Interp.java:2969) ~[?:?]
+	at tcl.lang.Interp.ready(Interp.java:863) ~[?:?]
+	at tcl.lang.Parser.evalObjv(Parser.java:791) ~[?:?]
+	at tcl.lang.Parser.eval2(Parser.java:1223) ~[?:?]
+	at tcl.lang.Interp.eval(Interp.java:2294) ~[?:?]
+	at tcl.lang.Interp.eval(Interp.java:2271) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$InputCommand.execute(InputCmd.java:364) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:207) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:195) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+
+
+File Opener Information:
+dbNameToHandleMap:
+dbPtrToNameMap:
+
+End of File Opener Information
+
+
+
+
+SimConnect Information:
+processMap:
+
+End of SimConnect Information
+
+
+
+
+JDACTBDataProvider Information:
+dbHandleMap:
+Key: simulator, Value = simulator::
+openedDBs:
+Key: simulator, Value: null, Order ID: 1
+
+End of JDACTBDataProvider Information
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #53
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #53
+
+End of dump DB Order
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #53
+
+End of dump DB Order
+
+
+17:45:27:4527 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [Thread-343] ERROR - caught exception inside handleEvent Method.:java.lang.NullPointerException
+17:45:27:4527 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [Thread-343] ERROR - caught exception inside handleEvent Method.
+java.lang.NullPointerException: null
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.processTargetIO(CustomConsoleThread.java:374) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.handleEvent(CustomConsoleThread.java:104) ~[?:?]
+	at com.cadence.ufi.common.UFIBaseEvent.lambda$wrapWithOriginalEventFix$0(UFIBaseEvent.java:113) ~[?:?]
+	at com.cadence.ufi.common.EventHandlerWithExceptionLogging.handleEvent(EventHandlerWithExceptionLogging.java:23) ~[?:?]
+	at org.apache.felix.eventadmin.impl.handler.EventHandlerProxy.sendEvent(EventHandlerProxy.java:412) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.SyncDeliverTasks.execute(SyncDeliverTasks.java:118) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.AsyncDeliverTasks$TaskExecuter.run(AsyncDeliverTasks.java:132) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at EDU.oswego.cs.dl.util.concurrent.PooledExecutor$Worker.run(Unknown Source) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+
+
+
+Dump DB Order:
+Strap design: simulator #8
+
+End of dump DB Order
+
+
+
+
+File Opener Information:
+dbNameToHandleMap:
+dbPtrToNameMap:
+
+End of File Opener Information
+
+
+
+
+SimConnect Information:
+processMap:
+
+End of SimConnect Information
+
+
+
+
+JDACTBDataProvider Information:
+dbHandleMap:
+Key: simulator, Value = simulator::
+openedDBs:
+Key: simulator, Value: null, Order ID: 1
+
+End of JDACTBDataProvider Information
+
+
+in 'JDACTBDataProvider::openDBInner', dbPath = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #55
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #55
+
+End of dump DB Order
+
+
+
+
+**** found lwd dir to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/worklib/rvdffsc/sv
+
+
+
+**** found cdslib to be: /home/Trainee6/final_project/TestBench/UVM_components/xcelium.d/run.d/cds.lib
+
+in 'JDACTBDataProvider::openDBInner', dbPath = ida.db/ida.shm, getExplicitLwdFlag() = null
+
+Dump DB Order:
+Strap design: simulator #8
+ --> ida, path = /home/Trainee6/final_project/TestBench/UVM_components/ida.db/ida.shm/ida.dsn, type = 4, #55
+
+End of dump DB Order
+
+
+
+
+*** shutting down gRPC server since JVM is shutting down
+*** server shut down

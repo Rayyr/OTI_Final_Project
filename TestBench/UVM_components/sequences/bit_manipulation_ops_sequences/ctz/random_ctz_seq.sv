@@ -27,9 +27,9 @@ repeat(3) begin
  
 
    //a_in=101010(alternative input)  result=1
-   seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==2;seq.rst_l==1'b1;b_in==335;}; 
+   seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==5;seq.rst_l==1;b_in==335;}; 
    start_item(seq); //t=0
-   `uvm_info(get_type_name(), ("Standard CTZ with alternative-input(1010)"), UVM_NONE) 
+//  `uvm_info(get_type_name(), ("Standard CTZ with alternative-input(1010)"), UVM_NONE) 
    finish_item(seq);//t=0
     //t=0 drives the inputs to DUT via driver (negedge) ------
     //t=5 sample the outputs from the dut via the monitor ( poedge)

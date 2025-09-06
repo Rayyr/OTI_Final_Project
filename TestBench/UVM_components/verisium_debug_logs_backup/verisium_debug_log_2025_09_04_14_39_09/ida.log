@@ -1,0 +1,310 @@
+17:38:53:3853 [important] [FelixStartLevel] WARN  - InfoSource version is empty in getMajorMinorVersion()
+17:38:53:3853 [important] [FelixStartLevel] WARN  - InfoSource version not found!! skipping relevant version checks
+17:38:53:3853 [important] [FelixStartLevel] INFO  - xmsim gcc version is 9.3.0
+17:38:53:3853 [important] [FelixStartLevel] INFO  - indago gcc version is 9.3.0
+17:38:53:3853 [important] [TangoTaskManager-3] WARN  - An Indago Snapshot/LWD was not loaded. Scripting API functionality may be impacted.
+17:38:54:3854 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-5] INFO  - query: 
+17:39:03:393 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:39:03:393 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:39:04:394 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:39:04:394 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:39:08:398 [user_actions] [AWT-EventQueue-0] DEBUG - Keep current (GUFIQuestionDialog$1)
+	dialog = restoreLayoutsDialog (GUFIQuestionDialog)
+
+17:39:08:398 [important] [TangoTaskManager-3] INFO  - ScriptingActivator while loop has finished
+17:39:09:399 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:39:36:3936 [user_actions] [AWT-EventQueue-0] DEBUG - topsSignalDefaultAction (TopsSignalTypeFilter$1)
+
+17:39:37:3937 [user_actions] [AWT-EventQueue-0] DEBUG - signalTypeFilterInterface Signals (TopsSignalTypeFilter$3)
+
+17:39:43:3943 [user_actions] [AWT-EventQueue-0] DEBUG - Waveform (GSLSendVariablesToWaveAction)
+	source = designTopsTreeTable_topsSignalsTreeTable
+	entities[11] = 
+		[0] top.dut.a_in[31:0]
+		[1] top.dut.ap
+		..
+		[5] top.dut.csr_ren_in
+		..
+		[9] top.dut.scan_mode
+		[10] top.dut.valid_in
+
+17:39:45:3945 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:39:45:3945 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:39:45:3945 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:39:45:3945 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:40:09:409 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException:java.lang.NullPointerException
+17:40:09:409 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException
+java.lang.NullPointerException: null
+	at com.cadence.indago.waveform2.ui.ZoomAxis.collectUserDataFromEntity(ZoomAxis.java:803) ~[?:?]
+	at com.cadence.indago.waveform2.ui.WaveTraceViewBase.refreshTrace(WaveTraceViewBase.java:319) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis.refreshTrace(ZoomAxis.java:551) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis$3.doWork(ZoomAxis.java:181) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:40:12:4012 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException:java.lang.NullPointerException
+17:40:12:4012 [general] [TangoTaskManager-0] ERROR - un-handled exception in GUFITaskExecutor.handleException
+java.lang.NullPointerException: null
+	at com.cadence.indago.waveform2.ui.ZoomAxis.collectUserDataFromEntity(ZoomAxis.java:803) ~[?:?]
+	at com.cadence.indago.waveform2.ui.WaveTraceViewBase.refreshTrace(WaveTraceViewBase.java:319) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis.refreshTrace(ZoomAxis.java:551) ~[?:?]
+	at com.cadence.indago.waveform2.ui.ZoomAxis$3.doWork(ZoomAxis.java:181) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:40:20:4020 [user_actions] [AWT-EventQueue-0] DEBUG - dndaction (GUFITransferHandler$DnDAction)
+	source = designTopsTreeTable (GSLDesignTopsTreeTable)
+	target = WAVEFORMTreeTable (GTXWaveTreeTable)
+	entity = top.intf
+
+17:40:24:4024 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:40:24:4024 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:40:24:4024 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:40:24:4024 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:41:16:4116 [user_actions] [AWT-EventQueue-0] DEBUG - dndaction (GUFITransferHandler$DnDAction)
+	source = designTopsTreeTable (GSLDesignTopsTreeTable)
+	target = WAVEFORMTreeTable (GTXWaveTreeTable)
+	entity = top.intf.driver_cb
+
+17:42:33:4233 [user_actions] [AWT-EventQueue-0] DEBUG - dndaction (GUFITransferHandler$DnDAction)
+	source = designTopsTreeTable (GSLDesignTopsTreeTable)
+	target = designTopsTreeTable (GSLDesignTopsTreeTable)
+	entity = top.intf.monitor_cb
+
+17:44:36:4436 [user_actions] [AWT-EventQueue-0] DEBUG - reinvokeSimulator (GSLReinvokeSimulatorAction)
+
+17:44:39:4439 [user_actions] [AWT-EventQueue-0] DEBUG - Yes (GUFIQuestionDialog$1)
+	dialog = reinvokeSimulatorDialog (GSLReinvokeSimulatorDialog)
+
+17:44:41:4441 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:44:41:4441 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.:java.lang.NullPointerException
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.
+java.lang.NullPointerException: null
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.processTargetIO(CustomConsoleThread.java:374) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.handleEvent(CustomConsoleThread.java:104) ~[?:?]
+	at com.cadence.ufi.common.UFIBaseEvent.lambda$wrapWithOriginalEventFix$0(UFIBaseEvent.java:113) ~[?:?]
+	at com.cadence.ufi.common.EventHandlerWithExceptionLogging.handleEvent(EventHandlerWithExceptionLogging.java:23) ~[?:?]
+	at org.apache.felix.eventadmin.impl.handler.EventHandlerProxy.sendEvent(EventHandlerProxy.java:412) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.SyncDeliverTasks.execute(SyncDeliverTasks.java:118) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.handler.EventAdminImpl.sendEvent(EventAdminImpl.java:114) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.security.EventAdminSecurityDecorator.sendEvent(EventAdminSecurityDecorator.java:96) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at com.cadence.ufi.common.UFIBaseEvent.sendEvent(UFIBaseEvent.java:63) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$InputCommand.execute(InputCmd.java:329) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:207) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:195) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.:java.lang.NullPointerException
+17:44:42:4442 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [TangoTaskManager-2] ERROR - caught exception inside handleEvent Method.
+java.lang.NullPointerException: null
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.processTargetIO(CustomConsoleThread.java:374) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.handleEvent(CustomConsoleThread.java:104) ~[?:?]
+	at com.cadence.ufi.common.UFIBaseEvent.lambda$wrapWithOriginalEventFix$0(UFIBaseEvent.java:113) ~[?:?]
+	at com.cadence.ufi.common.EventHandlerWithExceptionLogging.handleEvent(EventHandlerWithExceptionLogging.java:23) ~[?:?]
+	at org.apache.felix.eventadmin.impl.handler.EventHandlerProxy.sendEvent(EventHandlerProxy.java:412) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.SyncDeliverTasks.execute(SyncDeliverTasks.java:118) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.handler.EventAdminImpl.sendEvent(EventAdminImpl.java:114) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.security.EventAdminSecurityDecorator.sendEvent(EventAdminSecurityDecorator.java:96) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at com.cadence.ufi.common.UFIBaseEvent.sendEvent(UFIBaseEvent.java:63) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$InputCommand.execute(InputCmd.java:378) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:207) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:195) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:44:42:4442 [general] [TangoTaskManager-2] ERROR - un-handled exception in GUFITaskExecutor.handleException:java.lang.NullPointerException
+17:44:42:4442 [general] [TangoTaskManager-2] ERROR - un-handled exception in GUFITaskExecutor.handleException
+java.lang.NullPointerException: null
+	at tcl.lang.Var.lookupVar(Var.java:567) ~[?:?]
+	at tcl.lang.Var.setVar(Var.java:975) ~[?:?]
+	at tcl.lang.Interp.setVar(Interp.java:1169) ~[?:?]
+	at tcl.lang.Interp.setErrorCode(Interp.java:2969) ~[?:?]
+	at tcl.lang.Interp.ready(Interp.java:863) ~[?:?]
+	at tcl.lang.Parser.evalObjv(Parser.java:791) ~[?:?]
+	at tcl.lang.Parser.eval2(Parser.java:1223) ~[?:?]
+	at tcl.lang.Interp.eval(Interp.java:2294) ~[?:?]
+	at tcl.lang.Interp.eval(Interp.java:2271) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$InputCommand.execute(InputCmd.java:364) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:207) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.cmd.InputCmd$1.doWork(InputCmd.java:195) ~[?:?]
+	at com.cadence.ufi.gui.worker.GUFITaskExecutor.doInBackground(GUFITaskExecutor.java:121) ~[?:?]
+	at javax.swing.SwingWorker$1.call(SwingWorker.java:295) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at javax.swing.SwingWorker.run(SwingWorker.java:334) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[?:1.8.0_202-CDS_2021_b1]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:44:42:4442 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-3] INFO  - query: 
+17:44:42:4442 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:44:42:4442 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:44:42:4442 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-6] INFO  - query: 
+17:44:44:4444 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-15] INFO  - query: 
+17:44:44:4444 [user_actions] [AWT-EventQueue-0] DEBUG - ok (TopsSignalTypeFilterDialog$5)
+
+17:44:46:4446 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:44:46:4446 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:44:46:4446 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:44:48:4448 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:44:48:4448 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:44:48:4448 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:45:21:4521 [user_actions] [AWT-EventQueue-0] DEBUG - reinvokeSimulator (GSLReinvokeSimulatorAction)
+
+17:45:24:4524 [user_actions] [AWT-EventQueue-0] DEBUG - Yes (GUFIQuestionDialog$1)
+	dialog = reinvokeSimulatorDialog (GSLReinvokeSimulatorDialog)
+
+17:45:26:4526 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:45:26:4526 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:45:27:4527 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [Thread-343] ERROR - caught exception inside handleEvent Method.:java.lang.NullPointerException
+17:45:27:4527 [com.cadence.ufi.common.EventHandlerWithExceptionLogging] [Thread-343] ERROR - caught exception inside handleEvent Method.
+java.lang.NullPointerException: null
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.processTargetIO(CustomConsoleThread.java:374) ~[?:?]
+	at com.cadence.indago.jtcldataprovider.CustomConsoleThread.handleEvent(CustomConsoleThread.java:104) ~[?:?]
+	at com.cadence.ufi.common.UFIBaseEvent.lambda$wrapWithOriginalEventFix$0(UFIBaseEvent.java:113) ~[?:?]
+	at com.cadence.ufi.common.EventHandlerWithExceptionLogging.handleEvent(EventHandlerWithExceptionLogging.java:23) ~[?:?]
+	at org.apache.felix.eventadmin.impl.handler.EventHandlerProxy.sendEvent(EventHandlerProxy.java:412) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.SyncDeliverTasks.execute(SyncDeliverTasks.java:118) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at org.apache.felix.eventadmin.impl.tasks.AsyncDeliverTasks$TaskExecuter.run(AsyncDeliverTasks.java:132) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at EDU.oswego.cs.dl.util.concurrent.PooledExecutor$Worker.run(Unknown Source) ~[framework-util-15.22-SNAPSHOT.jar:?]
+	at java.lang.Thread.run(Thread.java:748) ~[?:1.8.0_202-CDS_2021_b1]
+17:45:27:4527 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-5] INFO  - query: 
+17:45:27:4527 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:45:27:4527 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:45:27:4527 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-7] INFO  - query: 
+17:45:28:4528 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-10] INFO  - query: 
+17:45:29:4529 [user_actions] [AWT-EventQueue-0] DEBUG - ok (TopsSignalTypeFilterDialog$5)
+
+17:45:30:4530 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:45:30:4530 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:45:30:4530 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:47:41:4741 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:47:41:4741 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:47:41:4741 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:47:56:4756 [user_actions] [AWT-EventQueue-0] DEBUG - Waveform (GSLSendVariablesToWaveAction)
+	source = designTopsTreeTable_topsSignalsTreeTable
+	entities[11] = 
+		[0] top.dut.b_in[31:0]
+		[1] top.dut.a_in[31:0]
+		..
+		[5] top.dut.csr_ren_in
+		..
+		[9] top.dut.scan_mode
+		[10] top.dut.valid_in
+
+17:47:58:4758 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:47:58:4758 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:47:58:4758 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:48:06:486 [user_actions] [AWT-EventQueue-0] DEBUG - reinvokeSimulator (GSLReinvokeSimulatorAction)
+
+17:48:08:488 [user_actions] [AWT-EventQueue-0] DEBUG - Yes (GUFIQuestionDialog$1)
+	dialog = reinvokeSimulatorDialog (GSLReinvokeSimulatorDialog)
+
+17:48:09:489 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:48:10:4810 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:48:11:4811 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-26] INFO  - query: 
+17:48:11:4811 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:48:11:4811 [user_actions] [AWT-EventQueue-0] DEBUG - refreshSchematicAttributes (SchematicActionsManager$24)
+
+17:48:11:4811 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-2] INFO  - query: 
+17:48:12:4812 [com.cadence.smartlog.bl.common.SLUtils] [TangoTaskManager-22] INFO  - query: 
+17:48:12:4812 [user_actions] [AWT-EventQueue-0] DEBUG - ok (TopsSignalTypeFilterDialog$5)
+
+17:48:28:4828 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:48:28:4828 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:48:28:4828 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:48:51:4851 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:48:54:4854 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:06:496 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:07:497 [user_actions] [AWT-EventQueue-0] DEBUG - run (GSLInteractiveRunPanel$3)
+
+17:49:07:497 [user_actions] [AWT-EventQueue-0] DEBUG - RUN_FORWARD (GSLDebugStepAction)
+
+17:49:07:497 [user_actions] [AWT-EventQueue-0] DEBUG - LiveSimulationRefreshWaveform (GSLLiveSimulationRefreshWaveformAction)
+
+17:49:20:4920 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:22:4922 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:23:4923 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:26:4926 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:26:4926 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:28:4928 [user_actions] [AWT-EventQueue-0] DEBUG - toggleBreakpoint (GSLBaseBreakPointEnabledRenderer$2)
+
+17:49:34:4934 [user_actions] [AWT-EventQueue-0] DEBUG - OK (GUFIQuestionDialog$1)
+	dialog = confirmExitDlg (GUFIQuestionDialog)
+

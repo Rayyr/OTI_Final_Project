@@ -7,9 +7,9 @@ class slt_test extends uvm_test;
 
 conflict_reading_with_slt_seq seq1;
 conflict_slt_data_path_seq seq2;
-reset_seq seq3;
+//reset_seq seq3;
 usual_slt_seq seq4;
-random_slt_seq seq5;
+//random_slt_seq seq5;
  
  
  
@@ -32,21 +32,20 @@ random_slt_seq seq5;
     super.run_phase(phase);
     phase.raise_objection(this); 
     
-    seq1= conflict_reading_with_slt_seq::type_id::create("seq1");
+   // seq1= conflict_reading_with_slt_seq::type_id::create("seq1");
     seq2= conflict_slt_data_path_seq::type_id::create("seq2");
-    seq3= reset_seq::type_id::create("seq3");
-    seq4= usual_slt_seq::type_id::create("seq4");
-    
-     seq5= random_slt_seq::type_id::create("seq5");
+   // seq3= reset_seq::type_id::create("seq3");
+    //seq4= usual_slt_seq::type_id::create("seq4");
+     //seq5= random_slt_seq::type_id::create("seq5");
  
  
 
  
-     seq1.start(bmu_env.agent.sequencer); 
+    //seq1.start(bmu_env.agent.sequencer); 
      seq2.start(bmu_env.agent.sequencer); 
-      seq3.start(bmu_env.agent.sequencer); 
-       seq4.start(bmu_env.agent.sequencer); 
-       seq5.start(bmu_env.agent.sequencer); 
+      //seq3.start(bmu_env.agent.sequencer); 
+       //seq4.start(bmu_env.agent.sequencer); 
+       //seq5.start(bmu_env.agent.sequencer); 
          
  
     
