@@ -78,7 +78,7 @@ function void write(bmu_sequence_item actualPacket);
                     actualPacket.result_ff, actualPacket.error),UVM_LOW)
       end
       else `uvm_info("pass",
-          $sformatf("Match: refA=%0d refB=%0d  _________ dut_a=%0d  dut_b=%0d _________ refResult=%0d/%0b _________ DUTResult=%0d/%0b\n\n\n",
+          $sformatf("Match: refA=%0b refB=%0d  _________ dut_a=%0b  dut_b=%0d _________ refResult=%0b/%0b _________ DUTResult=%0b/%0b\n\n\n",
                     prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in, prod.result_ff,  prod.error,
                     actualPacket.result_ff, actualPacket.error),UVM_LOW)
    end

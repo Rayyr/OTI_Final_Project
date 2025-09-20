@@ -128,7 +128,7 @@ import uvm_pkg::*;
 
 
 
-
+/*
 //sequences binv
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/binv/conflict_binv_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/binv/conflict_reading_with_binv_seq.sv"
@@ -136,7 +136,7 @@ import uvm_pkg::*;
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/binv/toggle_lsb_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/binv/toggle_msb_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/binv/usual_binv_seq.sv"
-
+*/
 
 
 
@@ -155,7 +155,7 @@ import uvm_pkg::*;
 
 
 
-/*
+
 //sequences sh2add
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/conflict_reading_with_sh2add_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/conflict_sh2add_data_path_seq.sv"
@@ -165,7 +165,7 @@ import uvm_pkg::*;
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/usual_sh2add_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/random_sh2add_seq.sv"
 
-*/
+
 
 
 
@@ -234,9 +234,9 @@ import uvm_pkg::*;
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/csr_tests/csr_read_tests.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/binv/binv_tests.sv"
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/binv/binv_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/ror/ror_tests.sv"
-//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/sh2add/sh2add_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/sh2add/sh2add_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/sra/sra_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/srl/srl_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/logical_tests/or/or_tests.sv"
@@ -289,9 +289,9 @@ end
 //run_test("siext_b_test");
 //run_test("slt_test");
 //run_test("csr_read_test");
-run_test("binv_test");
+//run_test("binv_test");
 //run_test("ror_test");
-//run_test("sh2add_test");
+run_test("sh2add_test");
 //run_test("sra_test");
 //run_test("srl_test");
 //run_test("or_test");

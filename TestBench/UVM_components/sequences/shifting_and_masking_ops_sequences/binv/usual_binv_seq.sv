@@ -32,9 +32,9 @@ class usual_binv_seq extends uvm_sequence #(bmu_sequence_item);
    
 
 
-   `uvm_info(get_type_name(), ("Standard BINV with random inputs "), UVM_NONE) //passed
-repeat(20)begin
-         seq.randomize() with {valid_in==1;csr_ren_in==1'b0;};
+   `uvm_info(get_type_name(), ("Standard BINV with random a_in input to test all b_in combinations (0-31 positions )"), UVM_NONE) //passed
+for(int c=1;c<=30;c++) begin
+         seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in[4:0]==c;};
   repeat(3) begin
    start_item(seq);
    finish_item(seq);

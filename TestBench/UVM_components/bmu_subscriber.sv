@@ -456,6 +456,98 @@ cross_b_result:cross a_in,result_ff{
 
 endgroup
 
+
+
+
+
+
+
+
+covergroup bmu_binv_coverage;
+
+
+rst_l:coverpoint sub.rst_l;
+error:coverpoint sub.error;
+
+
+csr_ren_in:coverpoint sub.csr_ren_in{
+  bins valid_reading={0};
+  bins conflict_reading={1};
+}
+
+count_ap:coverpoint $countones(sub.ap){
+  bins valid_binv={1} iff (sub.ap.binv==1);
+  bins conflict_data_path={[2:$]};//1 bin for all possiple conflict data paths 
+}
+
+
+cross_valid_binv:cross count_ap,csr_ren_in{
+
+  bins valid_op=binsof(csr_ren_in.valid_reading) && binsof(count_ap.valid_binv);
+  bins invalid_conflict_reading=binsof(csr_ren_in.conflict_reading) && binsof(count_ap.valid_binv);
+  bins invalid_conflict_data_path=binsof(count_ap.conflict_data_path) && binsof(csr_ren_in.valid_reading);
+
+  ignore_bins double_conflict=binsof(count_ap.conflict_data_path)&& binsof(csr_ren_in.conflict_reading);
+}
+
+
+b_in:coverpoint sub.b_in[4:0]{
+  bins all_posiibilites[]={[0:31]};
+}
+ 
+ 
+
+a_in_msb:coverpoint sub.a_in[31];
+a_in_lsb:coverpoint sub.a_in[0];
+
+res_msb:coverpoint sub.result_ff[31];
+res_lsb:coverpoint sub.result_ff[0];
+
+
+cross_a_res_l:cross a_in_lsb,res_lsb{//4 cases : 00 , 01 10 11 so i will manually define them  them since i need only the transition cases ! so the others asln will not ever be nit ( logically)
+
+    bins zero_one = binsof(a_in_lsb) intersect {0} &&
+                    binsof(res_lsb) intersect {1} iff (sub.b_in[4:0]==0);
+                    //same as 
+                    /*
+   bins one_zero = binsof(a_in_lsb) intersect {1} &&
+                  binsof(res_lsb) intersect {0} &&
+                  binsof(b_in) intersect {0};
+
+                    bins zero_one = binsof(a_in_lsb) intersect {0} &&
+                  binsof(res_lsb) intersect {1} &&
+                  binsof(b_in) intersect {0};
+
+*/
+   bins one_zero = binsof(a_in_lsb) intersect {1} &&
+                    binsof(res_lsb) intersect {0} iff (sub.b_in[4:0]==0);
+
+    ignore_bins x=binsof(a_in_lsb) intersect {1} && binsof(res_lsb) intersect {1};
+    ignore_bins xx=binsof(a_in_lsb) intersect {0} && binsof(res_lsb) intersect {0};
+
+ //   ignore_bins n=default;
+
+
+}
+
+
+cross_a_res_m:cross a_in_msb,res_msb{//4 cases : 00 , 01 10 11 so i will manually define them  them since i need only the transition cases ! so the others asln will not ever be nit ( logically)
+
+    bins zero_one = binsof(a_in_msb) intersect {0} &&
+                    binsof(res_msb) intersect {1} iff (sub.b_in[4:0]==5'b11111);
+                  //  binsof(b_in) intersect {0};//b.allpossibilities[0]
+ 
+
+   bins one_zero = binsof(a_in_msb) intersect {1} &&
+                    binsof(res_msb) intersect {0} iff (sub.b_in[4:0]==5'b11111);
+
+   ignore_bins x=binsof(a_in_msb) intersect {1} && binsof(res_msb) intersect {1};
+    ignore_bins xx=binsof(a_in_msb) intersect {0} && binsof(res_msb) intersect {0};
+
+}
+
+endgroup
+ 
   function new(string name="bmu_subscriber",uvm_component parent); 
     super.new(name,parent); 
     bmu_cpop_coverage = new(); 
@@ -466,6 +558,7 @@ endgroup
     bmu_pack_coverage=new();
     bmu_siext_b_coverage=new();
     bmu_ror_coverage=new();
+    bmu_binv_coverage=new();
     sub = new();
   endfunction 
  
@@ -483,7 +576,7 @@ if(c%3==1)begin
   sub.csr_ren_in=t.csr_ren_in;
   sub.result_ff = t.result_ff;  
   sub.error = t.error; 
- // $display("a=%d      b=%d",sub.a_in,sub.b_in);
+  $display("a=%b      b=%b   res=%b",sub.a_in[0],sub.b_in[4:0],sub.result_ff[0]);
 
 if(sub.ap.cpop==1 )
   bmu_cpop_coverage.sample(); 
@@ -508,6 +601,9 @@ bmu_siext_b_coverage.sample();
 
 if(sub.ap.ror==1)
 bmu_ror_coverage.sample();
+
+if(sub.ap.binv==1)
+bmu_binv_coverage.sample();
 
 end
 c++;

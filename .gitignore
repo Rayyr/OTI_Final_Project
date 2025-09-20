@@ -7,3 +7,4 @@ xcelium.d/
  *.key
 *.env
 *.db
+*.err
