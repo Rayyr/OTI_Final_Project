@@ -31,10 +31,11 @@ class conflict_binv_data_path_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.binv=1'b1;
 
    //activate others ops at a time 
-   seq.ap.sll=1'b1;
-   seq.ap.pack=1;
-   seq.ap.grev=1;
+   //seq.ap.sll=1'b1; for subscriber issue
+   //seq.ap.pack=1;
+   //seq.ap.grev=1;
    seq.ap.clz=1;
+   seq.ap.min=1;
 
 
 
