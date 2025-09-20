@@ -1,0 +1,9 @@
+cov_work/
+coverage_db/
+xcelium.d/
+*.flg
+*.log
+*.history
+ *.key
+*.env
+*.db
