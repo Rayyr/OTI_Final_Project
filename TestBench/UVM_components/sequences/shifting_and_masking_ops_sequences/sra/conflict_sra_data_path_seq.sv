@@ -31,8 +31,9 @@ class conflict_sra_data_path_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.sra=1'b1;
 
    //activate others ops at a time 
-   seq.ap.ror=1'b1; 
-   seq.ap.sub=1;
+ //  seq.ap.ror=1'b1; //for subscriber issue
+  // seq.ap.sub=1; //for subscriber issue
+  seq.ap.min=1;
 
 
 
