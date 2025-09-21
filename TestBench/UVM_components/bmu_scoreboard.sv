@@ -73,12 +73,12 @@ function void write(bmu_sequence_item actualPacket);
       // here we check if the expected result is correct
       if ( (actualPacket.result_ff !==  prod.result_ff) || (actualPacket.error !=  prod.error) ) begin
         `uvm_info("fail",
-          $sformatf("Mismatch: refA=%0h refB=%0h _________ dut_a=%0h dut_b=%0h ________ refResult=%0h/%0d _________ DUTResult=%0h/%0d\n\n\n",
+          $sformatf("Mismatch: refA=%0d refB=%0d _________ dut_a=%0d dut_b=%0d ________ refResult=%0d/%0d _________ DUTResult=%0d/%0d\n\n\n",
                     prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in,prod.result_ff,  prod.error,
                     actualPacket.result_ff, actualPacket.error),UVM_LOW)
       end
       else `uvm_info("pass",
-          $sformatf("Match: refA=%0b refB=%0d  _________ dut_a=%0b  dut_b=%0d _________ refResult=%0b/%0b _________ DUTResult=%0b/%0b\n\n\n",
+          $sformatf("Match: refA=%0d refB=%0d  _________ dut_a=%0d  dut_b=%0d _________ refResult=%0d/%0b _________ DUTResult=%0d/%0b\n\n\n",
                     prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in, prod.result_ff,  prod.error,
                     actualPacket.result_ff, actualPacket.error),UVM_LOW)
    end
@@ -427,7 +427,7 @@ er=1'b0;
 //valid SH2ADD !
 else begin 
 refPacket.a_in = refPacket.a_in<<2;
-
+ 
 exp_res=refPacket.a_in+refPacket.b_in ;
 er=1'b0;
 

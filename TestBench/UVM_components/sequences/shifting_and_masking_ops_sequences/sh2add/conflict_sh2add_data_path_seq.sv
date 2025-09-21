@@ -29,9 +29,9 @@ class conflict_sh2add_data_path_seq extends uvm_sequence #(bmu_sequence_item);
     seq.ap.sh2add=1'b1;
     seq.ap.zba=1;
 
-    seq.ap.ror=1;
+    //seq.ap.ror=1;//for subscriber issue 
     seq.ap.min=1;
-    seq.ap.max=1;
+   // seq.ap.max=1;//for subscriber issue 
 
 
     `uvm_info(get_type_name(), ("Conflict SH2ADD data path by activation other operation once at a time"), UVM_NONE) //faild

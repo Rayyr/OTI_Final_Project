@@ -21,7 +21,7 @@ initialize_ap(seq.ap);
 seq.ap.sh2add=1;
 seq.ap.zba=1;
 
-      `uvm_info(get_type_name(), ("Standard SH2ADD with random inputs"), UVM_NONE) //passed
+      `uvm_info(get_type_name(), ("Standard SH2ADD with random inputs"), UVM_NONE) //not all passed 
 repeat(20) begin
     seq.randomize() with {rst_l==1;valid_in==1;csr_ren_in==0;};
     repeat(3) begin

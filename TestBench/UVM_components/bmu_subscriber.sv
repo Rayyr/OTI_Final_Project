@@ -465,7 +465,6 @@ endgroup
 
 covergroup bmu_binv_coverage;
 
-
 rst_l:coverpoint sub.rst_l;
 error:coverpoint sub.error;
 
@@ -494,7 +493,6 @@ cross_valid_binv:cross count_ap,csr_ren_in{
 b_in:coverpoint sub.b_in[4:0]{
   bins all_posiibilites[]={[0:31]};
 }
- 
  
 
 a_in_msb:coverpoint sub.a_in[31];
@@ -526,8 +524,6 @@ cross_a_res_l:cross a_in_lsb,res_lsb{//4 cases : 00 , 01 10 11 so i will manuall
     ignore_bins xx=binsof(a_in_lsb) intersect {0} && binsof(res_lsb) intersect {0};
 
  //   ignore_bins n=default;
-
-
 }
 
 
@@ -543,10 +539,74 @@ cross_a_res_m:cross a_in_msb,res_msb{//4 cases : 00 , 01 10 11 so i will manuall
 
    ignore_bins x=binsof(a_in_msb) intersect {1} && binsof(res_msb) intersect {1};
     ignore_bins xx=binsof(a_in_msb) intersect {0} && binsof(res_msb) intersect {0};
-
 }
 
 endgroup
+
+
+
+
+
+
+covergroup bmu_sh2add_coverage;
+
+
+rst_l:coverpoint sub.rst_l;
+error:coverpoint sub.error;
+
+
+csr_ren_in:coverpoint sub.csr_ren_in{
+  bins valid_reading={0};
+  bins conflict_reading={1};
+}
+
+count_ap:coverpoint $countones(sub.ap){
+  bins valid_sh2add={2} iff (sub.ap.sh2add==1 && sub.ap.zba==1);
+  bins conflict_data_path={[3:$]};//1 bin for all possiple conflict data paths 
+}
+
+
+cross_valid_binv:cross count_ap,csr_ren_in{
+
+  bins valid_op=binsof(csr_ren_in.valid_reading) && binsof(count_ap.valid_sh2add);
+  bins invalid_conflict_reading=binsof(csr_ren_in.conflict_reading) && binsof(count_ap.valid_sh2add);
+  bins invalid_conflict_data_path=binsof(count_ap.conflict_data_path) && binsof(csr_ren_in.valid_reading);
+
+  ignore_bins double_conflict=binsof(count_ap.conflict_data_path)&& binsof(csr_ren_in.conflict_reading);
+}
+
+
+a_in:coverpoint sub.a_in{
+  bins zero={0};
+  bins ones={-1};
+  bins max={2147483647};
+  bins min={-2147483648};
+  bins bit_29_one={[-2147483648:$]} iff (sub.a_in[29]==1);//a_in=32'bxx1xxxx...
+  bins bit_29_zero={[-2147483648:$]} iff (sub.a_in[29]==0);//a_in=32'bxx0xxxx...
+  bins others_random=default;
+}
+ 
+b_in:coverpoint sub.b_in{
+ bins zero={0};
+ bins ones={-1};
+ bins max={2147483647};
+ bins min={-2147483648};
+ bins others_random=default;
+}
+ 
+
+cross_a_error:cross a_in,b_in,error{//2*7*5 bins 
+  bins underflow=binsof(a_in.bit_29_one)&&binsof(error.auto) intersect {1} && binsof(b_in.min);
+  bins overflow=binsof(a_in.bit_29_zero)&&binsof(error.auto) intersect {1} &&binsof(b_in.max);
+  //they not being hit since the dut output (error) is not correct thats why !!! , thats why in coverage we cover the 
+  //inputs not outputs due to this issue that we dont know if dut is correct or not ... 
+}
+
+endgroup
+
+
+
+
  
   function new(string name="bmu_subscriber",uvm_component parent); 
     super.new(name,parent); 
@@ -559,6 +619,7 @@ endgroup
     bmu_siext_b_coverage=new();
     bmu_ror_coverage=new();
     bmu_binv_coverage=new();
+    bmu_sh2add_coverage=new();
     sub = new();
   endfunction 
  
@@ -574,9 +635,9 @@ if(c%3==1)begin
   sub.scan_mode=t.scan_mode;
   sub.csr_rddata_in=t.csr_rddata_in;
   sub.csr_ren_in=t.csr_ren_in;
-  sub.result_ff = t.result_ff;  
-  sub.error = t.error; 
-  $display("a=%b      b=%b   res=%b",sub.a_in[0],sub.b_in[4:0],sub.result_ff[0]);
+  sub.result_ff = t.result_ff;  //from dut
+  sub.error = t.error; //from dut
+  $display("error=%b",sub.error);
 
 if(sub.ap.cpop==1 )
   bmu_cpop_coverage.sample(); 
@@ -590,7 +651,7 @@ if(sub.ap.max==1)
 if(sub.ap.ctz==1)
   bmu_ctz_coverage.sample();
 
-if(sub.ap.slt==1)
+if(sub.ap.slt==1)//we can modify it by adding &&ap.sub==1
 bmu_slt_coverage.sample();
 
 if(sub.ap.pack==1)
@@ -604,6 +665,9 @@ bmu_ror_coverage.sample();
 
 if(sub.ap.binv==1)
 bmu_binv_coverage.sample();
+
+if(sub.ap.sh2add==1 &&sub.ap.zba==1)
+bmu_sh2add_coverage.sample();
 
 end
 c++;

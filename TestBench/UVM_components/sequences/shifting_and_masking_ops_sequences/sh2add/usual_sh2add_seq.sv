@@ -82,8 +82,6 @@ end
 
 
 
-
-
    `uvm_info(get_type_name(), ("Standard SH2ADD with a_in and b_in=max value"), UVM_NONE) //passsed
 repeat(3) begin
 //a_in=max & b_in=max  ,  no error , since (-) + (+)  A(0x7fffffff) + B(0x7fffffff)  , result=-4+max
@@ -99,13 +97,11 @@ end
 
    `uvm_info(get_type_name(), ("Standard SH2ADD with a_in and b_in=min value"), UVM_NONE) //passed
 repeat(3) begin
-//a_in=min & b_in=min  ,no error , result = b , A(0x80000000) + B(0x80000000) 
+//a_in=min & b_in=min  ,no error since (+) + (-) , result = b (0+b) , A(0x80000000) + B(0x80000000) 
    seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in==32'h80000000;a_in==32'h80000000;}; 
    start_item(seq); 
    finish_item(seq); 
 end
-
-
 
 
 
