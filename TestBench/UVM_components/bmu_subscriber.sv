@@ -645,15 +645,62 @@ b_in:coverpoint sub.b_in[4:0]{
  bins shift_amount[]={[0:31]};
 }
  
- 
-
 endgroup
 
 
 
 
 
+covergroup bmu_srl_coverage;
+
+rst_l:coverpoint sub.rst_l;
+error:coverpoint sub.error;
+
+
+csr_ren_in:coverpoint sub.csr_ren_in{
+  bins valid_reading={0};
+  bins conflict_reading={1};
+}
+
+count_ap:coverpoint $countones(sub.ap){
+  bins valid_srl={1} iff (sub.ap.srl==1);
+  bins conflict_data_path={[2:$]};//1 bin for all possiple conflict data paths 
+}
+
+
+cross_valid_sra:cross count_ap,csr_ren_in{
+
+  bins valid_op=binsof(csr_ren_in.valid_reading) && binsof(count_ap.valid_srl);
+  bins invalid_conflict_reading=binsof(csr_ren_in.conflict_reading) && binsof(count_ap.valid_srl);
+  bins invalid_conflict_data_path=binsof(count_ap.conflict_data_path) && binsof(csr_ren_in.valid_reading);
+
+  ignore_bins double_conflict=binsof(count_ap.conflict_data_path)&& binsof(csr_ren_in.conflict_reading);
+}
+
+
+a_in:coverpoint sub.a_in{
+  bins all={[-2147483648:2147483647]};
+}
  
+b_in:coverpoint sub.b_in[4:0]{
+ bins shift_amount[]={[0:31]};
+}
+ //cross_different_scenarioes:cross b_in
+
+ //to test directlly the error scenarioes that the dut detect 
+ cross_errors:cross error,count_ap,csr_ren_in{
+  bins data_path_error=binsof(error.auto) intersect {1} && binsof(count_ap.conflict_data_path); 
+  bins reading_error=binsof(error.auto) intersect {1} && binsof(count_ap.valid_srl) && binsof(csr_ren_in.conflict_reading); 
+  
+    option.cross_auto_bin_max = 0;
+ }
+endgroup
+
+
+
+
+
+
   function new(string name="bmu_subscriber",uvm_component parent); 
     super.new(name,parent); 
     bmu_cpop_coverage = new(); 
@@ -667,6 +714,7 @@ endgroup
     bmu_binv_coverage=new();
     bmu_sh2add_coverage=new();
     bmu_sra_coverage=new();
+    bmu_srl_coverage=new();
     sub = new();
   endfunction 
  
@@ -718,6 +766,9 @@ bmu_sh2add_coverage.sample();
 
 if(sub.ap.sra==1)
 bmu_sra_coverage.sample();
+
+if(sub.ap.srl==1)
+bmu_srl_coverage.sample();
 
 end
 c++;

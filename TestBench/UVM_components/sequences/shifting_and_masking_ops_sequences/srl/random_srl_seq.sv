@@ -31,10 +31,10 @@ class random_srl_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.srl=1'b1;
    
 
-
+//test all bs shift amount value 
    `uvm_info(get_type_name(), ("Standard SRL with random inputs"), UVM_NONE) //passed
-   repeat(20) begin
-       seq.randomize() with { csr_ren_in==1'b0;valid_in==1;};
+   for(int c=0;c<=31;c++) begin
+       seq.randomize() with { csr_ren_in==1'b0;valid_in==1;b_in==c;};
 repeat(3) begin
    start_item(seq);
    finish_item(seq);

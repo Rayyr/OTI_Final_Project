@@ -31,10 +31,10 @@ class conflict_srl_data_path_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.srl=1'b1;
 
    //activate others ops at a time 
-   seq.ap.ror=1'b1;
-   seq.ap.sh1add=1'b1;
-   seq.ap.max=1;
-
+   //seq.ap.ror=1'b1; for subscriber issue 
+   //seq.ap.sh1add=1'b1;for subscriber issue 
+   //seq.ap.max=1;for subscriber issue 
+seq.ap.min=1;
 
 
 
