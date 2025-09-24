@@ -87,6 +87,8 @@ repeat(3) begin
  end
    
 
+
+
         //a_in=0000fff0  result=12     DUT-result=12   ///passed
       `uvm_info(get_type_name(), ("Standard CPOP with LS 2 Bytes= (0000fff0) bits input"), UVM_NONE) 
       seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0;a_in==32'h0000fff0;rst_l==1'b1;}; 
@@ -115,7 +117,7 @@ repeat(3) begin
  end
 
 
-
+/*
 //special direct test
           //a_in=1f900010  result=8     DUT-result=1   ///faild
    `uvm_info(get_type_name(), ("Standard CPOP with 10 1`s"), UVM_NONE) 
@@ -125,17 +127,7 @@ repeat(3) begin
    finish_item(seq);
  end
 
-
-//special direct test
-          //a_in=1f900010  result=8     DUT-result=1   ///faild
-   `uvm_info(get_type_name(), ("Standard CPOP with 32 1`s"), UVM_NONE) 
-      seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0;a_in==-1;rst_l==1'b1;}; 
-repeat(3) begin
-   start_item(seq); 
-   finish_item(seq);
- end
-
-
+ */
 
    `uvm_info(get_type_name(), ("Standard CPOP with to test the all possipilties for 1's count (0-32)"), UVM_NONE) 
 for(int i=0;i<=32;i++)begin
