@@ -63,7 +63,7 @@ function void write(bmu_sequence_item actualPacket);
         prod.result_ff=exp_res;
         prod.error=exp_err; end
 
-      else begin 
+      else begin //also it is entered in case of reset sequences
         prod.result_ff=0; 
         prod.error=0; end//that means currentlly we cant assign the result to ff since it is not valid in (logically)!
  /*

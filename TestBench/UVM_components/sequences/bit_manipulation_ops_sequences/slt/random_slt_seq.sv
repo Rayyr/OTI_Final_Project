@@ -31,7 +31,7 @@ class random_slt_seq extends uvm_sequence #(bmu_sequence_item);
  
     `uvm_info(get_type_name(), ("Standard Signed SLT random inputs"), UVM_NONE) //passes
 repeat(20) begin
-     seq.randomize() with {valid_in==1;csr_ren_in==1'b0;}; 
+     seq.randomize() with {valid_in==1;csr_ren_in==1'b0;rst_l==1;}; 
 repeat(3) begin
    start_item(seq); 
    finish_item(seq); 
@@ -44,7 +44,7 @@ end
 
      `uvm_info(get_type_name(), ("Standard Unsigned SLT random inputs"), UVM_NONE) //passes
 repeat(20) begin
-     seq.randomize() with {valid_in==1;csr_ren_in==1'b0;}; 
+     seq.randomize() with {valid_in==1;csr_ren_in==1'b0;rst_l==1;}; 
 repeat(3) begin
    start_item(seq); 
    finish_item(seq); 

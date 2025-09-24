@@ -32,7 +32,7 @@ class underflow_sh2add_seq extends uvm_sequence #(bmu_sequence_item);
    seq.ap.zba=1'b1;
  
 
-   `uvm_info(get_type_name(), ("Standard SH2ADD with a= non-zero value in this form (32’bxx1xxx) and b_in=min"), UVM_NONE) //passed
+   `uvm_info(get_type_name(), ("Standard SH2ADD with a= non-zero value in this form (32’bxx1xxx) and b_in=min"), UVM_NONE) //faild
       seq.randomize() with {valid_in==1;csr_ren_in==1'b0;(a_in!=0 && a_in[29]==1'b1);b_in==32'h80000000;}; 
 repeat(3) begin
 //a=any non-zero value (32’bxx1xxx...) & b=min  , underflow since (-)+(-) = (+) 

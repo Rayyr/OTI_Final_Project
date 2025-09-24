@@ -37,7 +37,7 @@ class random_ror_seq extends uvm_sequence #(bmu_sequence_item);
       `uvm_info(get_type_name(), ("Standard ROR with random inputs"), UVM_NONE) //passed
 for(int c=1;c<=30;c++) begin//since i have covered min and max seq 
      seq.randomize() with { csr_ren_in==1'b0;valid_in==1;b_in[4:0]==c;};
-     $display("%d",seq.b_in);
+  // $display("%d",seq.b_in);
   repeat(3) begin
     start_item(seq);
    finish_item(seq);

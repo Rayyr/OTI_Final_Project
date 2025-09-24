@@ -34,7 +34,7 @@ class random_sra_seq extends uvm_sequence #(bmu_sequence_item);
 //test all bs shift amount value 
    `uvm_info(get_type_name(), ("Standard SRA with random inputs"), UVM_NONE) //passed
  for(int c=0;c<=31;c++) begin
-      seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in==c;};
+      seq.randomize() with {valid_in==1;csr_ren_in==1'b0;b_in[4:0]==c;};
 repeat(3) begin
    start_item(seq);
    finish_item(seq);

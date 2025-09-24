@@ -111,14 +111,15 @@ import uvm_pkg::*;
  
 
 
-/*
+
 //sequences slt
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_reading_with_slt_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/conflict_slt_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/usual_slt_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/random_slt_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/slt/reset_seq.sv"
-*/
+
+
 
 
 
@@ -154,8 +155,8 @@ import uvm_pkg::*;
 
 
 
-
 /*
+
 //sequences sh2add
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/conflict_reading_with_sh2add_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/conflict_sh2add_data_path_seq.sv"
@@ -166,8 +167,6 @@ import uvm_pkg::*;
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/random_sh2add_seq.sv"
 
 */
-
-
 
 
 
@@ -186,7 +185,7 @@ import uvm_pkg::*;
 
 
 
-
+/*
 //sequences srl
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/conflict_reading_with_srl_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/conflict_srl_data_path_seq.sv"
@@ -195,7 +194,7 @@ import uvm_pkg::*;
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/min_shift_amount_srl_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/max_shift_amount_srl_seq.sv"
 
-
+*/
 
 
 /*
@@ -233,13 +232,13 @@ import uvm_pkg::*;
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/max_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/pack_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
-//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/csr_tests/csr_read_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/binv/binv_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/ror/ror_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/sh2add/sh2add_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/sra/sra_tests.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/srl/srl_tests.sv"
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/srl/srl_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/logical_tests/or/or_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/arithmatic_tests/sub_tests.sv"
 
@@ -288,13 +287,13 @@ end
 //run_test("max_test");
 //run_test("pack_test");
 //run_test("siext_b_test");
-//run_test("slt_test");
+run_test("slt_test");
 //run_test("csr_read_test");
 //run_test("binv_test");
 //run_test("ror_test");
 //run_test("sh2add_test");
 //run_test("sra_test");
-run_test("srl_test");
+//run_test("srl_test");
 //run_test("or_test");
 //run_test("sub_test");
 
