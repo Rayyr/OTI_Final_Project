@@ -24,7 +24,7 @@ class random_ctz_seq extends uvm_sequence #(bmu_sequence_item);
    initialize_ap(seq.ap);
    seq.ap.ctz=1'b1;
 
-  `uvm_info(get_type_name(), ("Standard CTZ with random input"), UVM_NONE) 
+  `uvm_info(get_type_name(), ("Standard CTZ with random input"), UVM_NONE) //not all passed
 repeat(20) begin
      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;seq.rst_l==1;}; 
 repeat(3) begin

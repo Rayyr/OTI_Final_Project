@@ -50,19 +50,19 @@ end
  
 
 //since the other cases there is no clear pattern of how DUt make the counting so i will explicitly set up the patterns by bits ...
-     `uvm_info(get_type_name(), ("Standard CTZ even value==least bit =0"), UVM_NONE) ///faild
-   //a=32'bxxxxx....0 even
-      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==32'h12345672;seq.rst_l==1'b1;}; 
- // $display("%b",seq.a_in);
+     `uvm_info(get_type_name(), ("Standard CTZ even value : a_in[0]=0 & a_in[1]=1 "), UVM_NONE) ///faild
+   //a=32'bxxxxx...10 even with 1 trailing 0
+      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==32'h11111112;seq.rst_l==1'b1;}; 
+      // $display("%b",seq.a_in);
 repeat(3) begin
-   start_item(seq);
+   start_item(seq); 
    finish_item(seq);
 end 
   
 
  
 
-      `uvm_info(get_type_name(), ("Standard CTZ even value==least 2bit=0 Consecutive"), UVM_NONE) ///faild
+      `uvm_info(get_type_name(), ("Standard CTZ even value==least 2bits=0 Consecutive"), UVM_NONE) ///faild
    //a=32'bxxxxx....00
       seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==32'h12345f34;seq.rst_l==1'b1;}; 
 //  $display("%b",seq.a_in);
@@ -176,11 +176,13 @@ end
    
 
 
+ 
+   
 
-
-     `uvm_info(get_type_name(), ("Standard CTZ odd value least bit=1"), UVM_NONE) // faild
+/*
+     `uvm_info(get_type_name(), ("Standard CTZ odd value least bit=1 msb=0"), UVM_NONE) //passed
    //a=odd value
-      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in==32'hfffffff1;seq.rst_l==1'b1;}; 
+      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in[0]==1;a_in[31]==0;seq.rst_l==1'b1;}; 
     //  $display("%b",seq.a_in);
 repeat(3) begin
    start_item(seq);
@@ -189,7 +191,45 @@ end
    
 
 
-      `uvm_info(get_type_name(), ("Standard CTZ with to test the all possipilties for 0's count (0-32)"), UVM_NONE) //only the power of 4 مضاعفات passed 
+        `uvm_info(get_type_name(), ("Standard CTZ odd value least bit=1 msb=1"), UVM_NONE) //passed
+   //a=odd value
+      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in[0]==1 && a_in[31]==0;seq.rst_l==1'b1;}; 
+    //  $display("%b",seq.a_in);
+repeat(3) begin
+   start_item(seq);
+   finish_item(seq);
+end */
+
+
+
+        `uvm_info(get_type_name(), ("Standard CTZ with random odd input"), UVM_NONE) //aot all passed
+   //a=odd value
+   repeat(10) begin
+      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in[0]==1;seq.rst_l==1'b1;}; 
+    //  $display("%b",seq.a_in);
+repeat(3) begin
+   start_item(seq);
+   finish_item(seq);
+end 
+   end
+   
+
+
+
+    `uvm_info(get_type_name(), ("Standard CTZ with random even input"), UVM_NONE) //not all passed
+   //a=even value
+   repeat(10) begin
+      seq.randomize() with { valid_in==1;csr_ren_in==1'b0;a_in[0]==0;seq.rst_l==1'b1;}; 
+    //  $display("%b",seq.a_in);
+repeat(3) begin
+   start_item(seq);
+   finish_item(seq);
+end 
+   end
+
+
+
+      `uvm_info(get_type_name(), ("Standard CTZ with to test the all possipilties for 0's count (0-32)"), UVM_NONE) //only the power of 4 مضاعفات inputs passed 
 for(int i=0;i<=32;i++)begin
      seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0;rst_l==1'b1;}; 
      seq.a_in=getVal(i);
@@ -207,7 +247,6 @@ end
   //summary : from all cases i came up that the power of 4 مضاعفات passed but as i say its related to conequences zeroes ....
  
 function logic[31:0] getVal(int count);
-
 
   logic [31:0] result = -1;//all bits =1
   int zeroes_added = 0;
