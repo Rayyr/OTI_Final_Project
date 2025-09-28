@@ -411,9 +411,10 @@ bins comb_10={[-2147483648:-1]} iff (sub.a_in[31]==1 && sub.a_in[7]==0);
 }
 
 
+//this will only will cover the result value but in fact here we need more details thats why iff (sub.result_ff[31:8]==24'hffffff) is being commented .... 
 result_ff:coverpoint sub.result_ff{
-  bins ones={[-2147483648:-1]} iff (sub.result_ff[31:8]==24'hffffff);
-  bins zeros={[1:2147483647]} iff (sub.result_ff[31:8]==24'h000000);
+  bins ones={[-2147483648:-1]} iff (sub.a_in[7]==1); // iff (sub.result_ff[31:8]==24'hffffff);
+  bins zeros={[1:2147483647]} iff (sub.a_in[7]==0);//iff (sub.result_ff[31:8]==24'h000000);
 }
 
 endgroup

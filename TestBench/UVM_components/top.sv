@@ -89,13 +89,14 @@ import uvm_pkg::*;
 
 
 
-
+/*
 //sequences pack
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/conflict_pack_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/conflict_reading_with_pack_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/reset_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/usual_pack_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/random_pack_seq.sv"
+*/
 
 
 
@@ -103,13 +104,12 @@ import uvm_pkg::*;
 
 
 
-/*
 //sequences siext_b
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/conflict_reading_with_siext_b_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/conflict_siext_b_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/reset_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/usual_siext_b_seq.sv"
- */
+ 
 
 
 
@@ -235,8 +235,8 @@ import uvm_pkg::*;
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/grev_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/max_tests.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/pack_tests.sv"
-//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/pack_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/csr_tests/csr_read_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/binv/binv_tests.sv"
@@ -290,8 +290,8 @@ end
 //run_test("xor_test");
 //run_test("grev_test");
 //run_test("max_test");
-run_test("pack_test");
-//run_test("siext_b_test");
+//run_test("pack_test");
+run_test("siext_b_test");
 //run_test("slt_test");
 //run_test("csr_read_test");
 //run_test("binv_test");
