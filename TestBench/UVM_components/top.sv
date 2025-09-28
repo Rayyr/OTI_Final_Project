@@ -63,14 +63,14 @@ import uvm_pkg::*;
 
  
 
-
+/*
 //sequences max
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/max/conflict_max_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/max/conflict_reading_with_max_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/max/reset_max_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/max/usual_max_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/max/random_max_seq.sv"
-
+*/
 
 
 
@@ -89,14 +89,14 @@ import uvm_pkg::*;
 
 
 
-/*
+
 //sequences pack
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/conflict_pack_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/conflict_reading_with_pack_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/reset_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/usual_pack_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/pack/random_pack_seq.sv"
-*/
+
 
 
 
@@ -234,8 +234,8 @@ import uvm_pkg::*;
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/logical_tests/xor/xor_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/grev_tests.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/max_tests.sv"
-//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/pack_tests.sv"
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/max_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/pack_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/csr_tests/csr_read_tests.sv"
@@ -289,8 +289,8 @@ end
 //run_test("ctz_test");
 //run_test("xor_test");
 //run_test("grev_test");
-run_test("max_test");
-//run_test("pack_test");
+//run_test("max_test");
+run_test("pack_test");
 //run_test("siext_b_test");
 //run_test("slt_test");
 //run_test("csr_read_test");

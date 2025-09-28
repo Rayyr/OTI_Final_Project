@@ -73,7 +73,7 @@ function void write(bmu_sequence_item actualPacket);
       // here we check if the expected result is correct
       if ( (actualPacket.result_ff !==  prod.result_ff) || (actualPacket.error !=  prod.error) ) begin
         `uvm_info("fail",
-          $sformatf("Mismatch: refA=%0d refB=%0d _________ dut_a=%0d dut_b=%0d ________ refResult=%0d/%0d _________ DUTResult=%0d/%0d\n\n\n",
+          $sformatf("Mismatch: refA=%0h refB=%0d _________ dut_a=%0h dut_b=%0d ________ refResult=%0h/%0d _________ DUTResult=%0h/%0d\n\n\n",
                     prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in,prod.result_ff,  prod.error,
                     actualPacket.result_ff, actualPacket.error),UVM_LOW)
       end

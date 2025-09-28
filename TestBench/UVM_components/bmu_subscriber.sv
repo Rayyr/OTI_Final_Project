@@ -158,6 +158,7 @@ ignore_bins double_conflict = binsof(csr_ren_in) intersect {1} &&
 }
 
 
+//verify directly about DUT behavior
 result_ff:coverpoint sub.result_ff{
   bins proper_max={1} iff (((sub.result_ff == sub.b_in) && ((sub.b_in >sub.a_in)))||((sub.result_ff == sub.a_in) && ((sub.a_in >sub.b_in))));
   bins wrong_max =default;
@@ -360,6 +361,14 @@ ignore_bins double_conflict = binsof(csr_ren_in) intersect {1} &&
                                  binsof(count_ap.conflict_data_path); 
 
 }
+
+
+//verify directly about DUT result behavior
+result_ff:coverpoint sub.result_ff{
+  bins proper_pack={1} iff (sub.result_ff[31:16]==sub.b_in[15:0] && sub.result_ff[15:0]==sub.a_in[15:0]);
+  bins wrong_pack =default;
+}
+
 endgroup
 
 
