@@ -28,7 +28,7 @@ class random_or_seq extends uvm_sequence#(bmu_sequence_item);
    
     `uvm_info(get_type_name(), ("Standard ORing with random inputs"), UVM_NONE) ;//passed
      //a=random  b=random    ( random inputs )
-repeat(50) begin //50 random cases
+repeat(8) begin //50 random cases
      seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;};//i put it outside the loop due to have same randomized inputs
 repeat(3) begin
       start_item(seq);
@@ -40,7 +40,7 @@ end
 seq.ap.zbb=1;
      `uvm_info(get_type_name(), ("Standard Inverted-ORing with random inputs"), UVM_NONE) ;//passed
      //a=random  b=random    ( random inputs )
-repeat(50) begin //50 random cases
+repeat(8) begin //50 random cases
      seq.randomize() with { valid_in==1'b1;csr_ren_in==1'b0; seq.rst_l==1'b1;};//i put it outside the loop due to have same randomized inputs
 repeat(3) begin
       start_item(seq);

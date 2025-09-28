@@ -158,6 +158,11 @@ ignore_bins double_conflict = binsof(csr_ren_in) intersect {1} &&
 }
 
 
+result_ff:coverpoint sub.result_ff{
+  bins proper_max={1} iff (((sub.result_ff == sub.b_in) && ((sub.b_in >sub.a_in)))||((sub.result_ff == sub.a_in) && ((sub.a_in >sub.b_in))));
+  bins wrong_max =default;
+}
+
 endgroup
 
 
@@ -692,7 +697,7 @@ b_in:coverpoint sub.b_in[4:0]{
   bins data_path_error=binsof(error.auto) intersect {1} && binsof(count_ap.conflict_data_path); 
   bins reading_error=binsof(error.auto) intersect {1} && binsof(count_ap.valid_srl) && binsof(csr_ren_in.conflict_reading); 
   
-    option.cross_auto_bin_max = 0;
+    option.cross_auto_bin_max = 0;//disable auto bins
  }
 endgroup
 
@@ -700,6 +705,45 @@ endgroup
 
 
 
+
+/*
+
+covergroup bmu_lor_coverage;
+
+error:coverpoint sub.error;
+rst_l:coverpoint sub.rst_l;
+
+csr_ren_in:coverpoint sub.csr_ren_in{
+  bins valid_reading={0};
+  bins conflict_reading={1};
+}
+
+count_ap:coverpoint $countones(sub.ap){
+  bins valid_lor={1} iff (sub.ap.lor==1);
+  bins valid_inverted_lor={1} iff (sub.ap.lor==1 && sub.ap.zbb==1);
+  bins conflict_lor_data_path={[2:$]};//1 bin for all possiple conflict data paths 
+}
+
+count_ap:coverpoint $countones(sub.ap){
+  bins conflict_signed_data_path = {[3:$]}; //1 bin for all
+  bins conflict_unsigned_data_path = {[4:$]}; //1 bin for all
+  bins valid_signed_slt={2} iff (sub.ap.slt==1  &&  sub.ap.sub==1);
+  bins valid_unsigned_slt={3} iff  (sub.ap.slt==1   &&   sub.ap.sub==1   &&   sub.ap.unsign==1);
+}
+
+
+cross_valid_sra:cross count_ap,csr_ren_in{
+
+  bins valid_op=binsof(csr_ren_in.valid_reading) && binsof(count_ap.valid_srl);
+  bins invalid_conflict_reading=binsof(csr_ren_in.conflict_reading) && binsof(count_ap.valid_srl);
+  bins invalid_conflict_data_path=binsof(count_ap.conflict_data_path) && binsof(csr_ren_in.valid_reading);
+
+  ignore_bins double_conflict=binsof(count_ap.conflict_data_path)&& binsof(csr_ren_in.conflict_reading);
+}
+
+
+ endgroup
+*/
 
   function new(string name="bmu_subscriber",uvm_component parent); 
     super.new(name,parent); 
@@ -715,6 +759,7 @@ endgroup
     bmu_sh2add_coverage=new();
     bmu_sra_coverage=new();
     bmu_srl_coverage=new();
+   // bmu_lor_coverage=new();
     sub = new();
   endfunction 
  
@@ -769,6 +814,10 @@ bmu_sra_coverage.sample();
 
 if(sub.ap.srl==1)
 bmu_srl_coverage.sample();
+/*
+if(sub.ap.lor==1)
+bmu_lor_coverage.sample();
+*/
 
 end
 c++;

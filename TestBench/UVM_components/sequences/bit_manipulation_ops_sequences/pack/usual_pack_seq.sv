@@ -67,7 +67,7 @@ end
 
 
 
-   `uvm_info(get_type_name(), ("Standard CPOP with a_in[31]=1  and b_in[15]= 0 "), UVM_NONE) //faild
+   `uvm_info(get_type_name(), ("Standard PACK with a_in[31]=1  and b_in[15]= 0 "), UVM_NONE) //faild
       seq.randomize() with { csr_ren_in==1'b0;a_in[31]==1'b1;b_in[15]==1'b0;valid_in==1;}; 
 repeat(3) begin
     //a_in=1......  b_in=.....0...  
