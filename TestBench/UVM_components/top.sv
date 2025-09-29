@@ -24,13 +24,13 @@ import uvm_pkg::*;
 
 
 
-/*
+
 //sequences cpop
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/usual_cpop_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/conflict_cpop_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/conflict_reading_with_cpop_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/cpop/reset_seq.sv"
-*/
+
 
 
 
@@ -103,13 +103,13 @@ import uvm_pkg::*;
 
 
 
-
+/*
 //sequences siext_b
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/conflict_reading_with_siext_b_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/conflict_siext_b_data_path_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/reset_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/bit_manipulation_ops_sequences/siext_b/usual_siext_b_seq.sv"
- 
+ */
 
 
 
@@ -147,6 +147,7 @@ import uvm_pkg::*;
 
 
 
+
 /*
 //sequences ror
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/ror/conflict_reading_with_ror_seq.sv"
@@ -161,7 +162,6 @@ import uvm_pkg::*;
 
 
 /*
-
 //sequences sh2add
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/conflict_reading_with_sh2add_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/conflict_sh2add_data_path_seq.sv"
@@ -172,7 +172,6 @@ import uvm_pkg::*;
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/sh2add/random_sh2add_seq.sv"
 
 */
-
 
 
 
@@ -189,7 +188,6 @@ import uvm_pkg::*;
 */
 
 
-
 /*
 //sequences srl
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/conflict_reading_with_srl_seq.sv"
@@ -198,8 +196,10 @@ import uvm_pkg::*;
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/reset_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/min_shift_amount_srl_seq.sv"
 `include "/home/Trainee6/final_project/TestBench/UVM_components/sequences/shifting_and_masking_ops_sequences/srl/max_shift_amount_srl_seq.sv"
-
 */
+
+
+
 
 
 /*
@@ -230,13 +230,13 @@ import uvm_pkg::*;
 
 
 //tests
-//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/cpop_tests.sv"
+`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/cpop_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/logical_tests/xor/xor_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/ctz_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/grev_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/max_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/pack_tests.sv"
-`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
+//`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/siext_b_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/bit_manipulations_tests/slt_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/csr_tests/csr_read_tests.sv"
 //`include "/home/Trainee6/final_project/TestBench/UVM_components/tests/shifring_and_masking_tests/binv/binv_tests.sv"
@@ -285,13 +285,13 @@ end
  
  
  initial begin
-//run_test("cpop_test");
+run_test("cpop_test");
 //run_test("ctz_test");
 //run_test("xor_test");
 //run_test("grev_test");
 //run_test("max_test");
 //run_test("pack_test");
-run_test("siext_b_test");
+//run_test("siext_b_test");
 //run_test("slt_test");
 //run_test("csr_read_test");
 //run_test("binv_test");

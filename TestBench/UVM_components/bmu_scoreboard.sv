@@ -51,10 +51,7 @@ function void write(bmu_sequence_item actualPacket);
    //for the next seq. to delete the ones for the previous sequence .... since my latency is 3 cycles not 1 so .....
     cmd_pipe.pop_front();
     cmd_pipe.pop_front();
-/*
-      $display("ref-a=%0d",prod.a_in);
-      $display("ref-b=%0d",prod.b_in);
-      $display("res=%0d",prod.result_ff);*/
+ 
 
 //compute the expected result based to my reference model 
       referenceModelBMU(prod,exp_res,exp_err);//or directlly we can modify the prod's result_ff pf course basd to valid_in since to the comments i wrote in the notepad**
@@ -66,9 +63,7 @@ function void write(bmu_sequence_item actualPacket);
       else begin //also it is entered in case of reset sequences
         prod.result_ff=0; 
         prod.error=0; end//that means currentlly we cant assign the result to ff since it is not valid in (logically)!
- /*
- $display(prod.ap);
- $display(actualPacket.ap);*/
+ 
   
       // here we check if the expected result is correct
       if ( (actualPacket.result_ff !==  prod.result_ff) || (actualPacket.error !=  prod.error) ) begin
@@ -82,7 +77,7 @@ function void write(bmu_sequence_item actualPacket);
                     prod.a_in, prod.b_in,  actualPacket.a_in ,actualPacket.b_in, prod.result_ff,  prod.error,
                     actualPacket.result_ff, actualPacket.error),UVM_LOW)
    end
-  // else $display("hi");
+ 
 
 endfunction
 

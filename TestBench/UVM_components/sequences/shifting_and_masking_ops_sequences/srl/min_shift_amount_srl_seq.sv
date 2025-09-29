@@ -33,7 +33,7 @@ class min_shift_amount_srl_seq extends uvm_sequence #(bmu_sequence_item);
 
 
     `uvm_info(get_type_name(), ("Min shift amount case with random input"), UVM_NONE) //passed
-        seq.randomize() with {valid_in==1;csr_ren_in==1'b1; b_in[4:0]==5'b00000;};
+        seq.randomize() with {valid_in==1;csr_ren_in==1'b0; b_in[4:0]==5'b00000;};
 repeat(3) begin
 //a=random_input , b=0decimal  result=a  
     start_item(seq);//drive this transaction to the driver via the sequencer then to the DUT via the design_interface

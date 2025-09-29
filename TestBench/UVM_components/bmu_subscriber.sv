@@ -303,6 +303,13 @@ ignore_bins yy=binsof(csr_ren_in) intersect {1} && binsof(count_ap.valid_unsigne
 
 }
 
+
+//verify the DUT result behavior directlly so it is not enough to cover the hit values but the full scenario which heads to this result ... ( concept of verification to cleck teh cases you covered with their full path)
+result_ff:coverpoint sub.result_ff{
+  bins proper_slt={[−2147483648:2147483647]} iff(((sub.result_ff==1 && sub.ap.unsign==0 && sub.a_in<sub.b_in)||(sub.result_ff==0 && sub.ap.unsign==0 && sub.a_in>sub.b_in))
+                         || ((sub.result_ff==1 && sub.ap.unsign==1 && $unsigned(sub.a_in)<$unsigned(sub.b_in))||(sub.result_ff==0 &&sub.ap.unsign==1&& $unsigned(sub.a_in)>$unsigned(sub.b_in))) );
+}
+
 endgroup
 
 
@@ -517,21 +524,11 @@ res_msb:coverpoint sub.result_ff[31];
 res_lsb:coverpoint sub.result_ff[0];
 
 
-cross_a_res_l:cross a_in_lsb,res_lsb{//4 cases : 00 , 01 10 11 so i will manually define them  them since i need only the transition cases ! so the others asln will not ever be nit ( logically)
+cross_a_res_l:cross a_in_lsb,res_lsb{ //4 cases : 00 , 01 10 11 so i will manually define them  them since i need only the transition cases ! so the others asln will not ever be nit ( logically)
 
     bins zero_one = binsof(a_in_lsb) intersect {0} &&
                     binsof(res_lsb) intersect {1} iff (sub.b_in[4:0]==0);
-                    //same as 
-                    /*
-   bins one_zero = binsof(a_in_lsb) intersect {1} &&
-                  binsof(res_lsb) intersect {0} &&
-                  binsof(b_in) intersect {0};
-
-                    bins zero_one = binsof(a_in_lsb) intersect {0} &&
-                  binsof(res_lsb) intersect {1} &&
-                  binsof(b_in) intersect {0};
-
-*/
+ 
    bins one_zero = binsof(a_in_lsb) intersect {1} &&
                     binsof(res_lsb) intersect {0} iff (sub.b_in[4:0]==0);
 
@@ -546,8 +543,7 @@ cross_a_res_m:cross a_in_msb,res_msb{//4 cases : 00 , 01 10 11 so i will manuall
 
     bins zero_one = binsof(a_in_msb) intersect {0} &&
                     binsof(res_msb) intersect {1} iff (sub.b_in[4:0]==5'b11111);
-                  //  binsof(b_in) intersect {0};//b.allpossibilities[0]
- 
+  
 
    bins one_zero = binsof(a_in_msb) intersect {1} &&
                     binsof(res_msb) intersect {0} iff (sub.b_in[4:0]==5'b11111);
@@ -609,11 +605,12 @@ b_in:coverpoint sub.b_in{
 }
  
 
-cross_a_error:cross a_in,b_in,error{//2*7*5 bins 
+cross_a_b_error:cross a_in,b_in,error{//2*7*5 bins 
   bins underflow=binsof(a_in.bit_29_one)&&binsof(error.auto) intersect {1} && binsof(b_in.min);
   bins overflow=binsof(a_in.bit_29_zero)&&binsof(error.auto) intersect {1} &&binsof(b_in.max);
   //they not being hit since the dut output (error) is not correct thats why !!! , thats why in coverage we cover the 
   //inputs not outputs due to this issue that we dont know if dut is correct or not ... 
+   option.cross_auto_bin_max = 0;//disable auto bins
 }
 endgroup
 
@@ -683,7 +680,7 @@ count_ap:coverpoint $countones(sub.ap){
 }
 
 
-cross_valid_sra:cross count_ap,csr_ren_in{
+cross_valid_srl:cross count_ap,csr_ren_in{
 
   bins valid_op=binsof(csr_ren_in.valid_reading) && binsof(count_ap.valid_srl);
   bins invalid_conflict_reading=binsof(csr_ren_in.conflict_reading) && binsof(count_ap.valid_srl);
