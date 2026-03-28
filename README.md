@@ -3,6 +3,19 @@
 ## Overview
 The Bit Manipulation Unit (BMU) project is designed to provide various bit manipulation operations efficiently. This document outlines the key components, testbench architecture, interfaces, sequences, and instructions for usage.
 
+### Directory Structure
+
+- `Design/packages&libs/` - Source file for the project design.
+  - `Bit_Manibulation_Unit.sv`  
+
+- `TestBench/` - UVM Components , Design interface
+  - `TestBench/UVM_components/`
+  - `TestBench/interfaces/`
+
+- `BMU verification plan.docs` - The used verification plan.
+- `BMU final report.docs` - Final project results.
+- `specs.pdf` - Project given specification.
+  
 ## Design Components
 1. **Bit Manipulation Unit**: This is the core module that implements various bit operations such as AND, OR, NOT, XOR, shift left, shift right, and others.
 2. **Control Unit**: This unit manages the operation execution based on the input commands.
